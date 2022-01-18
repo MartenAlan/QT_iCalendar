@@ -1,3 +1,5 @@
 Ich habe ein bisschen an der UI herumgespielt.
 Ich schlage vor, dass wir erstmal mit den Daten versuchen eine funktionierende iCalendar-Datei zu erstellen.
 Die komplizierteren Sachen ( RRule, Alarm etc. ) können wir ja hinzufügen, wenn das geklappt hat.
+
+Ja gut machen wir, hat Frank gesagt welche Paket er gut fand?
