@@ -42,7 +42,7 @@
       <x>20</x>
       <y>110</y>
       <width>201</width>
-      <height>31</height>
+      <height>72</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -54,7 +54,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      <widget class="QPlainTextEdit" name="titel"/>
      </item>
     </layout>
    </widget>
@@ -63,7 +63,7 @@
      <rect>
       <x>20</x>
       <y>230</y>
-      <width>354</width>
+      <width>393</width>
       <height>80</height>
      </rect>
     </property>
@@ -116,7 +116,7 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>160</width>
+      <width>185</width>
       <height>80</height>
      </rect>
     </property>
@@ -131,7 +131,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_8">
+        <widget class="QLabel" name="label_id">
          <property name="text">
           <string>UID_test</string>
          </property>
@@ -149,7 +149,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="label_version">
          <property name="text">
           <string>2.0</string>
          </property>
@@ -167,7 +167,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_9">
+        <widget class="QLabel" name="prod_id">
          <property name="text">
           <string>ProdID_test</string>
          </property>
@@ -177,6 +177,16 @@
      </item>
     </layout>
    </widget>
+   <widget class="QTextEdit" name="output">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>391</width>
+      <height>141</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -184,7 +194,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
