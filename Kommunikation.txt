@@ -3,3 +3,5 @@ Ich schlage vor, dass wir erstmal mit den Daten versuchen eine funktionierende i
 Die komplizierteren Sachen ( RRule, Alarm etc. ) können wir ja hinzufügen, wenn das geklappt hat.
 
 Ja gut machen wir, hat Frank gesagt welche Paket er gut fand?
+
+Ne, ich glaube nicht.
