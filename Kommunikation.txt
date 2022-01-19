@@ -10,3 +10,6 @@ Die ics-Datei wird beim debugger gespeichert.
 Hast du schon ein icalendar-package gefunden, was dir gefällt?
 Sonst könnte man das auch selbst in die Datei hardcoden.
 So kompliziert sind die iCalendar-Dateien ja nicht aufgebaut.
+
+Ne habe ich nicht, wir machen es per Hand
+
