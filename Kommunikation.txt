@@ -5,3 +5,8 @@ Die komplizierteren Sachen ( RRule, Alarm etc. ) können wir ja hinzufügen, wen
 Ja gut machen wir, hat Frank gesagt welche Paket er gut fand?
 
 Ne, ich glaube nicht.
+
+Die ics-Datei wird beim debugger gespeichert.
+Hast du schon ein icalendar-package gefunden, was dir gefällt?
+Sonst könnte man das auch selbst in die Datei hardcoden.
+So kompliziert sind die iCalendar-Dateien ja nicht aufgebaut.
