@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>621</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>190</y>
       <width>381</width>
       <height>72</height>
      </rect>
@@ -32,7 +32,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+      <widget class="QPlainTextEdit" name="beschreibung"/>
      </item>
     </layout>
    </widget>
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>230</y>
+      <y>270</y>
       <width>393</width>
       <height>80</height>
      </rect>
@@ -80,7 +80,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+          <widget class="QDateTimeEdit" name="input_dtstart"/>
          </item>
         </layout>
        </item>
@@ -92,7 +92,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+        <widget class="QDateTimeEdit" name="input_dtend"/>
        </item>
       </layout>
      </item>
@@ -101,8 +101,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>510</y>
+      <x>280</x>
+      <y>520</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -181,7 +181,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>330</y>
+      <y>370</y>
       <width>391</width>
       <height>141</height>
      </rect>
@@ -194,7 +194,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
