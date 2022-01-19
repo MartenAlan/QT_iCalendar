@@ -32,9 +32,9 @@ void MainWindow::on_pushButton_clicked()
     QString fileText = ics_str + "\n" + ics_str2 + "\n" + dstart_dtend;
     std::string utf8_text = fileText.toUtf8().constData();
 
-    string filename3("test.ics");
+    QString filename = QFileDialog::getSaveFileName(this, "Save file");
 
-    FILE *o_file = fopen(filename3.c_str(), "w+");
+    FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
         fwrite(utf8_text.c_str(), 1, utf8_text.size(), o_file);
         cout << "Done Writing!" << endl;
