@@ -1,11 +1,3 @@
-Ich habe ein bisschen an der UI herumgespielt.
-Ich schlage vor, dass wir erstmal mit den Daten versuchen eine funktionierende iCalendar-Datei zu erstellen.
-Die komplizierteren Sachen ( RRule, Alarm etc. ) können wir ja hinzufügen, wenn das geklappt hat.
-
-Ja gut machen wir, hat Frank gesagt welche Paket er gut fand?
-
-Ne, ich glaube nicht.
-
 Die ics-Datei wird beim debugger gespeichert.
 Hast du schon ein icalendar-package gefunden, was dir gefällt?
 Sonst könnte man das auch selbst in die Datei hardcoden.
@@ -13,3 +5,5 @@ So kompliziert sind die iCalendar-Dateien ja nicht aufgebaut.
 
 Ne habe ich nicht, wir machen es per Hand
 
+Okay. Ich habe jetzt die Grundwerte schonmal eingetragen. Das Datum muss ich noch richtig ausgeben,
+aber dann sollte schon eine funktionierende ics-Datei zustande kommen.
