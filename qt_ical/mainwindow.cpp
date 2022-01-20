@@ -83,7 +83,7 @@ void MainWindow::on_pushButton_clicked()
     ical.uid = ui->label_id->text().toUtf8().constData();
     ical.dtstart = ics_dtstart.toString("yyyyMMdd").toUtf8() + "T" + ics_dtstart_time.toString("HHmmss").toUtf8();
     ical.dtend = ics_dtend.toString("yyyyMMdd").toUtf8() + "T" +ics_dtend_time.toString("HHmmss").toUtf8();
-    ical.dtstamp =  currentTime_time + "T" + currentTime_time;
+    ical.dtstamp =  currentTime_date + "T" + currentTime_time;
     ical.summary = ui->titel->toPlainText().toUtf8().constData() ;
 
     FILE *o_file = fopen(filename.toUtf8(), "w+");
