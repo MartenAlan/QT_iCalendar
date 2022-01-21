@@ -7,3 +7,5 @@ Ne habe ich nicht, wir machen es per Hand
 
 Okay. Ich habe jetzt die Grundwerte schonmal eingetragen. Das Datum muss ich noch richtig ausgeben,
 aber dann sollte schon eine funktionierende ics-Datei zustande kommen.
+
+Da wir keine Datenbank benutzen, brauchen wir überhaupt IDs?
