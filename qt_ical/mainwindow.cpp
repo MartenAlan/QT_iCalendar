@@ -101,3 +101,11 @@ void MainWindow::on_pushButton_clicked()
 
 
 
+
+void MainWindow::on_btn_clear_clicked()
+{
+    ui->titel->clear();
+    ui->beschreibung->clear();
+    ui->output->clear();
+}
+
