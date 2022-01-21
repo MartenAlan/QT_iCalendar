@@ -11,3 +11,5 @@ aber dann sollte schon eine funktionierende ics-Datei zustande kommen.
 Da wir keine Datenbank benutzen, brauchen wir überhaupt IDs?
 
 Jo. Es kommt beim Validator ein Fehler, wenn ich sie raus lasse.
+
+OK, alles klar
