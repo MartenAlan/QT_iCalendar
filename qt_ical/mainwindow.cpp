@@ -89,10 +89,10 @@ void MainWindow::on_pushButton_clicked()
     FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
         fwrite(ical.buildICSText().c_str(), 1, ical.buildICSText().size(), o_file);
-        ui->output->setText("Done Writing!");
+        QMessageBox::information(this, "iCal", "Done Writing!");
     }
     else{
-        ui->output->setText("Something went wrong!");
+        QMessageBox::critical(this, "iCal", "Something went wrong!");
     }
     fclose(o_file);
 
