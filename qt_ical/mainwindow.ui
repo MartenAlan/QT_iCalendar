@@ -205,7 +205,7 @@
      <rect>
       <x>520</x>
       <y>30</y>
-      <width>160</width>
+      <width>193</width>
       <height>80</height>
      </rect>
     </property>
@@ -441,7 +441,7 @@
           <rect>
            <x>10</x>
            <y>50</y>
-           <width>297</width>
+           <width>345</width>
            <height>41</height>
           </rect>
          </property>
@@ -481,7 +481,7 @@
           <rect>
            <x>10</x>
            <y>90</y>
-           <width>223</width>
+           <width>234</width>
            <height>31</height>
           </rect>
          </property>
@@ -1031,6 +1031,78 @@
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>350</y>
+      <width>201</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <widget class="QCheckBox" name="alarm_checkBox">
+       <property name="text">
+        <string>Hinweis</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_20">
+       <item>
+        <widget class="QLineEdit" name="amarm_line">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="alarm_comboBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>Minuten davor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Stunden davor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tagen davor</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QComboBox" name="alarm_type">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Ton</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Display</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1038,7 +1110,7 @@
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -1107,6 +1179,54 @@
     <hint type="destinationlabel">
      <x>1059</x>
      <y>354</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alarm_checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>amarm_line</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>412</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alarm_checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>alarm_comboBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>628</x>
+     <y>412</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alarm_checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>alarm_type</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>443</y>
     </hint>
    </hints>
   </connection>
