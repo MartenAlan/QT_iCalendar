@@ -326,6 +326,708 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>250</y>
+      <width>372</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Wiederholung</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>4</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Keine</string>
+        </attribute>
+        <widget class="QLabel" name="label_11">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>47</width>
+           <height>13</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_3">
+        <attribute name="title">
+         <string>täglich</string>
+        </attribute>
+        <widget class="QWidget" name="horizontalLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>160</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>alle</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_2"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Tage</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>wöchentlich</string>
+        </attribute>
+        <widget class="QWidget" name="horizontalLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>160</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_16">
+          <item>
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>alle</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_3"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Wochen</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="horizontalLayoutWidget_6">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>291</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QCheckBox" name="checkBox_7">
+            <property name="text">
+             <string>Montag</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_6">
+            <property name="text">
+             <string>Dienstag</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_5">
+            <property name="text">
+             <string>Mittwoch</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_4">
+            <property name="text">
+             <string>Donnerstag</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="horizontalLayoutWidget_7">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>223</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_18">
+          <item>
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>Freitag</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="text">
+             <string>Samstag</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="text">
+             <string>Sonntag</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>monatlich</string>
+        </attribute>
+        <widget class="QWidget" name="horizontalLayoutWidget_8">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>160</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>alle</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_4"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Monate</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>50</y>
+           <width>101</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QRadioButton" name="radioButton_3">
+            <property name="text">
+             <string>am Tag</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_4">
+            <property name="text">
+             <string>am</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_5">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>60</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>31</number>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>90</y>
+           <width>72</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>erster</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>zweiter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>dritter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>vierter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>fünfter</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QComboBox" name="comboBox_2">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>90</y>
+           <width>72</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Montag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dienstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mittwoch</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Donnerstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Freitag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Samstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sonntag</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_5">
+        <attribute name="title">
+         <string>jährlich</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>51</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QRadioButton" name="radioButton_5">
+            <property name="text">
+             <string>am</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_6">
+            <property name="text">
+             <string>am</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QComboBox" name="comboBox_3">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>40</y>
+           <width>72</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>erster</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>zweiter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>dritter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>vierter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>fünfter</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QComboBox" name="comboBox_4">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>40</y>
+           <width>72</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Montag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dienstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mittwoch</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Donnerstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Freitag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Samstag</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sonntag</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_6">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>70</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>31</number>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox_7">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>40</y>
+           <width>91</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Januar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Februar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>März</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>April</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mai</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Juni</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Juli</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>August</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>September</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Oktober</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>November</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dezember</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QLabel" name="label_12">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>40</y>
+           <width>21</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>vom</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox_8">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>70</y>
+           <width>91</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Januar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Februar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>März</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>April</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mai</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Juni</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Juli</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>August</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>September</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Oktober</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>November</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dezember</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>250</y>
+      <width>251</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>endet</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_15">
+      <item>
+       <widget class="QRadioButton" name="radioButton_11">
+        <property name="text">
+         <string>nach</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_12">
+        <property name="text">
+         <string>am</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_8">
+        <property name="text">
+         <string>niemals</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QSpinBox" name="spinBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>67</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>60</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -370,6 +1072,38 @@
     <hint type="destinationlabel">
      <x>698</x>
      <y>170</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_11</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>946</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>950</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_12</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>dateEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1017</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1059</x>
+     <y>354</y>
     </hint>
    </hints>
   </connection>

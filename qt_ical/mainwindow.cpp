@@ -137,3 +137,14 @@ void MainWindow::on_btn_clear_clicked()
     ui->longitude->setValue(0.000000);
 }
 
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    if(index==0){
+        ui->groupBox->setDisabled(true);
+
+    }
+    else{
+        ui->groupBox->setDisabled(false);
+    }
+}
+
