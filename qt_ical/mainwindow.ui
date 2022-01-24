@@ -275,8 +275,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>120</y>
+      <x>860</x>
+      <y>20</y>
       <width>160</width>
       <height>101</height>
      </rect>
@@ -329,8 +329,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>250</y>
+      <x>510</x>
+      <y>140</y>
       <width>372</width>
       <height>181</height>
      </rect>
@@ -349,9 +349,9 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>4</number>
+        <number>3</number>
        </property>
-       <widget class="QWidget" name="tab">
+       <widget class="QWidget" name="no">
         <attribute name="title">
          <string>Keine</string>
         </attribute>
@@ -369,7 +369,7 @@
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_3">
+       <widget class="QWidget" name="daily">
         <attribute name="title">
          <string>täglich</string>
         </attribute>
@@ -391,7 +391,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_2"/>
+           <widget class="QSpinBox" name="interval_daily"/>
           </item>
           <item>
            <widget class="QLabel" name="label_14">
@@ -403,7 +403,7 @@
          </layout>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_2">
+       <widget class="QWidget" name="weekly">
         <attribute name="title">
          <string>wöchentlich</string>
         </attribute>
@@ -425,7 +425,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_3"/>
+           <widget class="QSpinBox" name="interval_weekly"/>
           </item>
           <item>
            <widget class="QLabel" name="label_16">
@@ -441,7 +441,7 @@
           <rect>
            <x>10</x>
            <y>50</y>
-           <width>291</width>
+           <width>297</width>
            <height>41</height>
           </rect>
          </property>
@@ -510,7 +510,7 @@
          </layout>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_4">
+       <widget class="QWidget" name="monthly">
         <attribute name="title">
          <string>monatlich</string>
         </attribute>
@@ -532,7 +532,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_4"/>
+           <widget class="QSpinBox" name="interval_monthly"/>
           </item>
           <item>
            <widget class="QLabel" name="label_18">
@@ -666,7 +666,7 @@
          </item>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_5">
+       <widget class="QWidget" name="yearly">
         <attribute name="title">
          <string>jährlich</string>
         </attribute>
@@ -956,8 +956,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>910</x>
-      <y>250</y>
+      <x>900</x>
+      <y>140</y>
       <width>251</width>
       <height>91</height>
      </rect>
@@ -965,7 +965,7 @@
     <property name="title">
      <string>endet</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -976,7 +976,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_15">
       <item>
-       <widget class="QRadioButton" name="radioButton_11">
+       <widget class="QRadioButton" name="count_radio">
         <property name="text">
          <string>nach</string>
         </property>
@@ -986,7 +986,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_12">
+       <widget class="QRadioButton" name="until_radio">
         <property name="text">
          <string>am</string>
         </property>
@@ -1001,7 +1001,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QSpinBox" name="spinBox">
+    <widget class="QSpinBox" name="count">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1013,8 +1013,11 @@
      <property name="frame">
       <bool>true</bool>
      </property>
+     <property name="value">
+      <number>1</number>
+     </property>
     </widget>
-    <widget class="QDateEdit" name="dateEdit">
+    <widget class="QDateEdit" name="until">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -1076,9 +1079,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_11</sender>
+   <sender>count_radio</sender>
    <signal>toggled(bool)</signal>
-   <receiver>spinBox</receiver>
+   <receiver>count</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -1092,9 +1095,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_12</sender>
+   <sender>until_radio</sender>
    <signal>toggled(bool)</signal>
-   <receiver>dateEdit</receiver>
+   <receiver>until</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

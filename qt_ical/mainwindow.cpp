@@ -7,6 +7,61 @@
 
 using namespace std;
 
+
+class RRule {
+public:
+    string rruleText;
+    string state;
+    string interval;
+    string countOrUntil;
+
+public:
+    string getState(int statenumber){
+        switch ( statenumber ) {
+        case 0:
+            cout << "Keine Wiederholung" << endl;
+            state = "empty";
+          break;
+        case 1:
+            cout << "Tägliche Wiederholung" << endl;
+            state = "DAILY";
+          break;
+        case 2:
+            cout << "Wöchentliche Wiederholung" << endl;
+            state = "WEEKLY";
+          break;
+        case 3:
+            cout << "Monatliche Wiederholung" << endl;
+            state = "MONTHLY";
+          break;
+        case 4:
+            cout << "Jährliche Wiederholung" << endl;
+            state = "YEARLY";
+          break;
+        default:
+          // Code
+          break;
+        }
+    return state;
+    }
+
+    string buildRRuleText(){
+
+        if(state.compare("empty")==0){
+            return "";}
+
+        else {
+            rruleText = "RRULE:";
+            rruleText += "FREQ=" + state + ";";
+              rruleText += interval;
+              rruleText += countOrUntil;
+              rruleText += "\n";
+                return rruleText;
+            }
+}
+
+};
+
 class iCal {
     public:
     string uid;
@@ -20,7 +75,7 @@ class iCal {
     string geoLat;
     string geoLon;
     string location;
-
+    RRule rrule;
     string buildICSText(){
 
         string icsText = "BEGIN:VCALENDAR\n";
@@ -40,6 +95,8 @@ class iCal {
         else if(location.length()>0){
             icsText += "LOCATION:" + location + "\n";
         }
+
+        icsText += rrule.buildRRuleText();
 
 
         icsText += "END:VEVENT\n";
@@ -66,6 +123,29 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
+
+    RRule r = RRule();
+    r.state = r.getState(ui->tabWidget->currentIndex());
+
+    if(r.state.compare("DAILY")==0){
+        r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
+    }
+    else if(r.state.compare("WEEKLY")==0){
+        r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
+    }
+    else if(r.state.compare("MONTHLY")==0){
+        r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
+    }
+    else if(r.state.compare("YEARLY")==0){
+        cout << "Jährlich" << endl;
+    }
+
+    if(ui->count_radio->isChecked()){
+        r.countOrUntil = "COUNT=" + to_string(ui->count->value());
+    }
+    else if(ui->until_radio->isChecked()){
+        r.countOrUntil = "UNTIL=" + ui->until->date().toString("yyyyMMdd").toUtf8() + "T000000Z";
+    }
 
 
     QString ics_str = ui->label_id->text() + "\n" + ui->label_version->text() + "\n" + ui->prod_id->text() + "\n";
@@ -109,8 +189,11 @@ void MainWindow::on_pushButton_clicked()
 
     ical.geoLon = to_string(ui->longitude->value());
 
+    ical.rrule = r;
+
 
     ui->output->setText(ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend + "\n" + currentTime.toString() + "\n");
+    ui->output->setText(ical.buildICSText().c_str());
 
     FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
@@ -146,5 +229,8 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     else{
         ui->groupBox->setDisabled(false);
     }
+
+    cout << ui->tabWidget->currentIndex() << endl;
+
 }
 
