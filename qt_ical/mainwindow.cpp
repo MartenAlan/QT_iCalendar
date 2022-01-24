@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include <string.h>
 
 using namespace std;
 
@@ -16,7 +17,9 @@ class iCal {
     string dtstart;
     string dtend;
     string dtstamp;
-
+    string geoLat;
+    string geoLon;
+    string location;
 
     string buildICSText(){
 
@@ -29,6 +32,16 @@ class iCal {
         icsText += "DTSTART:" + dtstart + "\n";
         icsText += "DTEND:" + dtend + "\n";
         icsText += "UID:" + uid + "\n";
+
+        if(geoLat != "0.000000")
+        {
+            icsText += "GEO:" + geoLat + ";" + geoLon + "\n";
+        }
+        else if(location.length()>0){
+            icsText += "LOCATION:" + location + "\n";
+        }
+
+
         icsText += "END:VEVENT\n";
         icsText += "END:VCALENDAR";
         return icsText;
@@ -70,7 +83,7 @@ void MainWindow::on_pushButton_clicked()
     string currentTime_time = currentTime.time().toString("HHmmss").toUtf8().constData();
 
 
-    ui->output->setText(ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend + "\n" + currentTime.toString());
+
 
     QString fileText = ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend;
     std::string utf8_text = fileText.toUtf8().constData();
@@ -86,6 +99,19 @@ void MainWindow::on_pushButton_clicked()
     ical.dtstamp =  currentTime_date + "T" + currentTime_time;
     ical.summary = ui->titel->toPlainText().toUtf8().constData() ;
 
+    string street = ui->street_text->toPlainText().toUtf8().constData();
+    string city = ui->city_text->toPlainText().toUtf8().constData();
+    string plz = ui->city_text->toPlainText().toUtf8().constData();
+
+    ical.location = plz + " " + city + ", " + street;
+
+    ical.geoLat = to_string(ui->latitude->value());
+
+    ical.geoLon = to_string(ui->longitude->value());
+
+
+    ui->output->setText(ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend + "\n" + currentTime.toString() + "\n");
+
     FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
         fwrite(ical.buildICSText().c_str(), 1, ical.buildICSText().size(), o_file);
@@ -99,13 +125,15 @@ void MainWindow::on_pushButton_clicked()
 }
 
 
-
-
-
 void MainWindow::on_btn_clear_clicked()
 {
     ui->titel->clear();
     ui->beschreibung->clear();
     ui->output->clear();
+    ui->city_text->clear();
+    ui->street_text->clear();
+    ui->plz_text->clear();
+    ui->latitude->setValue(0.000000);
+    ui->longitude->setValue(0.000000);
 }
 
