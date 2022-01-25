@@ -65,6 +65,46 @@ public:
 
 };
 
+class VAlarm{
+public:
+    QString wert_trigger;
+    int index_einheit;
+    int index_action;
+    bool hinweis;
+    QString buildAlarm(){
+        QString alarm;
+        if (hinweis == true){
+            alarm += "BEGIN:VALARM\n";
+            switch (index_action) {
+            case 0:
+                alarm += "ACTION:AUDIO\nATTACH;VALUE=URI:Chord\n";
+                break;
+            case 1:
+                alarm += "ACTION:DISPLAY\n";
+                break;
+            default:
+                break;
+            }
+            switch (index_einheit) {
+            case 0:
+                alarm += "TRIGGER:-PT" + wert_trigger + "M\n";
+                break;
+            case 1:
+                alarm += "TRIGGER:-PT" + wert_trigger + "H\n";
+                break;
+            case 2:
+                alarm += "TRIGGER:-PT" + wert_trigger + "D\n";
+                break;
+            default:
+                break;
+            }
+            alarm += "END:VALARM\n";
+        }
+
+        return alarm;
+    }
+};
+
 class iCal {
     public:
     string uid;
@@ -79,6 +119,7 @@ class iCal {
     string geoLon;
     string location;
     RRule rrule;
+    VAlarm va;
     string buildICSText(){
 
         string icsText = "BEGIN:VCALENDAR\n";
@@ -100,7 +141,7 @@ class iCal {
         }
 
         icsText += rrule.buildRRuleText();
-
+        icsText += va.buildAlarm().toUtf8();
 
         icsText += "END:VEVENT\n";
         icsText += "END:VCALENDAR";
@@ -233,6 +274,11 @@ void MainWindow::on_pushButton_clicked()
         r.countOrUntil = "UNTIL=" + ui->until->date().toString("yyyyMMdd").toUtf8() + "T000000Z";
     }
 
+    VAlarm v;
+        v.hinweis = ui->alarm_checkBox->isChecked();
+        v.wert_trigger = ui->alarm_line->text();
+        v.index_einheit = ui->alarm_comboBox->currentIndex();
+        v.index_action = ui->alarm_type->currentIndex();
 
     QString ics_str = ui->label_id->text() + "\n" + ui->label_version->text() + "\n" + ui->prod_id->text() + "\n";
     QString ics_str2 = ui->titel->toPlainText() + "\n" + ui->beschreibung->toPlainText();
@@ -276,7 +322,7 @@ void MainWindow::on_pushButton_clicked()
     ical.geoLon = to_string(ui->longitude->value());
 
     ical.rrule = r;
-
+    ical.va = v;
 
     ui->output->setText(ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend + "\n" + currentTime.toString() + "\n");
     ui->output->setText(ical.buildICSText().c_str());
