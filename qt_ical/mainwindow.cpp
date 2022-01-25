@@ -7,6 +7,34 @@
 
 using namespace std;
 
+string getWeekDay(int num){
+    string day;
+    switch (num){
+    case 0:
+        day += "MO;";
+        break;
+    case 1:
+        day += "TU;";
+        break;
+    case 2:
+        day += "WE;";
+        break;
+    case 3:
+        day += "TH;";
+        break;
+    case 4:
+        day += "FR;";
+        break;
+    case 5:
+        day += "SA;";
+        break;
+    case 6:
+        day += "SU;";
+        break;
+    default:
+        break;}
+    return day;
+}
 
 class RRule {
 public:
@@ -15,6 +43,8 @@ public:
     string interval;
     string countOrUntil;
     string byday;
+    string bymonth;
+    string byyear;
     string bysetpos;
 public:
     string getState(int statenumber){
@@ -56,6 +86,7 @@ public:
             rruleText += "FREQ=" + state + ";";
             rruleText += bysetpos;
             rruleText += byday;
+            rruleText += bymonth;
               rruleText += interval;
               rruleText += countOrUntil;
               rruleText += "\n";
@@ -170,59 +201,38 @@ void MainWindow::on_pushButton_clicked()
             r.bysetpos = "BYSETPOS=";
             cout << ui->monthly_combo->currentIndex() << endl;
 
-            switch (ui->monthly_combo->currentIndex()){
-            case 0:
-                r.bysetpos += "1;";
-                break;
-            case 1:
-                r.bysetpos += "2;";
-                break;
-            case 2:
-                r.bysetpos += "3;";
-                break;
-            case 3:
-                r.bysetpos += "4;";
-                break;
-            case 4:
+            if (ui->monthly_combo->currentIndex() == 4){
                 r.bysetpos += "-1;";
-                break;
-            default:
-                break;}
+            }
+            else{
+                r.bysetpos += to_string(ui->monthly_combo->currentIndex() + 1) + ";";
+            }
 
             r.byday = "BYDAY=";
+            r.byday += getWeekDay(ui->monthly_combo2->currentIndex());
 
-            switch (ui->monthly_combo2->currentIndex()){
-            case 0:
-                r.byday += "MO;";
-                break;
-            case 1:
-                r.byday += "TU;";
-                break;
-            case 2:
-                r.byday += "WE;";
-                break;
-            case 3:
-                r.byday += "TH;";
-                break;
-            case 4:
-                r.byday += "FR;";
-                break;
-            case 5:
-                r.byday += "SA;";
-                break;
-            case 6:
-                r.byday += "SO;";
-                break;
-            default:
-                break;}
 
         }
 
     }
     else if(r.state.compare("YEARLY")==0){
         cout << "Jährlich" << endl;
-
-
+        if(ui->yearly_radio1->isChecked()==1){
+        r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
+        r.byday = "BYDAY=";
+        r.byday += getWeekDay(ui->yearly_day->currentIndex());
+        if (ui->yearly_setpos->currentIndex() == 4){
+            r.bysetpos += "-1;";
+        }
+        else{
+            r.bysetpos += to_string(ui->yearly_setpos->currentIndex() + 1) + ";";
+        }
+        }
+        else if(ui->yearly_radio2->isChecked()==1)
+        {
+            r.bymonth = "BYMONTH=" + to_string(ui->month_combo2->currentIndex()+1) + ";";
+            r.byday = "BYMONTHDAY=" + to_string(ui->monthday->value()) + ";";
+        }
 
     }
 
@@ -247,9 +257,6 @@ void MainWindow::on_pushButton_clicked()
     QDateTime currentTime = QDateTime::currentDateTime();
     string currentTime_date = currentTime.date().toString("yyyyMMdd").toUtf8().constData();
     string currentTime_time = currentTime.time().toString("HHmmss").toUtf8().constData();
-
-
-
 
     QString fileText = ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend;
     std::string utf8_text = fileText.toUtf8().constData();

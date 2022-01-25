@@ -349,7 +349,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="no">
         <attribute name="title">
@@ -628,7 +628,7 @@
          </item>
          <item>
           <property name="text">
-           <string>fünfter</string>
+           <string>letzter</string>
           </property>
          </item>
         </widget>
@@ -693,14 +693,14 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
-           <widget class="QRadioButton" name="radioButton_5">
+           <widget class="QRadioButton" name="yearly_radio1">
             <property name="text">
              <string>am</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_6">
+           <widget class="QRadioButton" name="yearly_radio2">
             <property name="text">
              <string>am</string>
             </property>
@@ -708,7 +708,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QComboBox" name="comboBox_3">
+        <widget class="QComboBox" name="yearly_setpos">
          <property name="geometry">
           <rect>
            <x>80</x>
@@ -739,11 +739,11 @@
          </item>
          <item>
           <property name="text">
-           <string>fünfter</string>
+           <string>letzter</string>
           </property>
          </item>
         </widget>
-        <widget class="QComboBox" name="comboBox_4">
+        <widget class="QComboBox" name="yearly_day">
          <property name="geometry">
           <rect>
            <x>150</x>
@@ -788,7 +788,7 @@
           </property>
          </item>
         </widget>
-        <widget class="QSpinBox" name="spinBox_6">
+        <widget class="QSpinBox" name="monthday">
          <property name="geometry">
           <rect>
            <x>180</x>
@@ -804,7 +804,7 @@
           <number>31</number>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_7">
+        <widget class="QComboBox" name="month_combo">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -887,7 +887,7 @@
           <string>vom</string>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_8">
+        <widget class="QComboBox" name="month_combo2">
          <property name="geometry">
           <rect>
            <x>80</x>
@@ -1114,6 +1114,25 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>490</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>5</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
