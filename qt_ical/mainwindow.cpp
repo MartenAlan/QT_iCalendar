@@ -14,7 +14,8 @@ public:
     string state;
     string interval;
     string countOrUntil;
-
+    string byday;
+    string bysetpos;
 public:
     string getState(int statenumber){
         switch ( statenumber ) {
@@ -53,6 +54,8 @@ public:
         else {
             rruleText = "RRULE:";
             rruleText += "FREQ=" + state + ";";
+            rruleText += bysetpos;
+            rruleText += byday;
               rruleText += interval;
               rruleText += countOrUntil;
               rruleText += "\n";
@@ -131,13 +134,96 @@ void MainWindow::on_pushButton_clicked()
         r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
     }
     else if(r.state.compare("WEEKLY")==0){
+        r.byday = "BYDAY=";
+        if(ui->monday->isChecked()==1){
+            r.byday += "MO,";
+        }
+        if(ui->tuesday->isChecked()==1){
+            r.byday += "TU,";
+        }
+        if(ui->wednesday->isChecked()==1){
+            r.byday += "WE,";
+        }
+        if(ui->thursday->isChecked()==1){
+            r.byday += "TH,";
+        }
+        if(ui->friday->isChecked()==1){
+            r.byday += "FR,";
+        }
+        if(ui->saturday->isChecked()==1){
+            r.byday += "SA,";
+        }
+        if(ui->sunday->isChecked()==1){
+            r.byday += "SU,";
+        }
+        r.byday += ";";
         r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
+
     }
     else if(r.state.compare("MONTHLY")==0){
         r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
+
+        if(ui->onday_monthly->isChecked()==1){
+            r.byday = "BYMONTHDAY=" + to_string(ui->monthly_spin->value()) + ";";
+        }
+        else if(ui->on_monthly->isChecked()==1){
+            r.bysetpos = "BYSETPOS=";
+            cout << ui->monthly_combo->currentIndex() << endl;
+
+            switch (ui->monthly_combo->currentIndex()){
+            case 0:
+                r.bysetpos += "1;";
+                break;
+            case 1:
+                r.bysetpos += "2;";
+                break;
+            case 2:
+                r.bysetpos += "3;";
+                break;
+            case 3:
+                r.bysetpos += "4;";
+                break;
+            case 4:
+                r.bysetpos += "-1;";
+                break;
+            default:
+                break;}
+
+            r.byday = "BYDAY=";
+
+            switch (ui->monthly_combo2->currentIndex()){
+            case 0:
+                r.byday += "MO;";
+                break;
+            case 1:
+                r.byday += "TU;";
+                break;
+            case 2:
+                r.byday += "WE;";
+                break;
+            case 3:
+                r.byday += "TH;";
+                break;
+            case 4:
+                r.byday += "FR;";
+                break;
+            case 5:
+                r.byday += "SA;";
+                break;
+            case 6:
+                r.byday += "SO;";
+                break;
+            default:
+                break;}
+
+        }
+
     }
     else if(r.state.compare("YEARLY")==0){
         cout << "Jährlich" << endl;
+
+
+
     }
 
     if(ui->count_radio->isChecked()){

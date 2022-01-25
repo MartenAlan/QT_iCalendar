@@ -391,7 +391,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="interval_daily"/>
+           <widget class="QSpinBox" name="interval_daily">
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_14">
@@ -425,7 +429,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="interval_weekly"/>
+           <widget class="QSpinBox" name="interval_weekly">
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_16">
@@ -447,28 +455,28 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
-           <widget class="QCheckBox" name="checkBox_7">
+           <widget class="QCheckBox" name="monday">
             <property name="text">
              <string>Montag</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_6">
+           <widget class="QCheckBox" name="tuesday">
             <property name="text">
              <string>Dienstag</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_5">
+           <widget class="QCheckBox" name="wednesday">
             <property name="text">
              <string>Mittwoch</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_4">
+           <widget class="QCheckBox" name="thursday">
             <property name="text">
              <string>Donnerstag</string>
             </property>
@@ -487,21 +495,21 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_18">
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="friday">
             <property name="text">
              <string>Freitag</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_3">
+           <widget class="QCheckBox" name="saturday">
             <property name="text">
              <string>Samstag</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="sunday">
             <property name="text">
              <string>Sonntag</string>
             </property>
@@ -532,7 +540,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="interval_monthly"/>
+           <widget class="QSpinBox" name="interval_monthly">
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_18">
@@ -554,14 +566,14 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QRadioButton" name="radioButton_3">
+           <widget class="QRadioButton" name="onday_monthly">
             <property name="text">
              <string>am Tag</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_4">
+           <widget class="QRadioButton" name="on_monthly">
             <property name="text">
              <string>am</string>
             </property>
@@ -569,7 +581,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QSpinBox" name="spinBox_5">
+        <widget class="QSpinBox" name="monthly_spin">
          <property name="geometry">
           <rect>
            <x>130</x>
@@ -585,7 +597,7 @@
           <number>31</number>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="monthly_combo">
          <property name="geometry">
           <rect>
            <x>130</x>
@@ -620,7 +632,7 @@
           </property>
          </item>
         </widget>
-        <widget class="QComboBox" name="comboBox_2">
+        <widget class="QComboBox" name="monthly_combo2">
          <property name="geometry">
           <rect>
            <x>210</x>
@@ -1110,7 +1122,7 @@
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
