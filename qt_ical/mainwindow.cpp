@@ -4,8 +4,55 @@
 #include <iostream>
 #include <ctime>
 #include <string.h>
+#include <map>
+
 
 using namespace std;
+
+
+QDate getOstersonntag(int year){
+    int a = year % 19;
+    int b = year / 100;
+    int c = year % 100;
+    int d = b / 4;
+    int e = b % 4;
+    int f = (b + 8) / 25;
+    int g = (b - f + 1) / 3;
+    int h = (19*a + b - d - g + 15) % 30;
+    int i = c / 4;
+    int k = c % 4;
+    int l = (32 + 2*e + 2*i - h - k) % 7;
+    int m = (a + 11*h + 22*l) / 451;
+    int n = (h + l - 7*m + 114) / 31;
+    int p = (h + l - 7*m + 114) % 31;
+
+    QDate ostern = QDate::fromString(QString::number(p+1) + "." + QString::number(n) + "." + QString::number(year), "d.M.yyyy");
+    return (ostern);
+}
+
+
+string createHolidayText(bool checked){
+    string holidayText;
+
+    if(checked==true){
+        map <string, QDate> holidayDates = {{"Ostern", getOstersonntag(2022)}};  // hier füge ich die anderen Feiertage ein.
+
+
+        for (const auto& elem : holidayDates)
+        {
+           holidayText+="BEGIN: VEVENT\nEND: VEVENT\n";     // hier kommt der Text für die  ICS-Datei hin.
+          cout << elem.first << endl; // gibt Name aus.
+          cout << elem.second.toString("yyyyMMdd").toUtf8().constData() << endl;  // gibt datum aus
+        }
+
+    }
+    else{
+        cout << "Holidays nicht einfügen" << endl;
+        holidayText = "";
+    }
+
+    return holidayText;
+}
 
 string getWeekDay(int num){
     string day;
@@ -36,25 +83,6 @@ string getWeekDay(int num){
     return day;
 }
 
-QDate getOstersonntag(int year){
-    int a = year % 19;
-    int b = year / 100;
-    int c = year % 100;
-    int d = b / 4;
-    int e = b % 4;
-    int f = (b + 8) / 25;
-    int g = (b - f + 1) / 3;
-    int h = (19*a + b - d - g + 15) % 30;
-    int i = c / 4;
-    int k = c % 4;
-    int l = (32 + 2*e + 2*i - h - k) % 7;
-    int m = (a + 11*h + 22*l) / 451;
-    int n = (h + l - 7*m + 114) / 31;
-    int p = (h + l - 7*m + 114) % 31;
-
-    QDate ostern = QDate::fromString(QString::number(p+1) + "." + QString::number(n) + "." + QString::number(year), "d.M.yyyy");
-    return (ostern);
-}
 
 class RRule {
 public:
@@ -139,6 +167,7 @@ class iCal {
     string dtstamp;
     string locationOrGeo;
     string priority;
+    string holidays;
     RRule rrule;
     VAlarm va;
     string buildICSText(){
@@ -156,8 +185,10 @@ class iCal {
         icsText += locationOrGeo;
         icsText += rrule.buildRRuleText();
         icsText += va.buildAlarm().toUtf8();
-
         icsText += "END:VEVENT\n";
+
+        icsText += holidays;
+
         icsText += "END:VCALENDAR";
         return icsText;
     }
@@ -306,6 +337,9 @@ void MainWindow::on_pushButton_clicked()
 
     ical.rrule = r;
     ical.va = v;
+
+    ical.holidays = createHolidayText(ui->holidays_check->isChecked());
+
     if(ui->priority_check->isChecked()==1){
         ical.priority = "PRIORITY=" + to_string(ui->priority->value()) + "\n";
     }

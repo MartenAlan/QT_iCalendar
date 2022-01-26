@@ -1176,6 +1176,19 @@
      <string>Priorität</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="holidays_check">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>450</y>
+      <width>131</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Feiertage hinzufügen</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
