@@ -46,30 +46,6 @@ public:
     string bymonth;
     string byyear;
     string bysetpos;
-public:
-    string getState(int statenumber){
-        switch ( statenumber ) {
-        case 0:
-            state = "empty";
-          break;
-        case 1:
-            state = "DAILY";
-          break;
-        case 2:
-            state = "WEEKLY";
-          break;
-        case 3:
-            state = "MONTHLY";
-          break;
-        case 4:
-            state = "YEARLY";
-          break;
-        default:
-          // Code
-          break;
-        }
-    return state;
-    }
 
     string buildRRuleText(){
 
@@ -157,10 +133,7 @@ class iCal {
         icsText += "DTEND:" + dtend + "\n";
         icsText += "UID:" + uid + "\n";
         icsText += priority;
-
-            icsText += locationOrGeo;
-
-
+        icsText += locationOrGeo;
         icsText += rrule.buildRRuleText();
         icsText += va.buildAlarm().toUtf8();
 
@@ -188,14 +161,18 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
-
     RRule r = RRule();
-    r.state = r.getState(ui->tabWidget->currentIndex());
 
-    if(r.state.compare("DAILY")==0){
+    switch(ui->tabWidget->currentIndex()){
+        case 0:
+        r.state = "empty";
+      break;
+        case 1:
+        r.state = "DAILY";
         r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
-    }
-    else if(r.state.compare("WEEKLY")==0){
+      break;
+        case 2:
+        r.state = "WEEKLY";
         r.byday = "BYDAY=";
         if(ui->monday->isChecked()==1){
             r.byday += "MO,";
@@ -220,9 +197,9 @@ void MainWindow::on_pushButton_clicked()
         }
         r.byday += ";";
         r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
-
-    }
-    else if(r.state.compare("MONTHLY")==0){
+      break;
+        case 3:
+        r.state = "MONTHLY";
         r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
 
         if(ui->onday_monthly->isChecked()==1){
@@ -240,13 +217,10 @@ void MainWindow::on_pushButton_clicked()
             }
 
             r.byday = "BYDAY=";
-            r.byday += getWeekDay(ui->monthly_combo2->currentIndex());
-
-
-        }
-
-    }
-    else if(r.state.compare("YEARLY")==0){
+            r.byday += getWeekDay(ui->monthly_combo2->currentIndex());}
+      break;
+        case 4:
+        r.state = "YEARLY";
         cout << "Jährlich" << endl;
         if(ui->yearly_radio1->isChecked()==1){
         r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
@@ -264,7 +238,10 @@ void MainWindow::on_pushButton_clicked()
             r.bymonth = "BYMONTH=" + to_string(ui->month_combo2->currentIndex()+1) + ";";
             r.byday = "BYMONTHDAY=" + to_string(ui->monthday->value()) + ";";
         }
-
+      break;
+    default:
+      // Code
+      break;
     }
 
     if(ui->count_radio->isChecked()){
@@ -284,8 +261,6 @@ void MainWindow::on_pushButton_clicked()
     QTime ics_dtstart_time = ui->input_dtstart->time();
     QDate ics_dtend = ui->input_dtend->date();
     QTime ics_dtend_time = ui->input_dtend->time();
-    QString dtstart_dtend = ics_dtstart.toString("yyyyMMdd") + "T" + ics_dtstart_time.toString("HHmmss") + "\n" +ics_dtend.toString();
-
 
     QDateTime currentTime = QDateTime::currentDateTime();
     string currentTime_date = currentTime.date().toString("yyyyMMdd").toUtf8().constData();
