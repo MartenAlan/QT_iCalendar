@@ -205,20 +205,20 @@
      <rect>
       <x>520</x>
       <y>30</y>
-      <width>193</width>
+      <width>161</width>
       <height>80</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="radio_geo">
        <property name="text">
         <string>Geographische Koordinaten</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="radio_adress">
        <property name="text">
         <string>Adresse</string>
        </property>
@@ -349,7 +349,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>4</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="no">
         <attribute name="title">
@@ -1118,23 +1118,62 @@
      </item>
     </layout>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QFrame" name="priority_frame">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>490</y>
-      <width>160</width>
-      <height>16</height>
+      <x>740</x>
+      <y>370</y>
+      <width>231</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="minimum">
-     <number>1</number>
+    <layout class="QHBoxLayout" name="priority_layout">
+     <item>
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>niedrig</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="priority">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_20">
+       <property name="text">
+        <string>hoch</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="priority_check">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>350</y>
+      <width>72</width>
+      <height>19</height>
+     </rect>
     </property>
-    <property name="maximum">
-     <number>5</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>Priorität</string>
     </property>
    </widget>
   </widget>
@@ -1144,7 +1183,7 @@
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
@@ -1153,7 +1192,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>radioButton</sender>
+   <sender>radio_geo</sender>
    <signal>toggled(bool)</signal>
    <receiver>geodata_frame</receiver>
    <slot>setEnabled(bool)</slot>
@@ -1169,7 +1208,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_2</sender>
+   <sender>radio_adress</sender>
    <signal>toggled(bool)</signal>
    <receiver>adress_frame</receiver>
    <slot>setEnabled(bool)</slot>
@@ -1179,8 +1218,8 @@
      <y>103</y>
     </hint>
     <hint type="destinationlabel">
-     <x>698</x>
-     <y>170</y>
+     <x>860</x>
+     <y>140</y>
     </hint>
    </hints>
   </connection>
@@ -1191,12 +1230,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>946</x>
-     <y>309</y>
+     <x>947</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>950</x>
-     <y>338</y>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -1207,12 +1246,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1017</x>
-     <y>307</y>
+     <x>1047</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>1059</x>
-     <y>354</y>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -1261,6 +1300,22 @@
     <hint type="destinationlabel">
      <x>589</x>
      <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>priority_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>priority_frame</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>775</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>945</x>
+     <y>505</y>
     </hint>
    </hints>
   </connection>

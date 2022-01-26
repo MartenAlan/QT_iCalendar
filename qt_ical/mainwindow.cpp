@@ -50,23 +50,18 @@ public:
     string getState(int statenumber){
         switch ( statenumber ) {
         case 0:
-            cout << "Keine Wiederholung" << endl;
             state = "empty";
           break;
         case 1:
-            cout << "Tägliche Wiederholung" << endl;
             state = "DAILY";
           break;
         case 2:
-            cout << "Wöchentliche Wiederholung" << endl;
             state = "WEEKLY";
           break;
         case 3:
-            cout << "Monatliche Wiederholung" << endl;
             state = "MONTHLY";
           break;
         case 4:
-            cout << "Jährliche Wiederholung" << endl;
             state = "YEARLY";
           break;
         default:
@@ -146,9 +141,8 @@ class iCal {
     string dtstart;
     string dtend;
     string dtstamp;
-    string geoLat;
-    string geoLon;
-    string location;
+    string locationOrGeo;
+    string priority;
     RRule rrule;
     VAlarm va;
     string buildICSText(){
@@ -162,14 +156,10 @@ class iCal {
         icsText += "DTSTART:" + dtstart + "\n";
         icsText += "DTEND:" + dtend + "\n";
         icsText += "UID:" + uid + "\n";
+        icsText += priority;
 
-        if(geoLat != "0.000000")
-        {
-            icsText += "GEO:" + geoLat + ";" + geoLon + "\n";
-        }
-        else if(location.length()>0){
-            icsText += "LOCATION:" + location + "\n";
-        }
+            icsText += locationOrGeo;
+
 
         icsText += rrule.buildRRuleText();
         icsText += va.buildAlarm().toUtf8();
@@ -290,9 +280,6 @@ void MainWindow::on_pushButton_clicked()
         v.index_einheit = ui->alarm_comboBox->currentIndex();
         v.index_action = ui->alarm_type->currentIndex();
 
-    QString ics_str = ui->label_id->text() + "\n" + ui->label_version->text() + "\n" + ui->prod_id->text() + "\n";
-    QString ics_str2 = ui->titel->toPlainText() + "\n" + ui->beschreibung->toPlainText();
-
     QDate ics_dtstart = ui->input_dtstart->date();
     QTime ics_dtstart_time = ui->input_dtstart->time();
     QDate ics_dtend = ui->input_dtend->date();
@@ -303,9 +290,6 @@ void MainWindow::on_pushButton_clicked()
     QDateTime currentTime = QDateTime::currentDateTime();
     string currentTime_date = currentTime.date().toString("yyyyMMdd").toUtf8().constData();
     string currentTime_time = currentTime.time().toString("HHmmss").toUtf8().constData();
-
-    QString fileText = ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend;
-    std::string utf8_text = fileText.toUtf8().constData();
 
     QString filename = QFileDialog::getSaveFileName(this, "Save file");
 
@@ -318,20 +302,19 @@ void MainWindow::on_pushButton_clicked()
     ical.dtstamp =  currentTime_date + "T" + currentTime_time;
     ical.summary = ui->titel->toPlainText().toUtf8().constData() ;
 
-    string street = ui->street_text->toPlainText().toUtf8().constData();
-    string city = ui->city_text->toPlainText().toUtf8().constData();
-    string plz = ui->city_text->toPlainText().toUtf8().constData();
-
-    ical.location = plz + " " + city + ", " + street;
-
-    ical.geoLat = to_string(ui->latitude->value());
-
-    ical.geoLon = to_string(ui->longitude->value());
+    if(ui->radio_adress->isChecked()==1){
+        ical.locationOrGeo = "LOCATION:" + ui->plz_text->toPlainText().toUtf8() + " " + ui->city_text->toPlainText().toUtf8() + ", " + ui->street_text->toPlainText().toUtf8() + "\n";
+    }
+    else if(ui->radio_geo->isChecked()==1){
+        ical.locationOrGeo = "GEO:" + to_string(ui->latitude->value()) + ";" + to_string(ui->longitude->value()) + "\n";
+    }
 
     ical.rrule = r;
     ical.va = v;
+    if(ui->priority_check->isChecked()==1){
+        ical.priority = "PRIORITY=" + to_string(ui->priority->value()) + "\n";
+    }
 
-    ui->output->setText(ics_str + "\n" + ics_str2 + "\n" + dtstart_dtend + "\n" + currentTime.toString() + "\n");
     ui->output->setText(ical.buildICSText().c_str());
 
     FILE *o_file = fopen(filename.toUtf8(), "w+");
@@ -368,8 +351,5 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     else{
         ui->groupBox->setDisabled(false);
     }
-
-    cout << ui->tabWidget->currentIndex() << endl;
-
 }
 
