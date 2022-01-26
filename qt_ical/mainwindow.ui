@@ -1063,12 +1063,15 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_20">
        <item>
-        <widget class="QLineEdit" name="amarm_line">
+        <widget class="QLineEdit" name="alarm_line">
          <property name="enabled">
           <bool>false</bool>
          </property>
          <property name="text">
           <string>15</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -1141,7 +1144,7 @@
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -1216,7 +1219,7 @@
   <connection>
    <sender>alarm_checkBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>amarm_line</receiver>
+   <receiver>alarm_line</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
