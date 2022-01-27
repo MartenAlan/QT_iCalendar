@@ -21,3 +21,5 @@ Das kann gelöscht werden.
 Ich würde die Funktion getOsterfeiertage() so umschreiben, dass der Rückgabewert eine Map ist.
 Dann kann ich die mit meiner Funktion createHolidayText() kombinieren und bekomme alle Feiertage als Event mit in die ics-Datei.
 Ist das okay?
+
+Ja klar, sonst wäre doppelt.
