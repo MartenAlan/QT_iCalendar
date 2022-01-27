@@ -61,6 +61,7 @@ QString getOsterfeiertage(QDate ostern){
 }
 
 
+// falls die Ferien hinzugefügt werden sollen, wird diese Funktion ausgeführt.
 string createHolidayText(bool checked){
     string holidayText;
     string dtstamp = QDateTime().currentDateTime().toString("yyyyMMddThhmmssZ").toUtf8().constData();
@@ -68,7 +69,7 @@ string createHolidayText(bool checked){
         map <string, QDate> holidayDates = {{"Ostern", getOstersonntag(2022)},
                                            };  // hier füge ich die anderen Feiertage ein.
 
-
+        // geht alle eingetragenen Feiertage in der Map durch, um jeweils ein VEvent zu erstellen ( map könnte auch als Parameter übergeben werden
         for (const auto& elem : holidayDates)
         {
            holidayText+= "BEGIN:VEVENT\n";
@@ -90,6 +91,7 @@ string createHolidayText(bool checked){
     return holidayText;
 }
 
+// für alle Wochentage: nimmt den Index aus einer ComboBox und gibt die passende Abkürzung zurück
 string getWeekDay(int num){
     string day;
     switch (num){
@@ -119,7 +121,7 @@ string getWeekDay(int num){
     return day;
 }
 
-
+// Klasse zur geordneteren Erstellung des ICS-Textes einer Wiederholung
 class RRule {
 public:
     string rruleText;
@@ -206,6 +208,8 @@ class iCal {
     string holidays;
     RRule rrule;
     VAlarm va;
+
+    // gibt den iCalendar-Text als String zurück
     string buildICSText(){
 
         string icsText = "BEGIN:VCALENDAR\n";
@@ -250,7 +254,7 @@ void MainWindow::on_pushButton_clicked()
 
     RRule r = RRule();
 
-    switch(ui->tabWidget->currentIndex()){
+    switch(ui->RRule_tab->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
         case 0:
         r.state = "empty";
       break;
@@ -308,7 +312,6 @@ void MainWindow::on_pushButton_clicked()
       break;
         case 4:
         r.state = "YEARLY";
-        cout << "Jährlich" << endl;
         if(ui->yearly_radio1->isChecked()==1){
         r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
         r.byday = "BYDAY=";
@@ -327,10 +330,11 @@ void MainWindow::on_pushButton_clicked()
         }
       break;
     default:
-      // Code
+      // nichts
       break;
     }
 
+    // Kontrolliert, ob eine Dauer oder ein Enddatum für die Wiederholung angegeben wurde
     if(ui->count_radio->isChecked()){
         r.countOrUntil = "COUNT=" + to_string(ui->count->value());
     }
@@ -349,11 +353,9 @@ void MainWindow::on_pushButton_clicked()
     QDate ics_dtend = ui->input_dtend->date();
     QTime ics_dtend_time = ui->input_dtend->time();
 
-    QDateTime currentTime = QDateTime::currentDateTime();
-    string currentTime_date = currentTime.date().toString("yyyyMMdd").toUtf8().constData();
-    string currentTime_time = currentTime.time().toString("HHmmss").toUtf8().constData();
-
-    QString filename = QFileDialog::getSaveFileName(this, "Save file");
+    // Datum und Zeit für DtStamp
+    string currentTime_date = QDateTime::currentDateTime().date().toString("yyyyMMdd").toUtf8().constData();
+    string currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss").toUtf8().constData();
 
     iCal ical;
     ical.prodid = ui->prod_id->text().toUtf8().constData();
@@ -362,7 +364,11 @@ void MainWindow::on_pushButton_clicked()
     ical.dtstart = ics_dtstart.toString("yyyyMMdd").toUtf8() + "T" + ics_dtstart_time.toString("HHmmss").toUtf8();
     ical.dtend = ics_dtend.toString("yyyyMMdd").toUtf8() + "T" +ics_dtend_time.toString("HHmmss").toUtf8();
     ical.dtstamp =  currentTime_date + "T" + currentTime_time;
-    ical.summary = ui->titel->toPlainText().toUtf8().constData() ;
+    ical.summary = ui->titel->toPlainText().toUtf8().constData();
+
+    if(ui->priority_check->isChecked()==1){
+        ical.priority = "PRIORITY=" + to_string(ui->priority->value()) + "\n";
+    }
 
     if(ui->radio_adress->isChecked()==1){
         ical.locationOrGeo = "LOCATION:" + ui->plz_text->toPlainText().toUtf8() + " " + ui->city_text->toPlainText().toUtf8() + ", " + ui->street_text->toPlainText().toUtf8() + "\n";
@@ -371,16 +377,14 @@ void MainWindow::on_pushButton_clicked()
         ical.locationOrGeo = "GEO:" + to_string(ui->latitude->value()) + ";" + to_string(ui->longitude->value()) + "\n";
     }
 
+    // Übertragen von RRule und Alarm ins ICalendar Objekt
     ical.rrule = r;
     ical.va = v;
 
+    // Feiertagselemente, falls vorhanden, werden hinzugefügt
     ical.holidays = createHolidayText(ui->holidays_check->isChecked());
 
-    if(ui->priority_check->isChecked()==1){
-        ical.priority = "PRIORITY=" + to_string(ui->priority->value()) + "\n";
-    }
-
-    ui->output->setText(ical.buildICSText().c_str());
+     QString filename = QFileDialog::getSaveFileName(this, "Save file");
 
     FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
@@ -399,19 +403,25 @@ void MainWindow::on_btn_clear_clicked()
 {
     ui->titel->clear();
     ui->beschreibung->clear();
-    ui->output->clear();
     ui->city_text->clear();
     ui->street_text->clear();
     ui->plz_text->clear();
     ui->latitude->setValue(0.000000);
     ui->longitude->setValue(0.000000);
+    ui->priority->setValue(0);
+    ui->alarm_line->setText("15");
+    ui->alarm_comboBox->setCurrentIndex(0);
+    ui->alarm_type->setCurrentIndex(0);
+    ui->RRule_tab->setCurrentIndex(0);
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
+    // wenn Tab 1 ( Keine Wiederholung ) ausgewählt ist, wird die "endet"-Box disabled
     if(index==0){
         ui->groupBox->setDisabled(true);
 
+    // sonst ist sie enabled
     }
     else{
         ui->groupBox->setDisabled(false);
