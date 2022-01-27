@@ -17,3 +17,7 @@ OK, alles klar
 Brauchen wir noch das Ausgabefeld(output), oder kann gelöscht werden, um Platz zu schaffen. Ich habe es nur eingebaut um die Ausgaben am Anfang zu prüfen.
 
 Das kann gelöscht werden.
+
+Ich würde die Funktion getOsterfeiertage() so umschreiben, dass der Rückgabewert eine Map ist.
+Dann kann ich die mit meiner Funktion createHolidayText() kombinieren und bekomme alle Feiertage als Event mit in die ics-Datei.
+Ist das okay?
