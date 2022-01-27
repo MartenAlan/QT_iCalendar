@@ -13,3 +13,5 @@ Da wir keine Datenbank benutzen, brauchen wir überhaupt IDs?
 Jo. Es kommt beim Validator ein Fehler, wenn ich sie raus lasse.
 
 OK, alles klar
+
+Brauchen wir noch das Ausgabefeld(output), oder kann gelöscht werden, um Platz zu schaffen. Ich habe es nur eingebaut um die Ausgaben am Anfang zu prüfen.
