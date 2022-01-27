@@ -33,16 +33,22 @@ QDate getOstersonntag(int year){
 
 string createHolidayText(bool checked){
     string holidayText;
-
+    string dtstamp = QDateTime().currentDateTime().toString("yyyyMMddThhmmssZ").toUtf8().constData();
     if(checked==true){
-        map <string, QDate> holidayDates = {{"Ostern", getOstersonntag(2022)}};  // hier füge ich die anderen Feiertage ein.
+        map <string, QDate> holidayDates = {{"Ostern", getOstersonntag(2022)},
+                                           };  // hier füge ich die anderen Feiertage ein.
 
 
         for (const auto& elem : holidayDates)
         {
-           holidayText+="BEGIN: VEVENT\nEND: VEVENT\n";     // hier kommt der Text für die  ICS-Datei hin.
-          cout << elem.first << endl; // gibt Name aus.
-          cout << elem.second.toString("yyyyMMdd").toUtf8().constData() << endl;  // gibt datum aus
+           holidayText+= "BEGIN:VEVENT\n";
+           holidayText += "SUMMARY:" + elem.first + "\n";
+           string start = elem.second.toString("yyyyMMdd").toUtf8().constData();
+           holidayText += "DTSTART:" + start + "\n";
+           holidayText += "DURATION:P1D\n";
+           holidayText += "DTSTAMP:" + dtstamp + "\n";
+           holidayText += "UID:" + elem.first + "_holidays\n";
+           holidayText += "END:VEVENT\n";
         }
 
     }
