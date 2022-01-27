@@ -30,6 +30,36 @@ QDate getOstersonntag(int year){
     return (ostern);
 }
 
+QString getOsterfeiertage(QDate ostern){
+
+    QString feiertage;
+    feiertage += "Ostersonntag - " + ostern.toString() + "\n";
+    QDate rosenmontag = ostern.addDays(-48);
+    feiertage += "Rosenmontag - " + rosenmontag.toString() + "\n";
+    QDate faschingsdienstag = ostern.addDays(-47);
+    feiertage += "Faschingsdienstag - " + faschingsdienstag.toString() + "\n";
+    QDate aschenmittwoch = ostern.addDays(-46);
+    feiertage += "Aschenmittwoch - " + aschenmittwoch.toString() + "\n";
+    QDate palmsonnteg = ostern.addDays(-7);
+    feiertage += "Palmsonntag - " + palmsonnteg.toString() + "\n";
+    QDate gruendonnerstag = ostern.addDays(-3);
+    feiertage += "Gründonnerstag - " + gruendonnerstag.toString() + "\n";
+    QDate karfreitag = ostern.addDays(-2);
+    feiertage += "Karfreitag - " + karfreitag.toString() + "\n";
+    QDate karsamstag = ostern.addDays(-1);
+    feiertage += "Karsamstag - " + karsamstag.toString() + "\n";
+    QDate ostermontag = ostern.addDays(1);
+    feiertage += "Ostermontag - " + ostermontag.toString() + "\n";
+    QDate ch_himm = ostern.addDays(39);
+    feiertage += "Christi Himmelfahrt - " + ch_himm.toString() + "\n";
+    QDate pfingsmontag = ostern.addDays(49);
+    feiertage += "Pfingsmontag - " + pfingsmontag.toString() + "\n";
+    QDate fronleichnam = ostern.addDays(60);
+    feiertage += "Fronleichnam - " + fronleichnam.toString() + "\n";
+
+    return (feiertage);
+}
+
 
 string createHolidayText(bool checked){
     string holidayText;
