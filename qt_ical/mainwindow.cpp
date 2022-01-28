@@ -53,11 +53,10 @@ map <string, QDate> getOsterfeiertage(QDate ostern){
 
 
 // falls die Ferien hinzugefügt werden sollen, wird diese Funktion ausgeführt.
-string createHolidayText(bool checked){
+string createHolidayText(int year){
     string holidayText;
     string dtstamp = QDateTime().currentDateTime().toString("yyyyMMddThhmmssZ").toUtf8().constData();
-    if(checked==true){
-        map <string, QDate> holidayDates = getOsterfeiertage(getOstersonntag(2022));
+        map <string, QDate> holidayDates = getOsterfeiertage(getOstersonntag(year));
         // geht alle eingetragenen Feiertage in der Map durch, um jeweils ein VEvent zu erstellen ( map könnte auch als Parameter übergeben werden
         for (const auto& elem : holidayDates)
         {
@@ -70,12 +69,6 @@ string createHolidayText(bool checked){
            holidayText += "UID:" + elem.first + "_holidays\n";
            holidayText += "END:VEVENT\n";
         }
-
-    }
-    else{
-        cout << "Holidays nicht einfügen" << endl;
-        holidayText = "";
-    }
 
     return holidayText;
 }
@@ -371,8 +364,12 @@ void MainWindow::on_pushButton_clicked()
     ical.va = v;
 
     // Feiertagselemente, falls vorhanden, werden hinzugefügt
-    // baue ich noch so um, dass Jahr was eingegeben wurde, berücksichtigt wird.
-    ical.holidays = createHolidayText(ui->holidays_check->isChecked());
+    if(ui->checkBox_feiertage->isChecked()){
+        ical.holidays = createHolidayText(ui->lineEdit_jahr->text().toInt());
+    }
+    else{
+        ical.holidays = "";
+    }
 
      QString filename = QFileDialog::getSaveFileName(this, "Save file");
 
