@@ -30,32 +30,23 @@ QDate getOstersonntag(int year){
     return (ostern);
 }
 
-QString getOsterfeiertage(QDate ostern){
+map <string, QDate> getOsterfeiertage(QDate ostern){
 
-    QString feiertage;
-    feiertage += "Ostersonntag - " + ostern.toString() + "\n";
-    QDate rosenmontag = ostern.addDays(-48);
-    feiertage += "Rosenmontag - " + rosenmontag.toString() + "\n";
-    QDate faschingsdienstag = ostern.addDays(-47);
-    feiertage += "Faschingsdienstag - " + faschingsdienstag.toString() + "\n";
-    QDate aschenmittwoch = ostern.addDays(-46);
-    feiertage += "Aschenmittwoch - " + aschenmittwoch.toString() + "\n";
-    QDate palmsonnteg = ostern.addDays(-7);
-    feiertage += "Palmsonntag - " + palmsonnteg.toString() + "\n";
-    QDate gruendonnerstag = ostern.addDays(-3);
-    feiertage += "Gründonnerstag - " + gruendonnerstag.toString() + "\n";
-    QDate karfreitag = ostern.addDays(-2);
-    feiertage += "Karfreitag - " + karfreitag.toString() + "\n";
-    QDate karsamstag = ostern.addDays(-1);
-    feiertage += "Karsamstag - " + karsamstag.toString() + "\n";
-    QDate ostermontag = ostern.addDays(1);
-    feiertage += "Ostermontag - " + ostermontag.toString() + "\n";
-    QDate ch_himm = ostern.addDays(39);
-    feiertage += "Christi Himmelfahrt - " + ch_himm.toString() + "\n";
-    QDate pfingsmontag = ostern.addDays(49);
-    feiertage += "Pfingsmontag - " + pfingsmontag.toString() + "\n";
-    QDate fronleichnam = ostern.addDays(60);
-    feiertage += "Fronleichnam - " + fronleichnam.toString() + "\n";
+
+
+    map <string, QDate> feiertage = {{"Osternsonntag", ostern},
+                                       };
+    feiertage.insert({"Rosenmontag", ostern.addDays(-48)});
+    feiertage.insert({"Faschingsdienstag", ostern.addDays(-47)});
+    feiertage.insert({"Aschenmittwoch", ostern.addDays(-46)});
+    feiertage.insert({"Palmsonntag", ostern.addDays(-7)});
+    feiertage.insert({"Gründonnerstag", ostern.addDays(-3)});
+    feiertage.insert({"Karfreitag", ostern.addDays(-2)});
+    feiertage.insert({"Karsamstag", ostern.addDays(-1)});
+    feiertage.insert({"Ostermontag", ostern.addDays(1)});
+    feiertage.insert({"Christi Himmelfahrt", ostern.addDays(39)});
+    feiertage.insert({"Pfingsmontag", ostern.addDays(49)});
+    feiertage.insert({"Fronleichnam", ostern.addDays(60)});
 
     return (feiertage);
 }
@@ -66,9 +57,7 @@ string createHolidayText(bool checked){
     string holidayText;
     string dtstamp = QDateTime().currentDateTime().toString("yyyyMMddThhmmssZ").toUtf8().constData();
     if(checked==true){
-        map <string, QDate> holidayDates = {{"Ostern", getOstersonntag(2022)},
-                                           };  // hier füge ich die anderen Feiertage ein.
-
+        map <string, QDate> holidayDates = getOsterfeiertage(getOstersonntag(2022));
         // geht alle eingetragenen Feiertage in der Map durch, um jeweils ein VEvent zu erstellen ( map könnte auch als Parameter übergeben werden
         for (const auto& elem : holidayDates)
         {
@@ -382,6 +371,7 @@ void MainWindow::on_pushButton_clicked()
     ical.va = v;
 
     // Feiertagselemente, falls vorhanden, werden hinzugefügt
+    // baue ich noch so um, dass Jahr was eingegeben wurde, berücksichtigt wird.
     ical.holidays = createHolidayText(ui->holidays_check->isChecked());
 
      QString filename = QFileDialog::getSaveFileName(this, "Save file");
@@ -432,6 +422,14 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 void MainWindow::on_pushButton_feiertage_clicked()
 {
     QString jahr = ui->lineEdit_jahr->text();
-    ui->textEdit_feiertage->setText(getOsterfeiertage(getOstersonntag(jahr.toInt())));
+    map <string, QDate> holidays = getOsterfeiertage(getOstersonntag(jahr.toInt()));
+    QString feiertage = "";
+    for (const auto& elem : holidays)
+    {
+       feiertage += QString::fromStdString(elem.first) + " " +  elem.second.toString("dd.MM.yyyy") + "\n";
+
+    }
+
+    ui->textEdit_feiertage->setText(feiertage);
 }
 
