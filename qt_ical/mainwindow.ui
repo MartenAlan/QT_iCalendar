@@ -1202,16 +1202,26 @@
         <layout class="QHBoxLayout" name="horizontalLayout_22">
          <item>
           <widget class="QLabel" name="label_21">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Jahr</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_jahr"/>
+          <widget class="QLineEdit" name="lineEdit_jahr">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_feiertage">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Get</string>
            </property>
@@ -1222,7 +1232,11 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit"/>
+      <widget class="QTextEdit" name="textEdit_feiertage">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -1366,6 +1380,70 @@
     <hint type="destinationlabel">
      <x>945</x>
      <y>505</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_feiertage</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_21</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1120</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1025</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_feiertage</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lineEdit_jahr</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1120</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1093</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_feiertage</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_feiertage</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1120</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1187</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_feiertage</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>textEdit_feiertage</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1120</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1120</x>
+     <y>467</y>
     </hint>
    </hints>
   </connection>

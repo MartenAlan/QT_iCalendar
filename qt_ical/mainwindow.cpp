@@ -428,3 +428,10 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
 }
 
+
+void MainWindow::on_pushButton_feiertage_clicked()
+{
+    QString jahr = ui->lineEdit_jahr->text();
+    ui->textEdit_feiertage->setText(getOsterfeiertage(getOstersonntag(jahr.toInt())));
+}
+
