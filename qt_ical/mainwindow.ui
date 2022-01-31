@@ -101,8 +101,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>520</y>
+      <x>800</x>
+      <y>530</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -116,7 +116,7 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>185</width>
+      <width>286</width>
       <height>80</height>
      </rect>
     </property>
@@ -133,7 +133,7 @@
        <item>
         <widget class="QLabel" name="label_id">
          <property name="text">
-          <string>UID_test</string>
+          <string>CAB67151FF5CA6057F</string>
          </property>
         </widget>
        </item>
@@ -169,7 +169,7 @@
        <item>
         <widget class="QLabel" name="prod_id">
          <property name="text">
-          <string>ProdID_test</string>
+          <string>//MS//QT_iCalendar//de</string>
          </property>
         </widget>
        </item>
@@ -180,8 +180,8 @@
    <widget class="QPushButton" name="btn_clear">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>520</y>
+      <x>1010</x>
+      <y>530</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -193,8 +193,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>30</y>
+      <x>20</x>
+      <y>350</y>
       <width>193</width>
       <height>80</height>
      </rect>
@@ -222,8 +222,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>30</y>
+      <x>210</x>
+      <y>350</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -265,10 +265,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>20</y>
+      <x>210</x>
+      <y>430</y>
       <width>160</width>
-      <height>101</height>
+      <height>121</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -319,8 +319,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>140</y>
+      <x>480</x>
+      <y>0</y>
       <width>372</width>
       <height>181</height>
      </rect>
@@ -337,7 +337,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QTabWidget" name="RRule_tab">
+      <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -958,8 +958,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>140</y>
+      <x>860</x>
+      <y>50</y>
       <width>251</width>
       <height>91</height>
      </rect>
@@ -1036,8 +1036,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_6">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>350</y>
+      <x>480</x>
+      <y>180</y>
       <width>201</width>
       <height>86</height>
      </rect>
@@ -1114,8 +1114,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>370</y>
+      <x>480</x>
+      <y>290</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -1156,8 +1156,8 @@
    <widget class="QCheckBox" name="priority_check">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>350</y>
+      <x>480</x>
+      <y>270</y>
       <width>72</width>
       <height>19</height>
      </rect>
@@ -1169,8 +1169,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>270</y>
+      <x>730</x>
+      <y>190</y>
       <width>221</width>
       <height>291</height>
      </rect>
@@ -1249,12 +1249,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>69</y>
+     <x>36</x>
+     <y>389</y>
     </hint>
     <hint type="destinationlabel">
-     <x>725</x>
-     <y>86</y>
+     <x>245</x>
+     <y>406</y>
     </hint>
    </hints>
   </connection>
@@ -1265,12 +1265,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>554</x>
-     <y>103</y>
+     <x>54</x>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
-     <x>860</x>
-     <y>140</y>
+     <x>210</x>
+     <y>550</y>
     </hint>
    </hints>
   </connection>
@@ -1281,12 +1281,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>947</x>
-     <y>204</y>
+     <x>907</x>
+     <y>114</y>
     </hint>
     <hint type="destinationlabel">
-     <x>950</x>
-     <y>242</y>
+     <x>910</x>
+     <y>152</y>
     </hint>
    </hints>
   </connection>
@@ -1297,12 +1297,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1047</x>
-     <y>204</y>
+     <x>1007</x>
+     <y>114</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1059</x>
-     <y>250</y>
+     <x>1019</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -1313,12 +1313,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>589</x>
-     <y>382</y>
+     <x>559</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>547</x>
-     <y>412</y>
+     <x>517</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -1329,12 +1329,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>589</x>
-     <y>382</y>
+     <x>559</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>628</x>
-     <y>412</y>
+     <x>598</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -1345,12 +1345,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>589</x>
-     <y>382</y>
+     <x>559</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>589</x>
-     <y>443</y>
+     <x>559</x>
+     <y>273</y>
     </hint>
    </hints>
   </connection>
@@ -1361,12 +1361,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>775</x>
-     <y>379</y>
+     <x>515</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
-     <x>945</x>
-     <y>505</y>
+     <x>685</x>
+     <y>361</y>
     </hint>
    </hints>
   </connection>
@@ -1377,12 +1377,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1120</x>
-     <y>302</y>
+     <x>840</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1025</x>
-     <y>333</y>
+     <x>745</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>
@@ -1393,12 +1393,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1120</x>
-     <y>302</y>
+     <x>840</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1093</x>
-     <y>333</y>
+     <x>813</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>
@@ -1409,12 +1409,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1120</x>
-     <y>302</y>
+     <x>840</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1187</x>
-     <y>333</y>
+     <x>907</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>
@@ -1425,12 +1425,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1120</x>
-     <y>302</y>
+     <x>840</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1120</x>
-     <y>467</y>
+     <x>840</x>
+     <y>387</y>
     </hint>
    </hints>
   </connection>

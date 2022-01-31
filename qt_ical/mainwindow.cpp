@@ -6,7 +6,6 @@
 #include <string.h>
 #include <map>
 
-
 using namespace std;
 
 //Ostersonntag nach Jahr berechnen und als Datum zurückgeben
@@ -238,7 +237,7 @@ void MainWindow::on_pushButton_clicked()
 
     RRule r = RRule();
 
-    switch(ui->RRule_tab->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
+    switch(ui->tabWidget->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
         case 0:
         r.state = "empty";
       break;
@@ -401,7 +400,7 @@ void MainWindow::on_btn_clear_clicked()
     ui->alarm_line->setText("15");
     ui->alarm_comboBox->setCurrentIndex(0);
     ui->alarm_type->setCurrentIndex(0);
-    ui->RRule_tab->setCurrentIndex(0);
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
@@ -432,4 +431,3 @@ void MainWindow::on_pushButton_feiertage_clicked()
 
     ui->textEdit_feiertage->setText(feiertage);
 }
-
