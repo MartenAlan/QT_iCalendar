@@ -225,6 +225,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->lineEdit_jahr->setText(QString::number(QDate::currentDate().year()));
+    ui->input_dtstart->setDate(QDate::currentDate());
+    ui->input_dtend->setDate(QDate::currentDate());
+    ui->until->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow()

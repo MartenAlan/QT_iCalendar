@@ -1223,6 +1223,57 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>titel</tabstop>
+  <tabstop>beschreibung</tabstop>
+  <tabstop>input_dtstart</tabstop>
+  <tabstop>input_dtend</tabstop>
+  <tabstop>radio_geo</tabstop>
+  <tabstop>radio_adress</tabstop>
+  <tabstop>longitude</tabstop>
+  <tabstop>latitude</tabstop>
+  <tabstop>city_text</tabstop>
+  <tabstop>plz_text</tabstop>
+  <tabstop>street_text</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>interval_daily</tabstop>
+  <tabstop>interval_weekly</tabstop>
+  <tabstop>monday</tabstop>
+  <tabstop>tuesday</tabstop>
+  <tabstop>wednesday</tabstop>
+  <tabstop>thursday</tabstop>
+  <tabstop>friday</tabstop>
+  <tabstop>saturday</tabstop>
+  <tabstop>sunday</tabstop>
+  <tabstop>interval_monthly</tabstop>
+  <tabstop>onday_monthly</tabstop>
+  <tabstop>on_monthly</tabstop>
+  <tabstop>monthly_spin</tabstop>
+  <tabstop>monthly_combo</tabstop>
+  <tabstop>monthly_combo2</tabstop>
+  <tabstop>yearly_radio1</tabstop>
+  <tabstop>yearly_radio2</tabstop>
+  <tabstop>yearly_setpos</tabstop>
+  <tabstop>yearly_day</tabstop>
+  <tabstop>month_combo</tabstop>
+  <tabstop>month_combo2</tabstop>
+  <tabstop>monthday</tabstop>
+  <tabstop>count_radio</tabstop>
+  <tabstop>until_radio</tabstop>
+  <tabstop>radioButton_8</tabstop>
+  <tabstop>count</tabstop>
+  <tabstop>until</tabstop>
+  <tabstop>priority_check</tabstop>
+  <tabstop>priority</tabstop>
+  <tabstop>alarm_checkBox</tabstop>
+  <tabstop>alarm_line</tabstop>
+  <tabstop>alarm_comboBox</tabstop>
+  <tabstop>alarm_type</tabstop>
+  <tabstop>checkBox_feiertage</tabstop>
+  <tabstop>lineEdit_jahr</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>btn_clear</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -1264,12 +1315,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>907</x>
-     <y>114</y>
+     <x>556</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>910</x>
-     <y>152</y>
+     <x>556</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -1280,12 +1331,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1007</x>
-     <y>114</y>
+     <x>627</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1019</x>
-     <y>160</y>
+     <x>640</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -1296,12 +1347,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>559</x>
-     <y>212</y>
+     <x>560</x>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
-     <x>517</x>
-     <y>242</y>
+     <x>519</x>
+     <y>401</y>
     </hint>
    </hints>
   </connection>
@@ -1312,12 +1363,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>559</x>
-     <y>212</y>
+     <x>560</x>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
-     <x>598</x>
-     <y>242</y>
+     <x>678</x>
+     <y>401</y>
     </hint>
    </hints>
   </connection>
@@ -1328,12 +1379,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>559</x>
-     <y>212</y>
+     <x>560</x>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
-     <x>559</x>
-     <y>273</y>
+     <x>560</x>
+     <y>432</y>
     </hint>
    </hints>
   </connection>
@@ -1345,7 +1396,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>515</x>
-     <y>299</y>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>685</x>
@@ -1360,12 +1411,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>840</x>
-     <y>222</y>
+     <x>679</x>
+     <y>482</y>
     </hint>
     <hint type="destinationlabel">
-     <x>745</x>
-     <y>253</y>
+     <x>503</x>
+     <y>512</y>
     </hint>
    </hints>
   </connection>
@@ -1376,12 +1427,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>840</x>
-     <y>222</y>
+     <x>679</x>
+     <y>482</y>
     </hint>
     <hint type="destinationlabel">
-     <x>813</x>
-     <y>253</y>
+     <x>677</x>
+     <y>518</y>
     </hint>
    </hints>
   </connection>
