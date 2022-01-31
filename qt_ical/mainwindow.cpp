@@ -9,7 +9,7 @@
 
 using namespace std;
 
-
+//Ostersonntag nach Jahr berechnen und als Datum zurückgeben
 QDate getOstersonntag(int year){
     int a = year % 19;
     int b = year / 100;
@@ -135,6 +135,8 @@ public:
 
 };
 
+//Klasse Alarm definieren
+//noch unsauber, Atribute sollen privat, getter und setter setzen
 class VAlarm{
 public:
     QString wert_trigger;
@@ -415,7 +417,8 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
 }
 
-
+//nur zur Kontrolle
+//wird später gelöscht
 void MainWindow::on_pushButton_feiertage_clicked()
 {
     QString jahr = ui->lineEdit_jahr->text();
