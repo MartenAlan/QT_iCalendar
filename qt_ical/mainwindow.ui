@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1251</width>
-    <height>621</height>
+    <width>900</width>
+    <height>760</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -101,8 +101,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>530</y>
+      <x>220</x>
+      <y>570</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -180,8 +180,8 @@
    <widget class="QPushButton" name="btn_clear">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>530</y>
+      <x>470</x>
+      <y>570</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -958,8 +958,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>50</y>
+      <x>480</x>
+      <y>190</y>
       <width>251</width>
       <height>91</height>
      </rect>
@@ -1037,7 +1037,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>180</y>
+      <y>350</y>
       <width>201</width>
       <height>86</height>
      </rect>
@@ -1115,7 +1115,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>290</y>
+      <y>300</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -1157,7 +1157,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>270</y>
+      <y>290</y>
       <width>72</width>
       <height>19</height>
      </rect>
@@ -1169,10 +1169,10 @@
    <widget class="QWidget" name="verticalLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>190</y>
-      <width>221</width>
-      <height>291</height>
+      <x>480</x>
+      <y>460</y>
+      <width>201</width>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1204,26 +1204,9 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_feiertage">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Get</string>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QTextEdit" name="textEdit_feiertage">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-      </widget>
      </item>
     </layout>
    </widget>
@@ -1233,7 +1216,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1251</width>
+     <width>900</width>
      <height>21</height>
     </rect>
    </property>
@@ -1399,38 +1382,6 @@
     <hint type="destinationlabel">
      <x>813</x>
      <y>253</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_feiertage</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>pushButton_feiertage</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>840</x>
-     <y>222</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>907</x>
-     <y>253</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_feiertage</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>textEdit_feiertage</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>840</x>
-     <y>222</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>840</x>
-     <y>387</y>
     </hint>
    </hints>
   </connection>

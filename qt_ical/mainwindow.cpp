@@ -224,6 +224,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->lineEdit_jahr->setText(QString::number(QDate::currentDate().year()));
 }
 
 MainWindow::~MainWindow()
@@ -416,18 +417,3 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
 }
 
-//nur zur Kontrolle
-//wird später gelöscht
-void MainWindow::on_pushButton_feiertage_clicked()
-{
-    QString jahr = ui->lineEdit_jahr->text();
-    map <string, QDate> holidays = getOsterfeiertage(getOstersonntag(jahr.toInt()));
-    QString feiertage = "";
-    for (const auto& elem : holidays)
-    {
-       feiertage += QString::fromStdString(elem.first) + " " +  elem.second.toString("dd.MM.yyyy") + "\n";
-
-    }
-
-    ui->textEdit_feiertage->setText(feiertage);
-}
