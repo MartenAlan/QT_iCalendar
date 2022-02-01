@@ -68,9 +68,7 @@ Diese Frameworks wurden verwendet.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Hier kommt hin, wie man das Projekt zum Laufen bekommt.
-
-
+Im Ordner releases finden sich jeweils zwei zip-Files pro Version ( eine Windows und eine MacOS Anwendung ). Sie sind von der Funktionalität identisch.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -80,16 +78,16 @@ Hier kommt hin, wie man das Projekt zum Laufen bekommt.
 
 Alle Eingabefelder sind an das iCalendar-Format angelehnt, somit gibt es Verlinkungen zu der jeweiligen Dokumentation auf icalendar.org.
 
-![UI](https://user-images.githubusercontent.com/69800773/151759996-c16f54f9-a0c6-41e6-a84d-0d2ba321927e.png)
+![UI_m](https://user-images.githubusercontent.com/69800773/151926765-d8d1e28e-2a61-4ba0-8f9c-38a82e0cc391.png)
 
-1. Die benötigten Elemente: Titel, Start- und Enddatum
-2. eine längere Beschreibung
-3. Geographischen Elemente: Die [Addresse](https://icalendar.org/iCalendar-RFC-5545/3-8-1-7-location.html) oder der [Längen- und Breitengrad](https://icalendar.org/iCalendar-RFC-5545/3-8-1-6-geographic-position.html).
-4. [Wiederholungen](https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html): Das Event kann vom täglichen bis jährlichen Rythmus wiederholt werden. 
-5. Ende der Wiederholung: Das Event kann entweder nach einer bestimmten Anzahl enden oder ab einem Enddatum. Außerdem kann ausgewählt werden, dass die Wiederholung des Events nie endet.
-6. [Alarm](https://icalendar.org/iCalendar-RFC-5545/3-6-6-alarm-component.html): Ein Alarm, welcher entweder als Sound- oder angezeigte Nachricht verwendet werden kann.
-7. [Priorität](https://icalendar.org/iCalendar-RFC-5545/3-8-1-9-priority.html): Möglich von 0 ( sehr unwichtig ) bis 9 ( sehr wichtig ).
-8. Feiertage: Hier können die Feiertage mit dem Button "Get" angezeigt werden. Mit der Checkbox kann sich für ein Export entschieden werden.
+<p>🔴 Die benötigten Elemente: Titel, Start- und Enddatum und eine längere Beschreibung (optional) </p>
+ 
+<p>🟢Geographischen Elemente: Die <a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-7-location.html">Addresse</a> oder der <a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-6-geographic-position.html">Längen- und Breitengrad</a>.</p>
+<p>🔵<a href="https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html">Wiederholungen</a>: Das Event kann vom täglichen bis jährlichen Rythmus wiederholt werden. 
+ Ende der Wiederholung: Das Event kann entweder nach einer bestimmten Anzahl enden oder ab einem Enddatum. Außerdem kann ausgewählt werden, dass die Wiederholung des Events nie endet. </p>
+<p>🟡<a href="https://icalendar.org/iCalendar-RFC-5545/3-6-6-alarm-component.html">Alarm</a>: Ein Alarm, welcher entweder als Sound- oder angezeigte Nachricht verwendet werden kann.</p>
+<p>🟠<a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-9-priority.html">Priorität</a>: Möglich von 0 ( sehr unwichtig ) bis 9 ( sehr wichtig ).</p>
+<p>🟣Feiertage: Hier können die Feiertage mit dem Button "Get" angezeigt werden. Mit der Checkbox kann sich für ein Export entschieden werden.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -98,7 +96,6 @@ Alle Eingabefelder sind an das iCalendar-Format angelehnt, somit gibt es Verlink
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Start- und Enddatum hat den Wert des heutigen Datums.
 - [ ] Menüleiste mit Optionenfeld
 - [ ] individueller Sound und Beschreibung beim Alarm
 - [ ] Importieren von ics-Datei zum Bearbeiten
