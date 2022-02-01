@@ -135,13 +135,25 @@ public:
 };
 
 //Klasse Alarm definieren
-//noch unsauber, Atribute sollen privat, getter und setter setzen
 class VAlarm{
-public:
+private:
     QString wert_trigger;
     int index_einheit;
     int index_action;
     bool hinweis;
+public:
+    void setTrigger(QString t){
+        wert_trigger = t;
+    }
+    void setEinheit(int e){
+        index_einheit = e;
+    }
+    void setAction(int a){
+        index_action = a;
+    }
+    void setHinweis(bool h){
+        hinweis = h;
+    }
     QString buildAlarm(){
         QString alarm;
         if (hinweis == true){
@@ -330,10 +342,10 @@ void MainWindow::on_pushButton_clicked()
     }
 
     VAlarm v;
-        v.hinweis = ui->alarm_checkBox->isChecked();
-        v.wert_trigger = ui->alarm_line->text();
-        v.index_einheit = ui->alarm_comboBox->currentIndex();
-        v.index_action = ui->alarm_type->currentIndex();
+    v.setHinweis(ui->alarm_checkBox->isChecked());
+    v.setTrigger( ui->alarm_line->text());
+    v.setEinheit(ui->alarm_comboBox->currentIndex());
+    v.setAction(ui->alarm_type->currentIndex());
 
     QDate ics_dtstart = ui->input_dtstart->date();
     QTime ics_dtstart_time = ui->input_dtstart->time();
