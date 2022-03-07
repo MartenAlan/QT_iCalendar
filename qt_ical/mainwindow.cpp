@@ -391,6 +391,14 @@ void MainWindow::on_pushButton_clicked()
 
      QString filename = QFileDialog::getSaveFileName(this, "Save file");
 
+    // Dateiendung wird kontrolliert, notfalls hinzugefügt
+     int len = strlen(filename.toUtf8());
+    const char *last_four = &filename.toUtf8()[len-4];
+    cout << last_four << endl;
+    if(strcmp(last_four, ".ics")==true){
+        filename += ".ics";
+    }
+
     FILE *o_file = fopen(filename.toUtf8(), "w+");
     if (o_file){
         fwrite(ical.buildICSText().c_str(), 1, ical.buildICSText().size(), o_file);
