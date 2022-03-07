@@ -164,6 +164,7 @@ public:
                 break;
             case 1:
                 alarm += "ACTION:DISPLAY\n";
+                alarm += "DESCRIPTION:Erinnerung\n";
                 break;
             default:
                 break;
