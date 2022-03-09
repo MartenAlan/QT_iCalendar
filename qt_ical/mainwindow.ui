@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>760</height>
+    <height>697</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>iCalendar (v0.0.1 von 28.01.2022)</string>
+   <string>iCalendar (v1.0.0)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
