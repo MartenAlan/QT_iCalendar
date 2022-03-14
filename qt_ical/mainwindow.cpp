@@ -389,7 +389,7 @@ void MainWindow::on_pushButton_clicked()
         ical.holidays = "";
     }
 
-     QString filename = QFileDialog::getSaveFileName(this, "Save file");
+     QString filename = QFileDialog::getSaveFileName(this, "Save file","","*.ics");
 
     // Dateiendung wird kontrolliert, notfalls hinzugefügt
      int len = strlen(filename.toUtf8());
