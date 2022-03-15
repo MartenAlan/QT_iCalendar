@@ -483,3 +483,9 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
 }
 
+
+void MainWindow::on_input_dtstart_dateTimeChanged(const QDateTime &dateTime)
+{
+    ui->input_dtend->setDateTime(dateTime);
+}
+

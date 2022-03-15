@@ -26,6 +26,8 @@ private slots:
     void on_tabWidget_currentChanged(int index);
 
 
+    void on_input_dtstart_dateTimeChanged(const QDateTime &dateTime);
+
 private:
     Ui::MainWindow *ui;
 };
