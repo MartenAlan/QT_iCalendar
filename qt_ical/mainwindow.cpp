@@ -403,6 +403,11 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+void uncheckwithAutoExclusive(QRadioButton *radiobutton)
+{       radiobutton->setAutoExclusive(false);
+        radiobutton->setChecked(false);
+        radiobutton->setAutoExclusive(true);
+}
 
 void MainWindow::on_btn_clear_clicked()
 {
@@ -413,10 +418,55 @@ void MainWindow::on_btn_clear_clicked()
     ui->plz_text->clear();
     ui->latitude->setValue(0.000000);
     ui->longitude->setValue(0.000000);
+
+    ui->input_dtstart->setDateTime(QDateTime(QDate::currentDate(),QTime(0,0)));
+    ui->input_dtend->setDateTime(QDateTime(QDate::currentDate(),QTime(0,0)));
+
     ui->priority->setValue(0);
+    ui->priority_check->setChecked(false);
+
     ui->alarm_line->setText("15");
+    ui->alarm_checkBox->setChecked(false);
     ui->alarm_comboBox->setCurrentIndex(0);
+
+    ui->until->setDate(QDate::currentDate());
+    ui->count->setValue(1);
+    ui->checkBox_feiertage->setChecked(false);
+
+    ui->interval_daily->setValue(1);
+    ui->interval_weekly->setValue(1);
+    ui->interval_monthly->setValue(1);
+
+    ui->monday->setChecked(false);
+    ui->tuesday->setChecked(false);
+    ui->wednesday->setChecked(false);
+    ui->thursday->setChecked(false);
+    ui->friday->setChecked(false);
+    ui->saturday->setChecked(false);
+    ui->sunday->setChecked(false);
+
+    uncheckwithAutoExclusive(ui->onday_monthly);
+    uncheckwithAutoExclusive(ui->on_monthly);
+    ui->monthly_combo->setCurrentIndex(0);
+    ui->monthly_combo2->setCurrentIndex(0);
+    ui->monthly_spin->setValue(1);
+
+    uncheckwithAutoExclusive(ui->yearly_radio1);
+    uncheckwithAutoExclusive(ui->yearly_radio2);
+    ui->yearly_day->setCurrentIndex(0);
+    ui->yearly_setpos->setCurrentIndex(0);
+    ui->month_combo->setCurrentIndex(0);
+    ui->month_combo2->setCurrentIndex(0);
+    ui->monthday->setValue(1);
+
+    ui->until_radio->setChecked(true);
+
     ui->alarm_type->setCurrentIndex(0);
+
+    ui->lineEdit_jahr->setText(QString::number(QDate::currentDate().year()));
+
+    ui->verticalLayoutWidget_6->repaint();
+    ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
 }
 

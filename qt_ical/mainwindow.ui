@@ -560,6 +560,12 @@
             <property name="text">
              <string>am Tag</string>
             </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -687,12 +693,24 @@
             <property name="text">
              <string>am</string>
             </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="yearly_radio2">
             <property name="text">
              <string>am</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
