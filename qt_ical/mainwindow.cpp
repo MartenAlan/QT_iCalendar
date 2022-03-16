@@ -419,6 +419,9 @@ void MainWindow::on_btn_clear_clicked()
     ui->latitude->setValue(0.000000);
     ui->longitude->setValue(0.000000);
 
+    uncheckwithAutoExclusive(ui->radio_geo);
+    uncheckwithAutoExclusive(ui->radio_adress);
+
     ui->input_dtstart->setDateTime(QDateTime(QDate::currentDate(),QTime(0,0)));
     ui->input_dtend->setDateTime(QDateTime(QDate::currentDate(),QTime(0,0)));
 
