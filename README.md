@@ -68,7 +68,7 @@ Diese Frameworks wurden verwendet.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Im Ordner releases finden sich jeweils zwei zip-Files pro Version ( eine Windows und eine MacOS Anwendung ). Sie sind von der Funktionalität identisch.
+Im Ordner releases befinden sich nach Releasenummer sortiert die jeweiligen Zip-Dateien. Eine dmg-Datei ( im Verzeichnis macOS ) und eine exe-Datei wird zur Verfügung gestellt. Beide Dateien sind von der Funktionalität identisch.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -96,10 +96,9 @@ Alle Eingabefelder sind an das iCalendar-Format angelehnt, somit gibt es Verlink
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Menüleiste mit Optionenfeld
-- [ ] individueller Sound und Beschreibung beim Alarm
-- [ ] Importieren von ics-Datei zum Bearbeiten
-- [ ] Wechsel zwischen deutscher und englischer Übersetzung
+- [ ] Speichern von mehreren Events in einem Kalender
+- [ ] Löschen von Events in einem Kalender
+- [ ] Importieren von ICalendar-Dateien zum Bearbeiten
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
