@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "icalendar.h"
+#include "editcalendar.h"
 #include <fstream>
 #include <iostream>
 #include <ctime>
@@ -229,7 +230,7 @@ void MainWindow::on_pushButton_clicked()
     string currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss").toUtf8().constData();
 
     ICalendar ical;
-    ical.prodid = ui->prod_id->text().toUtf8().constData();
+    ical.prodid = ui->label_prod_id->text().toUtf8().constData();
     ical.version = ui->label_version->text().toUtf8().constData();
     ical.uid = ui->label_id->text().toUtf8().constData();
     ical.dtstart = ics_dtstart.toString("yyyyMMdd").toUtf8() + "T" + ics_dtstart_time.toString("HHmmss").toUtf8();
@@ -365,4 +366,25 @@ void MainWindow::clearInputs(){
     ui->verticalLayoutWidget_6->repaint();
     ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_editCalendar_button_clicked()
+{
+    cout << ui->label_calendar_name->text().toUtf8().constData() << endl;
+
+    QString calendar_name = ui->label_calendar_name->text();
+    QString calendar_description = ui->label_calendar_desc->text();
+    QString calendar_proid = ui->label_prod_id->text();
+    QString calendar_version = ui->label_version->text();
+
+    editCalendar editC;
+    editC.setModal(true);
+    editC.setValues(calendar_name, calendar_description, calendar_version, calendar_proid);
+    editC.exec();
+    QString* test = editC.getValues();
+    cout << test[0].toUtf8().constData() << endl;
+    ui->label_calendar_name->setText(test[0]);
+    ui->label_calendar_desc->setText(test[1]);
+
 }

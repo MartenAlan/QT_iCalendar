@@ -46,10 +46,11 @@ public:
     string buildRRuleText();
            };
 
+
 class ICalendar
 {
 public:
-
+    ICalendar();
     string uid;
     string version;
     string prodid;
@@ -61,7 +62,6 @@ public:
     string locationOrGeo;
     string priority;
     string holidays;
-    ICalendar();
     RRule rrule;
     VAlarm va;
     string buildICSText();
