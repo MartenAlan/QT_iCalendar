@@ -271,7 +271,7 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::critical(this, "iCal", "Something went wrong!");
     }
     fclose(o_file);
-
+    clearInputs();
 }
 
 void uncheckwithAutoExclusive(QRadioButton *radiobutton)
@@ -282,6 +282,29 @@ void uncheckwithAutoExclusive(QRadioButton *radiobutton)
 
 void MainWindow::on_btn_clear_clicked()
 {
+    clearInputs();
+}
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    // wenn Tab 1 ( Keine Wiederholung ) ausgewählt ist, wird die "endet"-Box disabled
+    if(index==0){
+        ui->groupBox->setDisabled(true);
+
+    // sonst ist sie enabled
+    }
+    else{
+        ui->groupBox->setDisabled(false);
+    }
+}
+
+
+void MainWindow::on_input_dtstart_dateTimeChanged(const QDateTime &dateTime)
+{
+    ui->input_dtend->setDateTime(dateTime);
+}
+
+void MainWindow::clearInputs(){
     ui->titel->clear();
     ui->beschreibung->clear();
     ui->city_text->clear();
@@ -343,23 +366,3 @@ void MainWindow::on_btn_clear_clicked()
     ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
 }
-
-void MainWindow::on_tabWidget_currentChanged(int index)
-{
-    // wenn Tab 1 ( Keine Wiederholung ) ausgewählt ist, wird die "endet"-Box disabled
-    if(index==0){
-        ui->groupBox->setDisabled(true);
-
-    // sonst ist sie enabled
-    }
-    else{
-        ui->groupBox->setDisabled(false);
-    }
-}
-
-
-void MainWindow::on_input_dtstart_dateTimeChanged(const QDateTime &dateTime)
-{
-    ui->input_dtend->setDateTime(dateTime);
-}
-
