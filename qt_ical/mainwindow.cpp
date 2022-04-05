@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "icalendar.h"
 #include <fstream>
 #include <iostream>
 #include <ctime>
@@ -101,136 +102,6 @@ string getWeekDay(int num){
         break;}
     return day;
 }
-
-// Klasse zur geordneteren Erstellung des ICS-Textes einer Wiederholung
-class RRule {
-public:
-    string rruleText;
-    string state;
-    string interval;
-    string countOrUntil;
-    string byday;
-    string bymonth;
-    string byyear;
-    string bysetpos;
-
-    string buildRRuleText(){
-
-        if(state.compare("empty")==0){
-            return "";}
-
-        else {
-            rruleText = "RRULE:";
-            rruleText += "FREQ=" + state + ";";
-            rruleText += bysetpos;
-            rruleText += byday;
-            rruleText += bymonth;
-              rruleText += interval;
-              rruleText += countOrUntil;
-              rruleText += "\n";
-                return rruleText;
-            }
-}
-
-};
-
-//Klasse Alarm definieren
-class VAlarm{
-private:
-    QString wert_trigger;
-    int index_einheit;
-    int index_action;
-    bool hinweis;
-public:
-    void setTrigger(QString t){
-        wert_trigger = t;
-    }
-    void setEinheit(int e){
-        index_einheit = e;
-    }
-    void setAction(int a){
-        index_action = a;
-    }
-    void setHinweis(bool h){
-        hinweis = h;
-    }
-    QString buildAlarm(){
-        QString alarm;
-        if (hinweis == true){
-            alarm += "BEGIN:VALARM\n";
-            switch (index_action) {
-            case 0:
-                alarm += "ACTION:AUDIO\nATTACH;VALUE=URI:Chord\n";
-                break;
-            case 1:
-                alarm += "ACTION:DISPLAY\n";
-                alarm += "DESCRIPTION:Erinnerung\n";
-                break;
-            default:
-                break;
-            }
-            switch (index_einheit) {
-            case 0:
-                alarm += "TRIGGER:-PT" + wert_trigger + "M\n";
-                break;
-            case 1:
-                alarm += "TRIGGER:-PT" + wert_trigger + "H\n";
-                break;
-            case 2:
-                alarm += "TRIGGER:-PT" + wert_trigger + "D\n";
-                break;
-            default:
-                break;
-            }
-            alarm += "END:VALARM\n";
-        }
-
-        return alarm;
-    }
-};
-
-class iCal {
-    public:
-    string uid;
-    string version;
-    string prodid;
-    string summary;
-    string description;
-    string dtstart;
-    string dtend;
-    string dtstamp;
-    string locationOrGeo;
-    string priority;
-    string holidays;
-    RRule rrule;
-    VAlarm va;
-
-    // gibt den iCalendar-Text als String zurück
-    string buildICSText(){
-
-        string icsText = "BEGIN:VCALENDAR\n";
-        icsText += "VERSION:" + version + "\n";
-        icsText += "PRODID:" + prodid + "\n";
-        icsText += "BEGIN:VEVENT\n";
-        icsText += "SUMMARY:" + summary + "\n";
-        icsText += "DTSTAMP:" + dtstamp + "\n";
-        icsText += "DTSTART:" + dtstart + "\n";
-        icsText += "DTEND:" + dtend + "\n";
-        icsText += "UID:" + uid + "\n";
-        icsText += priority;
-        icsText += locationOrGeo;
-        icsText += rrule.buildRRuleText();
-        icsText += va.buildAlarm().toUtf8();
-        icsText += "END:VEVENT\n";
-
-        icsText += holidays;
-
-        icsText += "END:VCALENDAR";
-        return icsText;
-    }
-
-
-};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -357,7 +228,7 @@ void MainWindow::on_pushButton_clicked()
     string currentTime_date = QDateTime::currentDateTime().date().toString("yyyyMMdd").toUtf8().constData();
     string currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss").toUtf8().constData();
 
-    iCal ical;
+    ICalendar ical;
     ical.prodid = ui->prod_id->text().toUtf8().constData();
     ical.version = ui->label_version->text().toUtf8().constData();
     ical.uid = ui->label_id->text().toUtf8().constData();
