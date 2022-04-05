@@ -28,6 +28,8 @@ private slots:
 
     void on_input_dtstart_dateTimeChanged(const QDateTime &dateTime);
 
+    void on_editCalendar_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
