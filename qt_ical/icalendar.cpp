@@ -15,6 +15,7 @@ string ICalendar::buildICSText(){
     icsText += "PRODID:" + prodid + "_" + cal_name + "\n";
     icsText += "BEGIN:VEVENT\n";
     icsText += "SUMMARY:" + summary + "\n";
+    icsText += "DESCRIPTION" + description + "\n";
     icsText += "DTSTAMP:" + dtstamp + "\n";
     icsText += "DTSTART:" + dtstart + "\n";
     icsText += "DTEND:" + dtend + "\n";

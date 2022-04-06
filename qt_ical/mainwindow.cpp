@@ -130,7 +130,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->input_dtstart->setDate(QDate::currentDate());
     ui->input_dtend->setDate(QDate::currentDate());
     ui->until->setDate(QDate::currentDate());
-    ui->label_id->setText(QString::fromStdString(hex_string(12)));
+    ui->label_id->setText(QString::fromStdString(hex_string(12)));    
 }
 
 MainWindow::~MainWindow()
@@ -404,3 +404,156 @@ void MainWindow::on_editCalendar_button_clicked()
     ui->label_calendar_name->setText(name);
 
 }
+
+// Fügt einen Termin in die Termintabelle hinzu
+void MainWindow::on_button_add_event_clicked()
+{
+     QTableWidgetItem* name = new QTableWidgetItem(ui->titel->toPlainText());
+     QTableWidgetItem* dtstart = new QTableWidgetItem(ui->input_dtstart->dateTime().toString("dd.MM.yyyy HH:MM"));
+     QTableWidgetItem* dtend = new QTableWidgetItem(ui->input_dtend->dateTime().toString("dd.MM.yyyy HH:MM"));
+     QTableWidgetItem* priority = new QTableWidgetItem();
+     QTableWidgetItem* location = new QTableWidgetItem();
+     QTableWidgetItem* geo = new QTableWidgetItem();
+     if(ui->radio_adress->isChecked()==1){
+         location->setText(ui->plz_text->toPlainText() + " " + ui->city_text->toPlainText() + ", " + ui->street_text->toPlainText());
+     }
+     else if(ui->radio_geo->isChecked()==1){
+         geo->setText(QString::number(ui->latitude->value()) + ";" + QString::number(ui->longitude->value()));
+     }
+    if (ui->priority_check->isChecked()==1){
+        priority->setText(QString::number(ui->priority->value()));}
+
+     QTableWidgetItem* beschreibung = new QTableWidgetItem(ui->beschreibung->toPlainText());
+
+
+     // Datum und Zeit für DtStamp
+     QString currentTime_date = QDateTime::currentDateTime().date().toString("yyyyMMdd");
+     QString currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss");
+     QTableWidgetItem* dtstamp = new QTableWidgetItem(currentTime_date + "T" + currentTime_time);
+     RRule r = RRule();
+
+     switch(ui->tabWidget->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
+         case 0:
+         r.state = "empty";
+       break;
+         case 1:
+         r.state = "DAILY";
+         r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
+       break;
+         case 2:
+         r.state = "WEEKLY";
+         r.byday = "BYDAY=";
+         if(ui->monday->isChecked()==1){
+             r.byday += "MO,";
+         }
+         if(ui->tuesday->isChecked()==1){
+             r.byday += "TU,";
+         }
+         if(ui->wednesday->isChecked()==1){
+             r.byday += "WE,";
+         }
+         if(ui->thursday->isChecked()==1){
+             r.byday += "TH,";
+         }
+         if(ui->friday->isChecked()==1){
+             r.byday += "FR,";
+         }
+         if(ui->saturday->isChecked()==1){
+             r.byday += "SA,";
+         }
+         if(ui->sunday->isChecked()==1){
+             r.byday += "SU,";
+         }
+         r.byday += ";";
+         r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
+       break;
+         case 3:
+         r.state = "MONTHLY";
+         r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
+
+         if(ui->onday_monthly->isChecked()==1){
+             r.byday = "BYMONTHDAY=" + to_string(ui->monthly_spin->value()) + ";";
+         }
+         else if(ui->on_monthly->isChecked()==1){
+             r.bysetpos = "BYSETPOS=";
+             cout << ui->monthly_combo->currentIndex() << endl;
+
+             if (ui->monthly_combo->currentIndex() == 4){
+                 r.bysetpos += "-1;";
+             }
+             else{
+                 r.bysetpos += to_string(ui->monthly_combo->currentIndex() + 1) + ";";
+             }
+
+             r.byday = "BYDAY=";
+             r.byday += getWeekDay(ui->monthly_combo2->currentIndex());}
+       break;
+         case 4:
+         r.state = "YEARLY";
+         if(ui->yearly_radio1->isChecked()==1){
+         r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
+         r.byday = "BYDAY=";
+         r.byday += getWeekDay(ui->yearly_day->currentIndex());
+         if (ui->yearly_setpos->currentIndex() == 4){
+             r.bysetpos += "-1;";
+         }
+         else{
+             r.bysetpos += to_string(ui->yearly_setpos->currentIndex() + 1) + ";";
+         }
+         }
+         else if(ui->yearly_radio2->isChecked()==1)
+         {
+             r.bymonth = "BYMONTH=" + to_string(ui->month_combo2->currentIndex()+1) + ";";
+             r.byday = "BYMONTHDAY=" + to_string(ui->monthday->value()) + ";";
+         }
+       break;
+     default:
+       // nichts
+       break;
+     }
+
+     // Kontrolliert, ob eine Dauer oder ein Enddatum für die Wiederholung angegeben wurde
+     if(ui->count_radio->isChecked()){
+         r.countOrUntil = "COUNT=" + to_string(ui->count->value());
+     }
+     else if(ui->until_radio->isChecked()){
+         r.countOrUntil = "UNTIL=" + ui->until->date().toString("yyyyMMdd").toUtf8() + "T000000Z";
+     }
+
+    QTableWidgetItem* rrule = new QTableWidgetItem(QString::fromStdString(r.buildRRuleText()));
+
+    VAlarm v;
+    v.setHinweis(ui->alarm_checkBox->isChecked());
+    v.setTrigger( ui->alarm_line->text());
+    v.setEinheit(ui->alarm_comboBox->currentIndex());
+    v.setAction(ui->alarm_type->currentIndex());
+
+    QTableWidgetItem* valarm = new QTableWidgetItem(v.buildAlarm());
+    QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+
+    int row = ui->table_events->rowCount();
+    ui->table_events->insertRow(row);
+    ui->table_events->setItem(row,0,name);
+    ui->table_events->setItem(row,1,loeschen);
+    ui->table_events->setItem(row,2,dtstart);
+    ui->table_events->setItem(row,3,dtend);
+    ui->table_events->setItem(row,4,beschreibung);
+    ui->table_events->setItem(row,5,rrule);
+    ui->table_events->setItem(row,6,valarm);
+    ui->table_events->setItem(row,7,geo);
+    ui->table_events->setItem(row,8,location);
+    ui->table_events->setItem(row,9,priority);
+    ui->table_events->setItem(row,10,dtstamp);
+
+    clearInputs();
+}
+
+
+void MainWindow::on_table_events_cellClicked(int row, int column)
+{
+    cout << row << endl;
+    cout << column << endl;
+    ui->table_events->removeRow(row);
+    QMessageBox::information(this, "iCal", "Event entfernt");
+}
+

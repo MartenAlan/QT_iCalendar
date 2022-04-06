@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>150</y>
+      <y>190</y>
       <width>381</width>
       <height>87</height>
      </rect>
@@ -42,7 +42,7 @@
       <x>450</x>
       <y>110</y>
       <width>201</width>
-      <height>31</height>
+      <height>72</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>240</y>
+      <y>280</y>
       <width>448</width>
       <height>80</height>
      </rect>
@@ -101,8 +101,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>580</y>
+      <x>230</x>
+      <y>300</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -1121,8 +1121,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>280</y>
+      <x>20</x>
+      <y>250</y>
       <width>201</width>
       <height>91</height>
      </rect>
@@ -1201,24 +1201,11 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="editCalendar_button">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>220</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Kalendarinformationen ändern</string>
-    </property>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>-20</y>
+      <x>430</x>
+      <y>10</y>
       <width>31</width>
       <height>701</height>
      </rect>
@@ -1230,8 +1217,8 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>20</y>
+      <x>10</x>
+      <y>0</y>
       <width>261</width>
       <height>191</height>
      </rect>
@@ -1324,6 +1311,95 @@
     <property name="text">
      <string>Termine</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="editCalendar_button">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>200</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Kalendarinformationen ändern</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_add_event">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>580</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Event</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="table_events">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>421</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <column>
+     <property name="text">
+      <string>Titel</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Löschen</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Startdatum</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Enddatum</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Beschreibung</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>RRule</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>VAlarm</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Koordinaten</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Adresse</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Priorität</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

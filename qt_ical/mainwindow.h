@@ -31,6 +31,10 @@ private slots:
 
     void on_editCalendar_button_clicked();
 
+    void on_button_add_event_clicked();
+
+    void on_table_events_cellClicked(int row, int column);
+
 private:
     Ui::MainWindow *ui;
 };
