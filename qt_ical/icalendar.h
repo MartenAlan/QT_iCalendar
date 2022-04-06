@@ -51,6 +51,7 @@ class ICalendar
 {
 public:
     ICalendar();
+    string cal_name;
     string uid;
     string version;
     string prodid;

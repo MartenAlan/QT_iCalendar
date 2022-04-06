@@ -14,8 +14,8 @@ class editCalendar : public QDialog
 public:
     explicit editCalendar(QWidget *parent = nullptr);
     ~editCalendar();
-    void setValues(QString n, QString d, QString v, QString pid);
-    QString * getValues();
+    void setValues(QString n, QString v, QString pid);
+    QString getValue();
 
 private:
     Ui::editCalendar *ui;

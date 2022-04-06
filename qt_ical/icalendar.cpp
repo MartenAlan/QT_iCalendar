@@ -12,7 +12,7 @@ RRule::RRule(){
 string ICalendar::buildICSText(){
     string icsText = "BEGIN:VCALENDAR\n";
     icsText += "VERSION:" + version + "\n";
-    icsText += "PRODID:" + prodid + "\n";
+    icsText += "PRODID:" + prodid + "_" + cal_name + "\n";
     icsText += "BEGIN:VEVENT\n";
     icsText += "SUMMARY:" + summary + "\n";
     icsText += "DTSTAMP:" + dtstamp + "\n";

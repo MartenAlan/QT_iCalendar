@@ -10,6 +10,23 @@
 
 using namespace std;
 
+// Random Hex String as UID
+string hex_string(int length)
+{
+  //hexadecimal characters
+  char hex_characters[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+  char str[length];
+  int i;
+  srand(time(0));
+  for(i=0;i<length;i++)
+  {
+    str[i]=hex_characters[rand()%16];
+  }
+  str[length]=0;
+  return str;
+}
+
+
 //Ostersonntag nach Jahr berechnen und als Datum zurückgeben
 QDate getOstersonntag(int year){
     int a = year % 19;
@@ -113,6 +130,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->input_dtstart->setDate(QDate::currentDate());
     ui->input_dtend->setDate(QDate::currentDate());
     ui->until->setDate(QDate::currentDate());
+    ui->label_id->setText(QString::fromStdString(hex_string(12)));
 }
 
 MainWindow::~MainWindow()
@@ -231,6 +249,7 @@ void MainWindow::on_pushButton_clicked()
 
     ICalendar ical;
     ical.prodid = ui->label_prod_id->text().toUtf8().constData();
+    ical.cal_name = ui->label_calendar_name->text().toUtf8().constData();
     ical.version = ui->label_version->text().toUtf8().constData();
     ical.uid = ui->label_id->text().toUtf8().constData();
     ical.dtstart = ics_dtstart.toString("yyyyMMdd").toUtf8() + "T" + ics_dtstart_time.toString("HHmmss").toUtf8();
@@ -374,17 +393,14 @@ void MainWindow::on_editCalendar_button_clicked()
     cout << ui->label_calendar_name->text().toUtf8().constData() << endl;
 
     QString calendar_name = ui->label_calendar_name->text();
-    QString calendar_description = ui->label_calendar_desc->text();
     QString calendar_proid = ui->label_prod_id->text();
     QString calendar_version = ui->label_version->text();
 
     editCalendar editC;
     editC.setModal(true);
-    editC.setValues(calendar_name, calendar_description, calendar_version, calendar_proid);
+    editC.setValues(calendar_name, calendar_version, calendar_proid);
     editC.exec();
-    QString* test = editC.getValues();
-    cout << test[0].toUtf8().constData() << endl;
-    ui->label_calendar_name->setText(test[0]);
-    ui->label_calendar_desc->setText(test[1]);
+    QString name = editC.getValue();
+    ui->label_calendar_name->setText(name);
 
 }
