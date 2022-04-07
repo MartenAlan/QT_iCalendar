@@ -20,7 +20,6 @@ public:
     void clearInputs();
 
 private slots:
-    void on_pushButton_clicked();
 
     void on_btn_clear_clicked();
 
@@ -34,6 +33,8 @@ private slots:
     void on_button_add_event_clicked();
 
     void on_table_events_cellClicked(int row, int column);
+
+    void on_button_create_ics_clicked();
 
 private:
     Ui::MainWindow *ui;

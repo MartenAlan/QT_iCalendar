@@ -10,10 +10,9 @@
 
 using namespace std;
 
-// Random Hex String as UID
+// Zufälliger Hexastring für den Unique Identifier
 string hex_string(int length)
 {
-  //hexadecimal characters
   char hex_characters[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
   char str[length];
   int i;
@@ -48,9 +47,8 @@ QDate getOstersonntag(int year){
     return (ostern);
 }
 
+// Hinzufügen von allen Feiertagen ausgehend vom Osterdatum
 map <string, QDate> getOsterfeiertage(QDate ostern){
-
-
 
     map <string, QDate> feiertage = {{"Osternsonntag", ostern},
                                        };
@@ -69,13 +67,12 @@ map <string, QDate> getOsterfeiertage(QDate ostern){
     return (feiertage);
 }
 
-
 // falls die Ferien hinzugefügt werden sollen, wird diese Funktion ausgeführt.
 string createHolidayText(int year){
     string holidayText;
     string dtstamp = QDateTime().currentDateTime().toString("yyyyMMddThhmmssZ").toUtf8().constData();
         map <string, QDate> holidayDates = getOsterfeiertage(getOstersonntag(year));
-        // geht alle eingetragenen Feiertage in der Map durch, um jeweils ein VEvent zu erstellen ( map könnte auch als Parameter übergeben werden
+        // geht alle eingetragenen Feiertage in der Map durch, um jeweils ein VEvent zu erstellen
         for (const auto& elem : holidayDates)
         {
            holidayText+= "BEGIN:VEVENT\n";
@@ -87,7 +84,6 @@ string createHolidayText(int year){
            holidayText += "UID:" + elem.first + "_holidays\n";
            holidayText += "END:VEVENT\n";
         }
-
     return holidayText;
 }
 
@@ -130,168 +126,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->input_dtstart->setDate(QDate::currentDate());
     ui->input_dtend->setDate(QDate::currentDate());
     ui->until->setDate(QDate::currentDate());
-    ui->label_id->setText(QString::fromStdString(hex_string(12)));    
+    ui->label_id->setText(QString::fromStdString(hex_string(10)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-
-    RRule r = RRule();
-
-    switch(ui->tabWidget->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
-        case 0:
-        r.state = "empty";
-      break;
-        case 1:
-        r.state = "DAILY";
-        r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
-      break;
-        case 2:
-        r.state = "WEEKLY";
-        r.byday = "BYDAY=";
-        if(ui->monday->isChecked()==1){
-            r.byday += "MO,";
-        }
-        if(ui->tuesday->isChecked()==1){
-            r.byday += "TU,";
-        }
-        if(ui->wednesday->isChecked()==1){
-            r.byday += "WE,";
-        }
-        if(ui->thursday->isChecked()==1){
-            r.byday += "TH,";
-        }
-        if(ui->friday->isChecked()==1){
-            r.byday += "FR,";
-        }
-        if(ui->saturday->isChecked()==1){
-            r.byday += "SA,";
-        }
-        if(ui->sunday->isChecked()==1){
-            r.byday += "SU,";
-        }
-        r.byday += ";";
-        r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
-      break;
-        case 3:
-        r.state = "MONTHLY";
-        r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
-
-        if(ui->onday_monthly->isChecked()==1){
-            r.byday = "BYMONTHDAY=" + to_string(ui->monthly_spin->value()) + ";";
-        }
-        else if(ui->on_monthly->isChecked()==1){
-            r.bysetpos = "BYSETPOS=";
-            cout << ui->monthly_combo->currentIndex() << endl;
-
-            if (ui->monthly_combo->currentIndex() == 4){
-                r.bysetpos += "-1;";
-            }
-            else{
-                r.bysetpos += to_string(ui->monthly_combo->currentIndex() + 1) + ";";
-            }
-
-            r.byday = "BYDAY=";
-            r.byday += getWeekDay(ui->monthly_combo2->currentIndex());}
-      break;
-        case 4:
-        r.state = "YEARLY";
-        if(ui->yearly_radio1->isChecked()==1){
-        r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
-        r.byday = "BYDAY=";
-        r.byday += getWeekDay(ui->yearly_day->currentIndex());
-        if (ui->yearly_setpos->currentIndex() == 4){
-            r.bysetpos += "-1;";
-        }
-        else{
-            r.bysetpos += to_string(ui->yearly_setpos->currentIndex() + 1) + ";";
-        }
-        }
-        else if(ui->yearly_radio2->isChecked()==1)
-        {
-            r.bymonth = "BYMONTH=" + to_string(ui->month_combo2->currentIndex()+1) + ";";
-            r.byday = "BYMONTHDAY=" + to_string(ui->monthday->value()) + ";";
-        }
-      break;
-    default:
-      // nichts
-      break;
-    }
-
-    // Kontrolliert, ob eine Dauer oder ein Enddatum für die Wiederholung angegeben wurde
-    if(ui->count_radio->isChecked()){
-        r.countOrUntil = "COUNT=" + to_string(ui->count->value());
-    }
-    else if(ui->until_radio->isChecked()){
-        r.countOrUntil = "UNTIL=" + ui->until->date().toString("yyyyMMdd").toUtf8() + "T000000Z";
-    }
-
-    VAlarm v;
-    v.setHinweis(ui->alarm_checkBox->isChecked());
-    v.setTrigger( ui->alarm_line->text());
-    v.setEinheit(ui->alarm_comboBox->currentIndex());
-    v.setAction(ui->alarm_type->currentIndex());
-
-    QDate ics_dtstart = ui->input_dtstart->date();
-    QTime ics_dtstart_time = ui->input_dtstart->time();
-    QDate ics_dtend = ui->input_dtend->date();
-    QTime ics_dtend_time = ui->input_dtend->time();
-
-    // Datum und Zeit für DtStamp
-    string currentTime_date = QDateTime::currentDateTime().date().toString("yyyyMMdd").toUtf8().constData();
-    string currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss").toUtf8().constData();
-
-    ICalendar ical;
-    ical.prodid = ui->label_prod_id->text().toUtf8().constData();
-    ical.cal_name = ui->label_calendar_name->text().toUtf8().constData();
-    ical.version = ui->label_version->text().toUtf8().constData();
-    ical.uid = ui->label_id->text().toUtf8().constData();
-    ical.dtstart = ics_dtstart.toString("yyyyMMdd").toUtf8() + "T" + ics_dtstart_time.toString("HHmmss").toUtf8();
-    ical.dtend = ics_dtend.toString("yyyyMMdd").toUtf8() + "T" +ics_dtend_time.toString("HHmmss").toUtf8();
-    ical.dtstamp =  currentTime_date + "T" + currentTime_time;
-    ical.summary = ui->titel->toPlainText().toUtf8().constData();
-
-    if(ui->priority_check->isChecked()==1){
-        ical.priority = "PRIORITY=" + to_string(ui->priority->value()) + "\n";
-    }
-
-    if(ui->radio_adress->isChecked()==1){
-        ical.locationOrGeo = "LOCATION:" + ui->plz_text->toPlainText().toUtf8() + " " + ui->city_text->toPlainText().toUtf8() + ", " + ui->street_text->toPlainText().toUtf8() + "\n";
-    }
-    else if(ui->radio_geo->isChecked()==1){
-        ical.locationOrGeo = "GEO:" + to_string(ui->latitude->value()) + ";" + to_string(ui->longitude->value()) + "\n";
-    }
-
-    // Übertragen von RRule und Alarm ins ICalendar Objekt
-    ical.rrule = r;
-    ical.va = v;
-
-    // Feiertagselemente, falls vorhanden, werden hinzugefügt
-    if(ui->checkBox_feiertage->isChecked()){
-        ical.holidays = createHolidayText(ui->lineEdit_jahr->text().toInt());
-    }
-    else{
-        ical.holidays = "";
-    }
-
-     QString filename = QFileDialog::getSaveFileName(this, "Save file","","*.ics");
-
-    FILE *o_file = fopen(filename.toUtf8(), "w+");
-    if (o_file){
-        fwrite(ical.buildICSText().c_str(), 1, ical.buildICSText().size(), o_file);
-        QMessageBox::information(this, "iCal", "Done Writing!");
-    }
-    else{
-        QMessageBox::critical(this, "iCal", "Something went wrong!");
-    }
-    fclose(o_file);
-    clearInputs();
 }
 
 void uncheckwithAutoExclusive(QRadioButton *radiobutton)
@@ -310,14 +150,12 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     // wenn Tab 1 ( Keine Wiederholung ) ausgewählt ist, wird die "endet"-Box disabled
     if(index==0){
         ui->groupBox->setDisabled(true);
-
     // sonst ist sie enabled
     }
     else{
         ui->groupBox->setDisabled(false);
     }
 }
-
 
 void MainWindow::on_input_dtstart_dateTimeChanged(const QDateTime &dateTime)
 {
@@ -348,7 +186,6 @@ void MainWindow::clearInputs(){
 
     ui->until->setDate(QDate::currentDate());
     ui->count->setValue(1);
-    ui->checkBox_feiertage->setChecked(false);
 
     ui->interval_daily->setValue(1);
     ui->interval_weekly->setValue(1);
@@ -376,26 +213,20 @@ void MainWindow::clearInputs(){
     ui->month_combo2->setCurrentIndex(0);
     ui->monthday->setValue(1);
 
-    ui->until_radio->setChecked(true);
+    ui->count_radio->setChecked(true);
 
     ui->alarm_type->setCurrentIndex(0);
-
-    ui->lineEdit_jahr->setText(QString::number(QDate::currentDate().year()));
 
     ui->verticalLayoutWidget_6->repaint();
     ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
 }
 
-
 void MainWindow::on_editCalendar_button_clicked()
 {
-    cout << ui->label_calendar_name->text().toUtf8().constData() << endl;
-
     QString calendar_name = ui->label_calendar_name->text();
     QString calendar_proid = ui->label_prod_id->text();
     QString calendar_version = ui->label_version->text();
-
     editCalendar editC;
     editC.setModal(true);
     editC.setValues(calendar_name, calendar_version, calendar_proid);
@@ -409,8 +240,8 @@ void MainWindow::on_editCalendar_button_clicked()
 void MainWindow::on_button_add_event_clicked()
 {
      QTableWidgetItem* name = new QTableWidgetItem(ui->titel->toPlainText());
-     QTableWidgetItem* dtstart = new QTableWidgetItem(ui->input_dtstart->dateTime().toString("dd.MM.yyyy HH:MM"));
-     QTableWidgetItem* dtend = new QTableWidgetItem(ui->input_dtend->dateTime().toString("dd.MM.yyyy HH:MM"));
+     QTableWidgetItem* dtstart = new QTableWidgetItem(ui->input_dtstart->dateTime().toString("yyyyMMddTHHmmss"));
+     QTableWidgetItem* dtend = new QTableWidgetItem(ui->input_dtend->dateTime().toString("yyyyMMddTHHmmss"));
      QTableWidgetItem* priority = new QTableWidgetItem();
      QTableWidgetItem* location = new QTableWidgetItem();
      QTableWidgetItem* geo = new QTableWidgetItem();
@@ -421,94 +252,49 @@ void MainWindow::on_button_add_event_clicked()
          geo->setText(QString::number(ui->latitude->value()) + ";" + QString::number(ui->longitude->value()));
      }
     if (ui->priority_check->isChecked()==1){
-        priority->setText(QString::number(ui->priority->value()));}
-
+        priority->setText(QString::number(ui->priority->value()));
+    }
      QTableWidgetItem* beschreibung = new QTableWidgetItem(ui->beschreibung->toPlainText());
-
 
      // Datum und Zeit für DtStamp
      QString currentTime_date = QDateTime::currentDateTime().date().toString("yyyyMMdd");
      QString currentTime_time = QDateTime::currentDateTime().time().toString("HHmmss");
-     QTableWidgetItem* dtstamp = new QTableWidgetItem(currentTime_date + "T" + currentTime_time);
-     RRule r = RRule();
+     QTableWidgetItem* dtstamp = new QTableWidgetItem(currentTime_date + "T" + currentTime_time + "Z");
 
+     RRule r = RRule();
      switch(ui->tabWidget->currentIndex()){  //verwendet den gerade ausgewählten Tab als Expression
          case 0:
          r.state = "empty";
        break;
          case 1:
-         r.state = "DAILY";
-         r.interval = "INTERVAL=" + to_string(ui->interval_daily->value())+";";
+         r.getDaily(to_string(ui->interval_daily->value()));
        break;
-         case 2:
-         r.state = "WEEKLY";
-         r.byday = "BYDAY=";
-         if(ui->monday->isChecked()==1){
-             r.byday += "MO,";
-         }
-         if(ui->tuesday->isChecked()==1){
-             r.byday += "TU,";
-         }
-         if(ui->wednesday->isChecked()==1){
-             r.byday += "WE,";
-         }
-         if(ui->thursday->isChecked()==1){
-             r.byday += "TH,";
-         }
-         if(ui->friday->isChecked()==1){
-             r.byday += "FR,";
-         }
-         if(ui->saturday->isChecked()==1){
-             r.byday += "SA,";
-         }
-         if(ui->sunday->isChecked()==1){
-             r.byday += "SU,";
-         }
-         r.byday += ";";
-         r.interval = "INTERVAL=" + to_string(ui->interval_weekly->value()) + ";";
+     case 2:{
+         bool days[7] = {ui->monday->isChecked(), ui->tuesday->isChecked(), ui->wednesday->isChecked(),
+                 ui->thursday->isChecked(), ui->friday->isChecked() ,
+                        ui->saturday->isChecked(), ui->sunday->isChecked()};
+         r.getWeekly(days, to_string(ui->interval_weekly->value()));}
        break;
-         case 3:
-         r.state = "MONTHLY";
-         r.interval = "INTERVAL=" + to_string(ui->interval_monthly->value()) + ";";
-
-         if(ui->onday_monthly->isChecked()==1){
-             r.byday = "BYMONTHDAY=" + to_string(ui->monthly_spin->value()) + ";";
+      case 3:
+        if(ui->onday_monthly->isChecked()==1){
+             r.getMonthly_1(to_string(ui->interval_monthly->value()), to_string(ui->monthly_spin->value()));
          }
          else if(ui->on_monthly->isChecked()==1){
-             r.bysetpos = "BYSETPOS=";
-             cout << ui->monthly_combo->currentIndex() << endl;
-
-             if (ui->monthly_combo->currentIndex() == 4){
-                 r.bysetpos += "-1;";
+             r.getMonthly_2(to_string(ui->interval_monthly->value()),ui->monthly_combo->currentIndex(),getWeekDay(ui->monthly_combo2->currentIndex()));
              }
-             else{
-                 r.bysetpos += to_string(ui->monthly_combo->currentIndex() + 1) + ";";
-             }
-
-             r.byday = "BYDAY=";
-             r.byday += getWeekDay(ui->monthly_combo2->currentIndex());}
        break;
          case 4:
-         r.state = "YEARLY";
          if(ui->yearly_radio1->isChecked()==1){
-         r.bymonth = "BYMONTH=" + to_string(ui->month_combo->currentIndex()+1) + ";";
-         r.byday = "BYDAY=";
-         r.byday += getWeekDay(ui->yearly_day->currentIndex());
-         if (ui->yearly_setpos->currentIndex() == 4){
-             r.bysetpos += "-1;";
-         }
-         else{
-             r.bysetpos += to_string(ui->yearly_setpos->currentIndex() + 1) + ";";
-         }
+             r.getYearly_1(to_string(ui->month_combo->currentIndex()+1), getWeekDay(ui->yearly_day->currentIndex()),
+                           ui->yearly_setpos->currentIndex());
+
          }
          else if(ui->yearly_radio2->isChecked()==1)
          {
-             r.bymonth = "BYMONTH=" + to_string(ui->month_combo2->currentIndex()+1) + ";";
-             r.byday = "BYMONTHDAY=" + to_string(ui->monthday->value()) + ";";
+             r.getYearly_2(to_string(ui->month_combo2->currentIndex()+1), to_string(ui->monthday->value()));
          }
        break;
      default:
-       // nichts
        break;
      }
 
@@ -528,8 +314,10 @@ void MainWindow::on_button_add_event_clicked()
     v.setEinheit(ui->alarm_comboBox->currentIndex());
     v.setAction(ui->alarm_type->currentIndex());
 
-    QTableWidgetItem* valarm = new QTableWidgetItem(v.buildAlarm());
+    QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(v.buildAlarm()));
     QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+
+    QTableWidgetItem* uid = new QTableWidgetItem(ui->label_id->text());
 
     int row = ui->table_events->rowCount();
     ui->table_events->insertRow(row);
@@ -544,16 +332,61 @@ void MainWindow::on_button_add_event_clicked()
     ui->table_events->setItem(row,8,location);
     ui->table_events->setItem(row,9,priority);
     ui->table_events->setItem(row,10,dtstamp);
+    ui->table_events->setItem(row,11,uid);
 
     clearInputs();
+    ui->label_id->setText(QString::fromStdString(hex_string(10))); // Ändern des Unique Identifiers
 }
 
 
 void MainWindow::on_table_events_cellClicked(int row, int column)
-{
-    cout << row << endl;
-    cout << column << endl;
+// wenn die Spalte Löschen angeklickt wurde, wird der Termin gelöscht
+{   if(column==1){
     ui->table_events->removeRow(row);
-    QMessageBox::information(this, "iCal", "Event entfernt");
+    QMessageBox::information(this, "iCal", "Event entfernt");}
 }
 
+
+void MainWindow::on_button_create_ics_clicked()
+{
+    ICalendar ical;
+    ical.cal_name = ui->label_calendar_name->text().toStdString();
+    ical.prodid = ui->label_prod_id->text().toStdString();
+    ical.version = ui->label_version->text().toStdString();
+    int rows = ui->table_events->rowCount();
+
+    for(int i = 0; i<rows;i++){
+        VEvent newEvent;
+        newEvent.summary = ui->table_events->model()->index(i, 0).data().toString().toStdString();
+        newEvent.description = ui->table_events->model()->index(i, 4).data().toString().toStdString();
+        newEvent.dtstart = ui->table_events->model()->index(i, 2).data().toString().toStdString();
+        newEvent.dtend = ui->table_events->model()->index(i, 3).data().toString().toStdString();
+        newEvent.dtstamp = ui->table_events->model()->index(i, 10).data().toString().toStdString();
+        newEvent.rrule = ui->table_events->model()->index(i, 5).data().toString().toStdString();
+        newEvent.va = ui->table_events->model()->index(i, 6).data().toString().toStdString();
+        newEvent.location = ui->table_events->model()->index(i, 8).data().toString().toStdString();
+        newEvent.geo = ui->table_events->model()->index(i, 7).data().toString().toStdString();
+        newEvent.priority = ui->table_events->model()->index(i, 9).data().toString().toStdString();
+        newEvent.uid = ui->table_events->model()->index(i, 11).data().toString().toStdString();
+        ical.eventText += newEvent.createVEventText();
+    }
+
+    if(ui->checkBox_feiertage->isChecked())
+    {
+        ical.holidays += createHolidayText(ui->lineEdit_jahr->text().toInt());
+    }
+
+   QString filename = QFileDialog::getSaveFileName(this, "Save file","","*.ics");
+
+   FILE *o_file = fopen(filename.toUtf8(), "w+");
+   if (o_file){
+       fwrite(ical.buildICSText().c_str(), 1, ical.buildICSText().size(), o_file);
+       QMessageBox::information(this, "iCal", "Done Writing!");
+       ui->table_events->setRowCount(0); // leert die Tabelle
+
+   }
+   else{
+       QMessageBox::critical(this, "iCal", "Something went wrong!");
+   }
+   fclose(o_file);
+}

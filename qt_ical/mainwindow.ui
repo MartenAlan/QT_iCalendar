@@ -7,18 +7,21 @@
     <x>0</x>
     <y>0</y>
     <width>1311</width>
-    <height>673</height>
+    <height>752</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>iCalendar (v1.1.0)</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>190</y>
+      <y>210</y>
       <width>381</width>
       <height>87</height>
      </rect>
@@ -42,7 +45,7 @@
       <x>450</x>
       <y>110</y>
       <width>201</width>
-      <height>72</height>
+      <height>87</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -62,8 +65,8 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>280</y>
-      <width>448</width>
+      <y>300</y>
+      <width>451</width>
       <height>80</height>
      </rect>
     </property>
@@ -98,24 +101,11 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>300</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>iCalender Datei erstellen</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_clear">
     <property name="geometry">
      <rect>
       <x>900</x>
-      <y>580</y>
+      <y>660</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -128,7 +118,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>370</y>
+      <y>390</y>
       <width>216</width>
       <height>80</height>
      </rect>
@@ -157,7 +147,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>370</y>
+      <y>390</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -200,7 +190,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>450</y>
+      <y>470</y>
       <width>160</width>
       <height>121</height>
      </rect>
@@ -253,9 +243,9 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>910</x>
+      <x>851</x>
       <y>0</y>
-      <width>372</width>
+      <width>431</width>
       <height>181</height>
      </rect>
     </property>
@@ -302,8 +292,8 @@
           <rect>
            <x>0</x>
            <y>10</y>
-           <width>160</width>
-           <height>31</height>
+           <width>245</width>
+           <height>65</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -340,8 +330,8 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>160</width>
-           <height>31</height>
+           <width>294</width>
+           <height>65</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -373,8 +363,8 @@
           <rect>
            <x>10</x>
            <y>50</y>
-           <width>386</width>
-           <height>41</height>
+           <width>750</width>
+           <height>61</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -413,8 +403,8 @@
           <rect>
            <x>10</x>
            <y>90</y>
-           <width>259</width>
-           <height>31</height>
+           <width>511</width>
+           <height>61</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -451,8 +441,8 @@
           <rect>
            <x>20</x>
            <y>10</y>
-           <width>160</width>
-           <height>31</height>
+           <width>287</width>
+           <height>65</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -484,8 +474,8 @@
           <rect>
            <x>20</x>
            <y>50</y>
-           <width>101</width>
-           <height>61</height>
+           <width>163</width>
+           <height>127</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -617,8 +607,8 @@
           <rect>
            <x>10</x>
            <y>30</y>
-           <width>52</width>
-           <height>61</height>
+           <width>85</width>
+           <height>127</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -924,8 +914,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>211</width>
-       <height>31</height>
+       <width>372</width>
+       <height>61</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -991,14 +981,14 @@
       <x>910</x>
       <y>370</y>
       <width>201</width>
-      <height>98</height>
+      <height>200</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_8">
      <item>
       <widget class="QCheckBox" name="alarm_checkBox">
        <property name="text">
-        <string>Hinweis</string>
+        <string>Alarm</string>
        </property>
       </widget>
      </item>
@@ -1123,8 +1113,8 @@
      <rect>
       <x>20</x>
       <y>250</y>
-      <width>201</width>
-      <height>91</height>
+      <width>316</width>
+      <height>194</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1180,8 +1170,8 @@
      <rect>
       <x>450</x>
       <y>60</y>
-      <width>284</width>
-      <height>41</height>
+      <width>390</width>
+      <height>55</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -1194,8 +1184,14 @@
      </item>
      <item>
       <widget class="QLabel" name="label_id">
+       <property name="minimumSize">
+        <size>
+         <width>98</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
-        <string>CAB67151FF5CA6057F</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -1219,8 +1215,8 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>261</width>
-      <height>191</height>
+      <width>760</width>
+      <height>241</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -1309,7 +1305,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Termine</string>
+     <string>Neuer Termin</string>
     </property>
    </widget>
    <widget class="QPushButton" name="editCalendar_button">
@@ -1329,7 +1325,7 @@
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>580</y>
+      <y>660</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -1342,7 +1338,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>350</y>
+      <y>430</y>
       <width>421</width>
       <height>271</height>
      </rect>
@@ -1400,6 +1396,48 @@
       <string>Priorität</string>
      </property>
     </column>
+    <column>
+     <property name="text">
+      <string>Erstellungsdatum</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Unique Identifier</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>390</y>
+      <width>259</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Terminliste</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_create_ics">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>380</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>iCalender Datei erstellen</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1408,7 +1446,7 @@
      <x>0</x>
      <y>0</y>
      <width>1311</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -1462,7 +1500,6 @@
   <tabstop>alarm_type</tabstop>
   <tabstop>checkBox_feiertage</tabstop>
   <tabstop>lineEdit_jahr</tabstop>
-  <tabstop>pushButton</tabstop>
   <tabstop>btn_clear</tabstop>
  </tabstops>
  <resources/>
