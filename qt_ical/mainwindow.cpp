@@ -217,8 +217,8 @@ void MainWindow::clearInputs(){
 
     ui->alarm_type->setCurrentIndex(0);
 
-    ui->verticalLayoutWidget_6->repaint();
-    ui->verticalLayoutWidget_7->repaint();
+    //ui->verticalLayoutWidget_6->repaint();
+    //ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
 }
 

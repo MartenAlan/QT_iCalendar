@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1311</width>
-    <height>752</height>
+    <height>804</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>210</y>
+      <y>280</y>
       <width>381</width>
-      <height>87</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -43,8 +43,8 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>110</y>
-      <width>201</width>
+      <y>180</y>
+      <width>236</width>
       <height>87</height>
      </rect>
     </property>
@@ -61,51 +61,11 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>300</y>
-      <width>451</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Startdatum</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDateTimeEdit" name="input_dtstart"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Enddatum</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDateTimeEdit" name="input_dtend"/>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="btn_clear">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>660</y>
+      <x>820</x>
+      <y>690</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -117,8 +77,8 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>390</y>
+      <x>470</x>
+      <y>480</y>
       <width>216</width>
       <height>80</height>
      </rect>
@@ -146,8 +106,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>390</y>
+      <x>690</x>
+      <y>470</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -189,8 +149,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>470</y>
+      <x>690</x>
+      <y>550</y>
       <width>160</width>
       <height>121</height>
      </rect>
@@ -245,8 +205,8 @@
      <rect>
       <x>851</x>
       <y>0</y>
-      <width>431</width>
-      <height>181</height>
+      <width>451</width>
+      <height>251</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -325,111 +285,135 @@
         <attribute name="title">
          <string>wöchentlich</string>
         </attribute>
-        <widget class="QWidget" name="horizontalLayoutWidget_4">
+        <widget class="QCheckBox" name="friday">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>294</width>
-           <height>65</height>
+           <x>0</x>
+           <y>120</y>
+           <width>81</width>
+           <height>26</height>
           </rect>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_16">
-          <item>
-           <widget class="QLabel" name="label_15">
-            <property name="text">
-             <string>alle</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="interval_weekly">
-            <property name="value">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_16">
-            <property name="text">
-             <string>Wochen</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string>Freitag</string>
+         </property>
         </widget>
-        <widget class="QWidget" name="horizontalLayoutWidget_6">
+        <widget class="QCheckBox" name="saturday">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>50</y>
-           <width>750</width>
-           <height>61</height>
+           <x>130</x>
+           <y>120</y>
+           <width>91</width>
+           <height>26</height>
           </rect>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_17">
-          <item>
-           <widget class="QCheckBox" name="monday">
-            <property name="text">
-             <string>Montag</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="tuesday">
-            <property name="text">
-             <string>Dienstag</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="wednesday">
-            <property name="text">
-             <string>Mittwoch</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="thursday">
-            <property name="text">
-             <string>Donnerstag</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string>Samstag</string>
+         </property>
         </widget>
-        <widget class="QWidget" name="horizontalLayoutWidget_7">
+        <widget class="QCheckBox" name="monday">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>80</y>
+           <width>81</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Montag</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="tuesday">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>80</y>
+           <width>91</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Dienstag</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="thursday">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>80</y>
+           <width>106</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Donnerstag</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="wednesday">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>80</y>
+           <width>91</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Mittwoch</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="sunday">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>120</y>
+           <width>84</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Sonntag</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_15">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>90</y>
-           <width>511</width>
-           <height>61</height>
+           <y>30</y>
+           <width>174</width>
+           <height>21</height>
           </rect>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_18">
-          <item>
-           <widget class="QCheckBox" name="friday">
-            <property name="text">
-             <string>Freitag</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="saturday">
-            <property name="text">
-             <string>Samstag</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="sunday">
-            <property name="text">
-             <string>Sonntag</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string>alle</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="interval_weekly">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>40</y>
+           <width>61</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_16">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>40</y>
+           <width>53</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Wochen</string>
+         </property>
         </widget>
        </widget>
        <widget class="QWidget" name="monthly">
@@ -473,9 +457,9 @@
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>50</y>
+           <y>86</y>
            <width>163</width>
-           <height>127</height>
+           <height>91</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -504,8 +488,8 @@
         <widget class="QSpinBox" name="monthly_spin">
          <property name="geometry">
           <rect>
-           <x>130</x>
-           <y>60</y>
+           <x>190</x>
+           <y>90</y>
            <width>42</width>
            <height>22</height>
           </rect>
@@ -520,8 +504,8 @@
         <widget class="QComboBox" name="monthly_combo">
          <property name="geometry">
           <rect>
-           <x>130</x>
-           <y>90</y>
+           <x>190</x>
+           <y>140</y>
            <width>72</width>
            <height>22</height>
           </rect>
@@ -555,8 +539,8 @@
         <widget class="QComboBox" name="monthly_combo2">
          <property name="geometry">
           <rect>
-           <x>210</x>
-           <y>90</y>
+           <x>260</x>
+           <y>140</y>
            <width>72</width>
            <height>22</height>
           </rect>
@@ -643,8 +627,8 @@
         <widget class="QComboBox" name="yearly_setpos">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>40</y>
+           <x>90</x>
+           <y>60</y>
            <width>72</width>
            <height>22</height>
           </rect>
@@ -678,8 +662,8 @@
         <widget class="QComboBox" name="yearly_day">
          <property name="geometry">
           <rect>
-           <x>150</x>
-           <y>40</y>
+           <x>160</x>
+           <y>60</y>
            <width>72</width>
            <height>22</height>
           </rect>
@@ -723,8 +707,8 @@
         <widget class="QSpinBox" name="monthday">
          <property name="geometry">
           <rect>
-           <x>180</x>
-           <y>70</y>
+           <x>200</x>
+           <y>110</y>
            <width>42</width>
            <height>22</height>
           </rect>
@@ -739,8 +723,8 @@
         <widget class="QComboBox" name="month_combo">
          <property name="geometry">
           <rect>
-           <x>260</x>
-           <y>40</y>
+           <x>270</x>
+           <y>60</y>
            <width>91</width>
            <height>22</height>
           </rect>
@@ -809,8 +793,8 @@
         <widget class="QLabel" name="label_12">
          <property name="geometry">
           <rect>
-           <x>230</x>
-           <y>40</y>
+           <x>240</x>
+           <y>60</y>
            <width>21</width>
            <height>20</height>
           </rect>
@@ -822,8 +806,8 @@
         <widget class="QComboBox" name="month_combo2">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>70</y>
+           <x>100</x>
+           <y>110</y>
            <width>91</width>
            <height>22</height>
           </rect>
@@ -900,10 +884,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>910</x>
-      <y>190</y>
-      <width>251</width>
-      <height>91</height>
+      <x>850</x>
+      <y>260</y>
+      <width>401</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="title">
@@ -941,6 +925,9 @@
         <property name="text">
          <string>niemals</string>
         </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -975,89 +962,14 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>370</y>
-      <width>201</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_8">
-     <item>
-      <widget class="QCheckBox" name="alarm_checkBox">
-       <property name="text">
-        <string>Alarm</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_20">
-       <item>
-        <widget class="QLineEdit" name="alarm_line">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>15</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="alarm_comboBox">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <item>
-          <property name="text">
-           <string>Minuten davor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Stunden davor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Tagen davor</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QComboBox" name="alarm_type">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>Ton</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Display</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QFrame" name="priority_frame">
     <property name="enabled">
      <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>910</x>
-      <y>320</y>
+      <x>920</x>
+      <y>410</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -1098,72 +1010,15 @@
    <widget class="QCheckBox" name="priority_check">
     <property name="geometry">
      <rect>
-      <x>910</x>
-      <y>310</y>
-      <width>72</width>
+      <x>920</x>
+      <y>400</y>
+      <width>111</width>
       <height>19</height>
      </rect>
     </property>
     <property name="text">
      <string>Priorität</string>
     </property>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_7">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>250</y>
-      <width>316</width>
-      <height>194</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_9">
-     <item>
-      <widget class="QLabel" name="label_26">
-       <property name="font">
-        <font>
-         <pointsize>15</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Feiertage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="checkBox_feiertage">
-       <property name="text">
-        <string>Export Feiertage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_21">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_22">
-         <item>
-          <widget class="QLabel" name="label_21">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Jahr</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_jahr">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -1203,7 +1058,7 @@
       <x>430</x>
       <y>10</y>
       <width>31</width>
-      <height>701</height>
+      <height>841</height>
      </rect>
     </property>
     <property name="orientation">
@@ -1215,7 +1070,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>760</width>
+      <width>411</width>
       <height>241</height>
      </rect>
     </property>
@@ -1311,9 +1166,9 @@
    <widget class="QPushButton" name="editCalendar_button">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>200</y>
-      <width>171</width>
+      <x>100</x>
+      <y>260</y>
+      <width>231</width>
       <height>41</height>
      </rect>
     </property>
@@ -1324,8 +1179,8 @@
    <widget class="QPushButton" name="button_add_event">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>660</y>
+      <x>640</x>
+      <y>690</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -1338,9 +1193,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>430</y>
+      <y>560</y>
       <width>421</width>
-      <height>271</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="editTriggers">
@@ -1407,13 +1262,123 @@
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="label_27">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>470</y>
+      <width>421</width>
+      <height>74</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_22">
+     <item>
+      <widget class="QLabel" name="label_27">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Terminliste</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_create_ics">
+       <property name="text">
+        <string>iCalender Datei erstellen</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_jahr">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>410</y>
+      <width>139</width>
+      <height>28</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>390</y>
-      <width>259</width>
-      <height>33</height>
+      <width>26</width>
+      <height>72</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Jahr</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>390</y>
+      <width>441</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Startdatum</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="input_dtstart"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Enddatum</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDateTimeEdit" name="input_dtend"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_feiertage">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>390</y>
+      <width>151</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export Feiertage</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_26">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>330</y>
+      <width>121</width>
+      <height>79</height>
      </rect>
     </property>
     <property name="font">
@@ -1423,20 +1388,90 @@
      </font>
     </property>
     <property name="text">
-     <string>Terminliste</string>
+     <string>Feiertage</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_create_ics">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>380</y>
-      <width>191</width>
+      <x>930</x>
+      <y>510</y>
+      <width>199</width>
       <height>41</height>
      </rect>
     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_20">
+     <item>
+      <widget class="QLineEdit" name="alarm_line">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>15</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="alarm_comboBox">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Minuten davor</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Stunden davor</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tagen davor</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QComboBox" name="alarm_type">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>560</y>
+      <width>199</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Ton</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Display</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="alarm_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>480</y>
+      <width>199</width>
+      <height>26</height>
+     </rect>
+    </property>
     <property name="text">
-     <string>iCalender Datei erstellen</string>
+     <string>Alarm</string>
     </property>
    </widget>
   </widget>
@@ -1464,16 +1499,7 @@
   <tabstop>city_text</tabstop>
   <tabstop>plz_text</tabstop>
   <tabstop>street_text</tabstop>
-  <tabstop>tabWidget</tabstop>
   <tabstop>interval_daily</tabstop>
-  <tabstop>interval_weekly</tabstop>
-  <tabstop>monday</tabstop>
-  <tabstop>tuesday</tabstop>
-  <tabstop>wednesday</tabstop>
-  <tabstop>thursday</tabstop>
-  <tabstop>friday</tabstop>
-  <tabstop>saturday</tabstop>
-  <tabstop>sunday</tabstop>
   <tabstop>interval_monthly</tabstop>
   <tabstop>onday_monthly</tabstop>
   <tabstop>on_monthly</tabstop>
@@ -1494,12 +1520,8 @@
   <tabstop>until</tabstop>
   <tabstop>priority_check</tabstop>
   <tabstop>priority</tabstop>
-  <tabstop>alarm_checkBox</tabstop>
   <tabstop>alarm_line</tabstop>
   <tabstop>alarm_comboBox</tabstop>
-  <tabstop>alarm_type</tabstop>
-  <tabstop>checkBox_feiertage</tabstop>
-  <tabstop>lineEdit_jahr</tabstop>
   <tabstop>btn_clear</tabstop>
  </tabstops>
  <resources/>
