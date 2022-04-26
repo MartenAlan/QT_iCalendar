@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>iCalendar (v1.1.0)</string>
+   <string>iCalendar (v1.1.1)</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -266,6 +266,9 @@
           </item>
           <item>
            <widget class="QSpinBox" name="interval_daily">
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="value">
              <number>1</number>
             </property>
@@ -398,6 +401,9 @@
            <height>29</height>
           </rect>
          </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
          <property name="value">
           <number>1</number>
          </property>
@@ -439,6 +445,9 @@
           </item>
           <item>
            <widget class="QSpinBox" name="interval_monthly">
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="value">
              <number>1</number>
             </property>
@@ -944,6 +953,9 @@
      <property name="frame">
       <bool>true</bool>
      </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
      <property name="value">
       <number>1</number>
      </property>
@@ -1193,7 +1205,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>520</y>
+      <y>521</y>
       <width>421</width>
       <height>181</height>
      </rect>
@@ -1296,7 +1308,7 @@
      <rect>
       <x>450</x>
       <y>320</y>
-      <width>441</width>
+      <width>446</width>
       <height>71</height>
      </rect>
     </property>
@@ -1488,40 +1500,57 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
+  <tabstop>editCalendar_button</tabstop>
+  <tabstop>checkBox_feiertage</tabstop>
+  <tabstop>lineEdit_jahr</tabstop>
+  <tabstop>button_create_ics</tabstop>
+  <tabstop>table_events</tabstop>
   <tabstop>titel</tabstop>
   <tabstop>beschreibung</tabstop>
   <tabstop>input_dtstart</tabstop>
   <tabstop>input_dtend</tabstop>
   <tabstop>radio_geo</tabstop>
-  <tabstop>radio_adress</tabstop>
   <tabstop>longitude</tabstop>
   <tabstop>latitude</tabstop>
+  <tabstop>radio_adress</tabstop>
   <tabstop>city_text</tabstop>
   <tabstop>plz_text</tabstop>
   <tabstop>street_text</tabstop>
+  <tabstop>tabWidget</tabstop>
   <tabstop>interval_daily</tabstop>
+  <tabstop>interval_weekly</tabstop>
+  <tabstop>monday</tabstop>
+  <tabstop>tuesday</tabstop>
+  <tabstop>wednesday</tabstop>
+  <tabstop>thursday</tabstop>
+  <tabstop>friday</tabstop>
+  <tabstop>saturday</tabstop>
+  <tabstop>sunday</tabstop>
   <tabstop>interval_monthly</tabstop>
   <tabstop>onday_monthly</tabstop>
-  <tabstop>on_monthly</tabstop>
   <tabstop>monthly_spin</tabstop>
+  <tabstop>on_monthly</tabstop>
   <tabstop>monthly_combo</tabstop>
   <tabstop>monthly_combo2</tabstop>
   <tabstop>yearly_radio1</tabstop>
-  <tabstop>yearly_radio2</tabstop>
   <tabstop>yearly_setpos</tabstop>
   <tabstop>yearly_day</tabstop>
   <tabstop>month_combo</tabstop>
+  <tabstop>yearly_radio2</tabstop>
   <tabstop>month_combo2</tabstop>
   <tabstop>monthday</tabstop>
   <tabstop>count_radio</tabstop>
-  <tabstop>until_radio</tabstop>
-  <tabstop>radioButton_8</tabstop>
   <tabstop>count</tabstop>
+  <tabstop>until_radio</tabstop>
   <tabstop>until</tabstop>
+  <tabstop>radioButton_8</tabstop>
   <tabstop>priority_check</tabstop>
   <tabstop>priority</tabstop>
+  <tabstop>alarm_checkBox</tabstop>
   <tabstop>alarm_line</tabstop>
   <tabstop>alarm_comboBox</tabstop>
+  <tabstop>alarm_type</tabstop>
+  <tabstop>button_add_event</tabstop>
   <tabstop>btn_clear</tabstop>
  </tabstops>
  <resources/>
