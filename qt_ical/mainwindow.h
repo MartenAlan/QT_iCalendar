@@ -36,6 +36,8 @@ private slots:
 
     void on_button_create_ics_clicked();
 
+    void on_button_ics_import_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

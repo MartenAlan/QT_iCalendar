@@ -85,7 +85,7 @@ void RRule::getYearly_2(string i, string by_md){
 string ICalendar::buildICSText(){
     string icsText = "BEGIN:VCALENDAR\n";
     icsText += "VERSION:" + version + "\n";
-    icsText += "PRODID:" + prodid + "_" + cal_name + "\n";
+    icsText += "PRODID:" + prodid + "_" + cal_name + ".\n";
     icsText += eventText;
     icsText += holidays;
     icsText += "END:VCALENDAR";

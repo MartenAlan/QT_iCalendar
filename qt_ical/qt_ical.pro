@@ -12,16 +12,19 @@ CONFIG += app_bundle
 SOURCES += \
     icalendar.cpp \
     editcalendar.cpp \
+    importwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     icalendar.h \
     editcalendar.h \
+    importwindow.h \
     mainwindow.h
 
 FORMS += \
     editcalendar.ui \
+    importwindow.ui \
     mainwindow.ui
 
 ICON = myLogo.icns

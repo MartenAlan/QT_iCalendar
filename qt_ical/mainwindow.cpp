@@ -2,11 +2,13 @@
 #include "ui_mainwindow.h"
 #include "icalendar.h"
 #include "editcalendar.h"
+#include "importwindow.h"
 #include <fstream>
 #include <iostream>
 #include <ctime>
 #include <string.h>
 #include <map>
+#include <regex>
 
 using namespace std;
 
@@ -390,3 +392,66 @@ void MainWindow::on_button_create_ics_clicked()
    }
    fclose(o_file);
 }
+
+VEvent fillEvent(string et){
+    VEvent newEvent;
+    return newEvent;
+}
+
+list<VEvent> getEvents(string t){
+    list<VEvent> eventlist;
+    regex expression("(BEGIN:VEVENT)(.*?)(END:VEVENT)");
+    smatch m;
+    string eventText;
+    while(regex_search(t, m, expression)){
+        eventText = m[2];
+        cout << eventText << endl;
+    t = m.suffix();
+    eventlist.push_back(fillEvent(eventText));
+        }
+    return eventlist;
+}
+
+string importCalendername(string t){
+    regex expression("PRODID:(.*)\n");
+    smatch m;
+    string cal_name;
+    while(regex_search(t, m, expression)){
+        cal_name = m[1];
+        cout << cal_name << endl;
+        /*for(size_t i = 0; i< m.size(); ++i)
+        {
+            cout << i << ": " << m[i].str() << endl;
+        }*/
+    t = m.suffix();
+        }
+    return cal_name;
+}
+
+void MainWindow::on_button_ics_import_clicked()
+{
+    string line;
+    string text;
+    QString filename = QFileDialog::getOpenFileName(this, "Open file","");
+    ifstream myfile(filename.toStdString());
+    if(myfile.is_open()){
+        ICalendar newics = ICalendar();
+    while(getline(myfile, line)){
+        text += line + "\n";
+    }
+    myfile.close();
+    string cal_name = importCalendername(text);
+    list<VEvent> eventList = getEvents(text);
+    importWindow importW;
+    importW.setCalendarName(QString::fromStdString(cal_name));
+    importW.setModal(true);
+    importW.exec();
+    }
+    else{
+        QMessageBox::critical(this, "iCal", "Something went wrong!");
+    }
+
+
+
+}
+
