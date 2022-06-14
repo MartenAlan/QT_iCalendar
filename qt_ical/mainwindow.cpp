@@ -393,18 +393,38 @@ void MainWindow::on_button_create_ics_clicked()
    fclose(o_file);
 }
 
+string importCalenderinfo(string t, string exp){
+    string test = exp;
+    test += "(.*)\n";
+    regex expression(test);
+
+    smatch m;
+    string cal_name;
+    while(regex_search(t, m, expression)){
+        cal_name = m[1];
+        cout << cal_name << endl;
+    t = m.suffix();
+        }
+    return cal_name;
+}
+
 VEvent fillEvent(string et){
     VEvent newEvent;
+    newEvent.description = importCalenderinfo(et, "DESCRIPTION:");
+    newEvent.summary = importCalenderinfo(et, "SUMMARY:");
+    cout << newEvent.description << endl;
     return newEvent;
 }
 
 list<VEvent> getEvents(string t){
     list<VEvent> eventlist;
-    regex expression("(BEGIN:VEVENT)(.*?)(END:VEVENT)");
+    regex expression("BEGIN:VEVENT(\n|.)*?END:VEVENT");
     smatch m;
     string eventText;
+
     while(regex_search(t, m, expression)){
-        eventText = m[2];
+        cout << "\n" << endl;
+        eventText = m[0];
         cout << eventText << endl;
     t = m.suffix();
     eventlist.push_back(fillEvent(eventText));
@@ -412,21 +432,6 @@ list<VEvent> getEvents(string t){
     return eventlist;
 }
 
-string importCalendername(string t){
-    regex expression("PRODID:(.*)\n");
-    smatch m;
-    string cal_name;
-    while(regex_search(t, m, expression)){
-        cal_name = m[1];
-        cout << cal_name << endl;
-        /*for(size_t i = 0; i< m.size(); ++i)
-        {
-            cout << i << ": " << m[i].str() << endl;
-        }*/
-    t = m.suffix();
-        }
-    return cal_name;
-}
 
 void MainWindow::on_button_ics_import_clicked()
 {
@@ -440,17 +445,18 @@ void MainWindow::on_button_ics_import_clicked()
         text += line + "\n";
     }
     myfile.close();
-    string cal_name = importCalendername(text);
+    string cal_name = importCalenderinfo(text, "PRODID:");
+    string cal_version = importCalenderinfo(text, "VERSION:");
     list<VEvent> eventList = getEvents(text);
     importWindow importW;
     importW.setCalendarName(QString::fromStdString(cal_name));
+    importW.fillTable(eventList);
     importW.setModal(true);
     importW.exec();
     }
     else{
         QMessageBox::critical(this, "iCal", "Something went wrong!");
     }
-
 
 
 }

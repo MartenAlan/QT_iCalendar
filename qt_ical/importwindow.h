@@ -2,6 +2,8 @@
 #define IMPORTWINDOW_H
 
 #include <QDialog>
+#include <map>
+#include <icalendar.h>
 
 namespace Ui {
 class importWindow;
@@ -15,6 +17,11 @@ public:
     explicit importWindow(QWidget *parent = nullptr);
     ~importWindow();
     void setCalendarName(QString prodid);
+    void fillTable(list<VEvent> eventlist);
+
+private slots:
+
+
 
 private:
     Ui::importWindow *ui;
