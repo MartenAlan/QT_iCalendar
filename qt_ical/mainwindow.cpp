@@ -50,7 +50,7 @@ QDate getOstersonntag(int year){
 // Hinzufügen von allen Feiertagen ausgehend vom Osterdatum
 map <string, QDate> getOsterfeiertage(QDate ostern){
 
-    map <string, QDate> feiertage = {{"Osternsonntag", ostern},
+    map <string, QDate> feiertage = {{"Ostersonntag", ostern},
                                        };
     feiertage.insert({"Rosenmontag", ostern.addDays(-48)});
     feiertage.insert({"Faschingsdienstag", ostern.addDays(-47)});
