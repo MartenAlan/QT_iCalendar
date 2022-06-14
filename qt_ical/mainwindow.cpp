@@ -54,14 +54,14 @@ map <string, QDate> getOsterfeiertage(QDate ostern){
                                        };
     feiertage.insert({"Rosenmontag", ostern.addDays(-48)});
     feiertage.insert({"Faschingsdienstag", ostern.addDays(-47)});
-    feiertage.insert({"Aschenmittwoch", ostern.addDays(-46)});
+    feiertage.insert({"Aschermittwoch", ostern.addDays(-46)});
     feiertage.insert({"Palmsonntag", ostern.addDays(-7)});
     feiertage.insert({"Gründonnerstag", ostern.addDays(-3)});
     feiertage.insert({"Karfreitag", ostern.addDays(-2)});
     feiertage.insert({"Karsamstag", ostern.addDays(-1)});
     feiertage.insert({"Ostermontag", ostern.addDays(1)});
     feiertage.insert({"Christi Himmelfahrt", ostern.addDays(39)});
-    feiertage.insert({"Pfingsmontag", ostern.addDays(49)});
+    feiertage.insert({"Pfingstmontag", ostern.addDays(49)});
     feiertage.insert({"Fronleichnam", ostern.addDays(60)});
 
     return (feiertage);
