@@ -385,8 +385,5 @@ void MainWindow::on_button_create_ics_clicked()
        ui->table_events->setRowCount(0); // leert die Tabelle
 
    }
-   else{
-       QMessageBox::critical(this, "iCal", "Something went wrong!");
-   }
    fclose(o_file);
 }
