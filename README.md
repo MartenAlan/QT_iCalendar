@@ -76,28 +76,19 @@ Im Ordner releases befinden sich nach Releasenummer sortiert die jeweiligen Zip-
 <!-- USAGE EXAMPLES -->
 ## Features
 
-Alle Eingabefelder sind an das iCalendar-Format angelehnt, somit gibt es Verlinkungen zu der jeweiligen Dokumentation auf icalendar.org.
+Alle Eingabefelder sind an das iCalendar-Format angelehnt.
 
-![UI_m](https://user-images.githubusercontent.com/69800773/151926765-d8d1e28e-2a61-4ba0-8f9c-38a82e0cc391.png)
-
-<p>🔴 Die benötigten Elemente: Titel, Start- und Enddatum und eine längere Beschreibung (optional) </p>
- 
-<p>🟢Geographischen Elemente: Die <a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-7-location.html">Addresse</a> oder der <a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-6-geographic-position.html">Längen- und Breitengrad</a>.</p>
-<p>🔵<a href="https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html">Wiederholungen</a>: Das Event kann vom täglichen bis jährlichen Rythmus wiederholt werden. 
- Ende der Wiederholung: Das Event kann entweder nach einer bestimmten Anzahl enden oder ab einem Enddatum. Außerdem kann ausgewählt werden, dass die Wiederholung des Events nie endet. </p>
-<p>🟡<a href="https://icalendar.org/iCalendar-RFC-5545/3-6-6-alarm-component.html">Alarm</a>: Ein Alarm, welcher entweder als Sound- oder angezeigte Nachricht verwendet werden kann.</p>
-<p>🟠<a href="https://icalendar.org/iCalendar-RFC-5545/3-8-1-9-priority.html">Priorität</a>: Möglich von 0 ( sehr unwichtig ) bis 9 ( sehr wichtig ).</p>
-<p>🟣Feiertage: Hier können die Feiertage mit dem Button "Get" angezeigt werden. Mit der Checkbox kann sich für ein Export entschieden werden.</p>
+![Screenshot 2022-04-26 100706](https://user-images.githubusercontent.com/69800773/165252930-89bea647-d7c3-418d-a56b-d6941115518e.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Speichern von mehreren Events in einem Kalender
-- [ ] Löschen von Events in einem Kalender
+
+- [x] Speichern von mehreren Events in einem Kalender
+- [x] Löschen von Events in einem Kalender
 - [ ] Importieren von ICalendar-Dateien zum Bearbeiten
 
 

@@ -50,18 +50,18 @@ QDate getOstersonntag(int year){
 // Hinzufügen von allen Feiertagen ausgehend vom Osterdatum
 map <string, QDate> getOsterfeiertage(QDate ostern){
 
-    map <string, QDate> feiertage = {{"Osternsonntag", ostern},
+    map <string, QDate> feiertage = {{"Ostersonntag", ostern},
                                        };
     feiertage.insert({"Rosenmontag", ostern.addDays(-48)});
     feiertage.insert({"Faschingsdienstag", ostern.addDays(-47)});
-    feiertage.insert({"Aschenmittwoch", ostern.addDays(-46)});
+    feiertage.insert({"Aschermittwoch", ostern.addDays(-46)});
     feiertage.insert({"Palmsonntag", ostern.addDays(-7)});
     feiertage.insert({"Gründonnerstag", ostern.addDays(-3)});
     feiertage.insert({"Karfreitag", ostern.addDays(-2)});
     feiertage.insert({"Karsamstag", ostern.addDays(-1)});
     feiertage.insert({"Ostermontag", ostern.addDays(1)});
     feiertage.insert({"Christi Himmelfahrt", ostern.addDays(39)});
-    feiertage.insert({"Pfingsmontag", ostern.addDays(49)});
+    feiertage.insert({"Pfingstmontag", ostern.addDays(49)});
     feiertage.insert({"Fronleichnam", ostern.addDays(60)});
 
     return (feiertage);
@@ -407,9 +407,6 @@ void MainWindow::on_button_create_ics_clicked()
        QMessageBox::information(this, "iCal", "Done Writing!");
        ui->table_events->setRowCount(0); // leert die Tabelle
 
-   }
-   else{
-       QMessageBox::critical(this, "iCal", "Something went wrong!");
    }
    fclose(o_file);
 }
