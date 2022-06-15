@@ -165,8 +165,12 @@ string VEvent::createVEventText(){
     if(priority.size()>0){
         eventText += "PRIORITY:" + priority + "\n";
     }
+    if(location.size()>0){
     eventText += "LOCATION:" + location + "\n";
-    eventText += "GEO=" + geo + "\n";
+    }
+    if(geo.size()>0){
+    eventText += "GEO:" + geo + "\n";
+    }
     eventText += "END:VEVENT\n";
     return eventText;
 }
