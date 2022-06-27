@@ -117,6 +117,29 @@ string getWeekDay(int num){
     return day;
 }
 
+QString re(QString name)
+{
+    QString tname = name;
+    static QRegularExpression re1("[^!a-zA-Z0-9\\sßÜüÄäÖö]");
+    static QRegularExpression re2("[!]");
+    static QRegularExpression re3("\\s+");
+    name.remove(re1);
+    name.remove(re2);
+    name.replace(re3, " ");
+    QMessageBox msgBox;
+    msgBox.setText("Soll Event als " + name + " gespeichert werden?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setButtonText(QMessageBox::Yes, "Ja");
+    msgBox.setButtonText(QMessageBox::No, "Nein");
+    msgBox.setDefaultButton(QMessageBox::Yes);
+    int ret = msgBox.exec();
+    if (ret == QMessageBox::Yes){
+        tname = name;
+    }
+
+    return tname;
+};
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -239,7 +262,7 @@ void MainWindow::on_editCalendar_button_clicked()
 // Fügt einen Termin in die Termintabelle hinzu
 void MainWindow::on_button_add_event_clicked()
 {
-     QTableWidgetItem* name = new QTableWidgetItem(ui->titel->toPlainText());
+     QTableWidgetItem* name = new QTableWidgetItem(re(ui->titel->toPlainText()));
      QTableWidgetItem* dtstart = new QTableWidgetItem(ui->input_dtstart->dateTime().toString("yyyyMMddTHHmmss"));
      QTableWidgetItem* dtend = new QTableWidgetItem(ui->input_dtend->dateTime().toString("yyyyMMddTHHmmss"));
      QTableWidgetItem* priority = new QTableWidgetItem();
