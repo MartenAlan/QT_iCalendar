@@ -408,11 +408,34 @@ string importCalenderinfo(string t, string exp){
     return cal_name;
 }
 
+string getAlarm(string et){
+    string va;
+    regex expression("BEGIN:VALARM(\n|.)*?END:VALARM");
+    smatch m;
+    string alarmText;
+    while(regex_search(et, m, expression)){
+        alarmText = m[1];
+    et = m.suffix();
+        }
+    return alarmText;
+}
+
 VEvent fillEvent(string et){
     VEvent newEvent;
     newEvent.description = importCalenderinfo(et, "DESCRIPTION:");
     newEvent.summary = importCalenderinfo(et, "SUMMARY:");
-    cout << newEvent.description << endl;
+    newEvent.dtstart = importCalenderinfo(et, "DTSTART:");
+    newEvent.dtend = importCalenderinfo(et, "DTEND:");
+    newEvent.dtstamp = importCalenderinfo(et, "DTSTAMP:");
+    newEvent.priority = importCalenderinfo(et, "PRIORITY:");
+    newEvent.geo = importCalenderinfo(et, "GEO:");
+    newEvent.location = importCalenderinfo(et, "LOCATION:");
+    newEvent.uid = importCalenderinfo(et, "UID:");
+    newEvent.rrule = importCalenderinfo(et, "RRULE:");
+
+    // VAlarm noch, etwas komplizierter
+    newEvent.va = getAlarm(et);
+
     return newEvent;
 }
 
@@ -433,6 +456,7 @@ list<VEvent> getEvents(string t){
 }
 
 
+
 void MainWindow::on_button_ics_import_clicked()
 {
     string line;
@@ -448,11 +472,48 @@ void MainWindow::on_button_ics_import_clicked()
     string cal_name = importCalenderinfo(text, "PRODID:");
     string cal_version = importCalenderinfo(text, "VERSION:");
     list<VEvent> eventList = getEvents(text);
+    int event_count = eventList.size();
     importWindow importW;
     importW.setCalendarName(QString::fromStdString(cal_name));
-    importW.fillTable(eventList);
+    importW.getCount(event_count);
     importW.setModal(true);
     importW.exec();
+
+
+    ui->label_calendar_name->setText(QString::fromStdString(cal_name));
+    ui->label_version->setText(QString::fromStdString(cal_version));
+
+
+    for (VEvent x : eventList){
+        QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(x.summary));
+        QTableWidgetItem* dtstart = new QTableWidgetItem(QString::fromStdString(x.dtstart));
+        QTableWidgetItem* dtend = new QTableWidgetItem(QString::fromStdString(x.dtend));
+        QTableWidgetItem* priority = new QTableWidgetItem(QString::fromStdString(x.priority));
+        QTableWidgetItem* location = new QTableWidgetItem(QString::fromStdString(x.location));
+        QTableWidgetItem* geo = new QTableWidgetItem(QString::fromStdString(x.geo));
+        QTableWidgetItem* beschreibung = new QTableWidgetItem(QString::fromStdString(x.description));
+        QTableWidgetItem* rrule = new QTableWidgetItem(QString::fromStdString(x.rrule));
+        QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(x.va));
+        QTableWidgetItem* dtstamp = new QTableWidgetItem(QString::fromStdString(x.dtstamp));
+        QTableWidgetItem* uid = new QTableWidgetItem(QString::fromStdString(x.uid));
+        QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+
+        int row = ui->table_events->rowCount();
+        ui->table_events->insertRow(row);
+        ui->table_events->setItem(row,0,name);
+        ui->table_events->setItem(row,1,loeschen);
+        ui->table_events->setItem(row,2,dtstart);
+        ui->table_events->setItem(row,3,dtend);
+        ui->table_events->setItem(row,4,beschreibung);
+        ui->table_events->setItem(row,5,rrule);
+        ui->table_events->setItem(row,6,valarm);
+        ui->table_events->setItem(row,7,geo);
+        ui->table_events->setItem(row,8,location);
+        ui->table_events->setItem(row,9,priority);
+        ui->table_events->setItem(row,10,dtstamp);
+        ui->table_events->setItem(row,11,uid);
+    }
+
     }
     else{
         QMessageBox::critical(this, "iCal", "Something went wrong!");

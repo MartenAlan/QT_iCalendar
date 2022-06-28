@@ -17,7 +17,7 @@ public:
     explicit importWindow(QWidget *parent = nullptr);
     ~importWindow();
     void setCalendarName(QString prodid);
-    void fillTable(list<VEvent> eventlist);
+    void getCount(int count);
 
 private slots:
 
