@@ -7,211 +7,34 @@
     <x>0</x>
     <y>0</y>
     <width>1311</width>
-    <height>804</height>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>iCalendar (v1.1.0)</string>
+   <string>iCalendar (v1.3.0)</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>280</y>
-      <width>381</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Beschreibung</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="beschreibung"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>180</y>
-      <width>236</width>
-      <height>87</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Titel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="titel"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="btn_clear">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>690</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Clear</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>480</y>
-      <width>216</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QRadioButton" name="radio_geo">
-       <property name="text">
-        <string>Geographische Koordinaten</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="radio_adress">
-       <property name="text">
-        <string>Adresse</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QFrame" name="geodata_frame">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>470</y>
-      <width>160</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_10">
-       <item>
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Breitengrad</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDoubleSpinBox" name="longitude"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_9">
-       <item>
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Längengrad</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDoubleSpinBox" name="latitude"/>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QFrame" name="adress_frame">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>550</y>
-      <width>160</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_11">
-       <item>
-        <widget class="QLabel" name="city_label">
-         <property name="text">
-          <string>Stadt</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPlainTextEdit" name="city_text"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_13">
-       <item>
-        <widget class="QLabel" name="plz_label">
-         <property name="text">
-          <string>PLZ</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPlainTextEdit" name="plz_text"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_12">
-       <item>
-        <widget class="QLabel" name="street_label">
-         <property name="text">
-          <string>Straße</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPlainTextEdit" name="street_text"/>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>851</x>
-      <y>0</y>
-      <width>451</width>
-      <height>251</height>
+      <x>870</x>
+      <y>70</y>
+      <width>431</width>
+      <height>261</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <widget class="QLabel" name="label_9">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string>Wiederholung</string>
        </property>
@@ -878,17 +701,885 @@
      </item>
     </layout>
    </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>0</y>
+      <width>31</width>
+      <height>841</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>421</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <family>Segoe UI Historic</family>
+           <pointsize>20</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>QT_iCalendar</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>12</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_22">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Kalendar-Informationen</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_23">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Version</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_version">
+           <property name="text">
+            <string>2.0</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_24">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Product Identifier</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_prod_id">
+           <property name="text">
+            <string>//MS//QT_iCalendar//de</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_23">
+           <property name="text">
+            <string>Kalendarname</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_calendar_name">
+           <property name="text">
+            <string>Neuer Kalender</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>87</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editCalendar_button">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Informationen bearbeiten</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>87</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_19">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Optionen</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>87</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="button_ics_import">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>ICS Importieren</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>87</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="midLineWidth">
+        <number>3</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox_feiertage">
+       <property name="text">
+        <string>Feiertage exportieren</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLabel" name="label_21">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Jahr</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_jahr">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="midLineWidth">
+        <number>3</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>87</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="button_create_ics">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>iCalender Datei erstellen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>87</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_27">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Terminliste</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="table_events">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <column>
+          <property name="text">
+           <string>Titel</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Löschen</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Startdatum</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Enddatum</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Beschreibung</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>RRule</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>VAlarm</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Koordinaten</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Adresse</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Priorität</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Erstellungsdatum</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Unique Identifier</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>20</y>
+      <width>411</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="7" column="1">
+      <widget class="QDateTimeEdit" name="input_dtend">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Titel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Unique Identifier</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QFrame" name="priority_frame">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <layout class="QHBoxLayout" name="priority_layout">
+        <item>
+         <widget class="QLabel" name="label_priority_low">
+          <property name="text">
+           <string>niedrig</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="priority">
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>9</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_priority_high">
+          <property name="text">
+           <string>hoch</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QDateTimeEdit" name="input_dtstart">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_24">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>20</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Neuer Termin</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPlainTextEdit" name="beschreibung">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="label_25">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allgemeine Informationen</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Beschreibung</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPlainTextEdit" name="titel">
+       <property name="maximumSize">
+        <size>
+         <width>10000000</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Startdatum</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QCheckBox" name="priority_check">
+       <property name="text">
+        <string>Priorität</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_id">
+       <property name="minimumSize">
+        <size>
+         <width>98</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Enddatum</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QRadioButton" name="radio_geo">
+         <property name="text">
+          <string>Geographische Koordinaten</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radio_adress">
+         <property name="text">
+          <string>Adresse</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="9" column="1">
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="geodata_frame">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>120</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="topMargin">
+           <number>25</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Längengrad</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="latitude"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Breitengrad</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="longitude"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="adress_frame">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>120</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QFormLayout" name="formLayout">
+            <property name="horizontalSpacing">
+             <number>7</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>9</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="city_label">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Stadt</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPlainTextEdit" name="city_text">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>34</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="plz_label">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>PLZ</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPlainTextEdit" name="plz_text">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>34</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QPlainTextEdit" name="street_text">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>34</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="street_label">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Straße</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="enabled">
      <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>260</y>
-      <width>401</width>
+      <x>890</x>
+      <y>330</y>
+      <width>411</width>
       <height>111</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="title">
      <string>endet</string>
@@ -896,7 +1587,7 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>0</x>
        <y>20</y>
        <width>372</width>
        <height>61</height>
@@ -932,560 +1623,231 @@
       </item>
      </layout>
     </widget>
-    <widget class="QSpinBox" name="count">
+    <widget class="QWidget" name="horizontalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>67</width>
-       <height>23</height>
+       <x>0</x>
+       <y>70</y>
+       <width>231</width>
+       <height>41</height>
       </rect>
      </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="value">
-      <number>1</number>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QSpinBox" name="count">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="until">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>110</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
-    <widget class="QDateEdit" name="until">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>60</y>
-       <width>81</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
-   <widget class="QFrame" name="priority_frame">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>410</y>
-      <width>231</width>
-      <height>51</height>
+      <x>880</x>
+      <y>570</y>
+      <width>401</width>
+      <height>91</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="priority_layout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_priority_low">
-       <property name="text">
-        <string>niedrig</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="priority">
-       <property name="minimum">
-        <number>0</number>
-       </property>
-       <property name="maximum">
-        <number>9</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_priority_high">
-       <property name="text">
-        <string>hoch</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QCheckBox" name="priority_check">
-    <property name="geometry">
-     <rect>
-      <x>920</x>
-      <y>400</y>
-      <width>111</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Priorität</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>60</y>
-      <width>390</width>
-      <height>55</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
-     <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Unique Identifier</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_id">
-       <property name="minimumSize">
-        <size>
-         <width>98</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>31</width>
-      <height>841</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>411</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label_22">
+      <widget class="QPushButton" name="button_add_event">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>Kalendar</string>
+        <string>Termin hinzufügen</string>
        </property>
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_23">
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Version</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_version">
-         <property name="text">
-          <string>2.0</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_24">
-       <item>
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Product Identifier</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_prod_id">
-         <property name="text">
-          <string>//MS//QT_iCalendar//de</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
-       <item>
-        <widget class="QLabel" name="label_23">
-         <property name="text">
-          <string>Kalendarname</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_calendar_name">
-         <property name="text">
-          <string>Name</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="label_25">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>20</y>
-      <width>259</width>
-      <height>33</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Neuer Termin</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="editCalendar_button">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>260</y>
-      <width>231</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Kalendarinformationen ändern</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_add_event">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>690</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Event</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="table_events">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>560</y>
-      <width>421</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
-    </property>
-    <column>
-     <property name="text">
-      <string>Titel</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Löschen</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Startdatum</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Enddatum</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Beschreibung</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>RRule</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>VAlarm</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Koordinaten</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Adresse</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Priorität</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Erstellungsdatum</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Unique Identifier</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>470</y>
-      <width>421</width>
-      <height>74</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_22">
-     <item>
-      <widget class="QLabel" name="label_27">
+      <widget class="QPushButton" name="btn_clear">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>Terminliste</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_create_ics">
-       <property name="text">
-        <string>iCalender Datei erstellen</string>
+        <string>Daten leeren</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_jahr">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>410</y>
-      <width>139</width>
-      <height>28</height>
+      <x>880</x>
+      <y>450</y>
+      <width>401</width>
+      <height>112</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>26</width>
-      <height>72</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Jahr</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>390</y>
-      <width>449</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLabel" name="label_3">
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="alarm_checkBox">
          <property name="text">
-          <string>Startdatum</string>
+          <string>Alarm hinzufügen</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="input_dtstart"/>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Enddatum</string>
-       </property>
-      </widget>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_20">
+       <item>
+        <widget class="QLineEdit" name="alarm_line">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>15</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="alarm_comboBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>80</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Minuten davor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Stunden davor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tagen davor</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="alarm_type">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Ton</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Display</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
      </item>
-     <item>
-      <widget class="QDateTimeEdit" name="input_dtend"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QCheckBox" name="checkBox_feiertage">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>151</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Export Feiertage</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_26">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>330</y>
-      <width>121</width>
-      <height>79</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Feiertage</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>510</y>
-      <width>199</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_20">
-     <item>
-      <widget class="QLineEdit" name="alarm_line">
-       <property name="enabled">
-        <bool>false</bool>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_34">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
-        <string>15</string>
+        <string>Alarm</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="alarm_comboBox">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>Minuten davor</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Stunden davor</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Tagen davor</string>
-        </property>
-       </item>
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QComboBox" name="alarm_type">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>560</y>
-      <width>199</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Ton</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Display</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QCheckBox" name="alarm_checkBox">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>480</y>
-      <width>199</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Alarm</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_ics_import">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>380</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ICS Importieren</string>
-    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -1501,17 +1863,10 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>titel</tabstop>
-  <tabstop>beschreibung</tabstop>
-  <tabstop>input_dtstart</tabstop>
-  <tabstop>input_dtend</tabstop>
   <tabstop>radio_geo</tabstop>
   <tabstop>radio_adress</tabstop>
   <tabstop>longitude</tabstop>
   <tabstop>latitude</tabstop>
-  <tabstop>city_text</tabstop>
-  <tabstop>plz_text</tabstop>
-  <tabstop>street_text</tabstop>
   <tabstop>interval_daily</tabstop>
   <tabstop>interval_monthly</tabstop>
   <tabstop>onday_monthly</tabstop>
@@ -1530,7 +1885,6 @@
   <tabstop>until_radio</tabstop>
   <tabstop>radioButton_8</tabstop>
   <tabstop>count</tabstop>
-  <tabstop>until</tabstop>
   <tabstop>priority_check</tabstop>
   <tabstop>priority</tabstop>
   <tabstop>alarm_line</tabstop>
@@ -1552,22 +1906,6 @@
     <hint type="destinationlabel">
      <x>690</x>
      <y>495</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radio_adress</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>adress_frame</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>486</x>
-     <y>551</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>690</x>
-     <y>596</y>
     </hint>
    </hints>
   </connection>
@@ -1696,6 +2034,22 @@
     <hint type="destinationlabel">
      <x>188</x>
      <y>462</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_adress</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>adress_frame</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>486</x>
+     <y>551</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>690</x>
+     <y>596</y>
     </hint>
    </hints>
   </connection>

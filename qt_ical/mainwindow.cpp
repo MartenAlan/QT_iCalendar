@@ -472,6 +472,37 @@ list<VEvent> getEvents(string t){
     return eventlist;
 }
 
+void MainWindow::fillTable(list<VEvent> eL){
+    for (VEvent x : eL){
+        QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(x.summary));
+        QTableWidgetItem* dtstart = new QTableWidgetItem(QString::fromStdString(x.dtstart));
+        QTableWidgetItem* dtend = new QTableWidgetItem(QString::fromStdString(x.dtend));
+        QTableWidgetItem* priority = new QTableWidgetItem(QString::fromStdString(x.priority));
+        QTableWidgetItem* location = new QTableWidgetItem(QString::fromStdString(x.location));
+        QTableWidgetItem* geo = new QTableWidgetItem(QString::fromStdString(x.geo));
+        QTableWidgetItem* beschreibung = new QTableWidgetItem(QString::fromStdString(x.description));
+        QTableWidgetItem* rrule = new QTableWidgetItem(QString::fromStdString(x.rrule));
+        QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(x.va));
+        QTableWidgetItem* dtstamp = new QTableWidgetItem(QString::fromStdString(x.dtstamp));
+        QTableWidgetItem* uid = new QTableWidgetItem(QString::fromStdString(x.uid));
+        QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+
+        int row = ui->table_events->rowCount();
+        ui->table_events->insertRow(row);
+        ui->table_events->setItem(row,0,name);
+        ui->table_events->setItem(row,1,loeschen);
+        ui->table_events->setItem(row,2,dtstart);
+        ui->table_events->setItem(row,3,dtend);
+        ui->table_events->setItem(row,4,beschreibung);
+        ui->table_events->setItem(row,5,rrule);
+        ui->table_events->setItem(row,6,valarm);
+        ui->table_events->setItem(row,7,geo);
+        ui->table_events->setItem(row,8,location);
+        ui->table_events->setItem(row,9,priority);
+        ui->table_events->setItem(row,10,dtstamp);
+        ui->table_events->setItem(row,11,uid);
+    }
+}
 
 
 void MainWindow::on_button_ics_import_clicked()
@@ -484,60 +515,33 @@ void MainWindow::on_button_ics_import_clicked()
         ICalendar newics = ICalendar();
     while(getline(myfile, line)){
         text += line + "\n";
-    }
+        }
     myfile.close();
+
     string cal_name = importCalenderinfo(text, "PRODID:");
     string cal_version = importCalenderinfo(text, "VERSION:");
     list<VEvent> eventList = getEvents(text);
     int event_count = eventList.size();
 
-
     QMessageBox importMsgBox;
     importMsgBox.setModal(true);
-    importMsgBox.setText("Soll der Kalender " + QString::fromStdString(cal_name) + " importiert werden?\n Der Kalender enthält " + QString::number(event_count) + " Termine.");
+    importMsgBox.setText("Soll der Kalender " + QString::fromStdString(cal_name)
+                         + " importiert werden?\n Der Kalender enthält "
+                         + QString::number(event_count) + " Termine.");
     importMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     importMsgBox.setButtonText(QMessageBox::Yes, "Ja");
     importMsgBox.setButtonText(QMessageBox::No, "Nein");
     importMsgBox.setDefaultButton(QMessageBox::Yes);
+
+
     int ret = importMsgBox.exec();
     if (ret == QMessageBox::Yes){
         cout << "Yes" << endl;
         ui->label_calendar_name->setText(QString::fromStdString(cal_name));
         ui->label_version->setText(QString::fromStdString(cal_version));
-
         ui->table_events->setRowCount(0);
-        for (VEvent x : eventList){
-            QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(x.summary));
-            QTableWidgetItem* dtstart = new QTableWidgetItem(QString::fromStdString(x.dtstart));
-            QTableWidgetItem* dtend = new QTableWidgetItem(QString::fromStdString(x.dtend));
-            QTableWidgetItem* priority = new QTableWidgetItem(QString::fromStdString(x.priority));
-            QTableWidgetItem* location = new QTableWidgetItem(QString::fromStdString(x.location));
-            QTableWidgetItem* geo = new QTableWidgetItem(QString::fromStdString(x.geo));
-            QTableWidgetItem* beschreibung = new QTableWidgetItem(QString::fromStdString(x.description));
-            QTableWidgetItem* rrule = new QTableWidgetItem(QString::fromStdString(x.rrule));
-            QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(x.va));
-            QTableWidgetItem* dtstamp = new QTableWidgetItem(QString::fromStdString(x.dtstamp));
-            QTableWidgetItem* uid = new QTableWidgetItem(QString::fromStdString(x.uid));
-            QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
-
-            int row = ui->table_events->rowCount();
-            ui->table_events->insertRow(row);
-            ui->table_events->setItem(row,0,name);
-            ui->table_events->setItem(row,1,loeschen);
-            ui->table_events->setItem(row,2,dtstart);
-            ui->table_events->setItem(row,3,dtend);
-            ui->table_events->setItem(row,4,beschreibung);
-            ui->table_events->setItem(row,5,rrule);
-            ui->table_events->setItem(row,6,valarm);
-            ui->table_events->setItem(row,7,geo);
-            ui->table_events->setItem(row,8,location);
-            ui->table_events->setItem(row,9,priority);
-            ui->table_events->setItem(row,10,dtstamp);
-            ui->table_events->setItem(row,11,uid);
+        fillTable(eventList);
         }
-
     }
-    }
-
 }
 
