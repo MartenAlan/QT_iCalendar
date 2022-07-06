@@ -7,6 +7,7 @@
 #include <ctime>
 #include <string.h>
 #include <map>
+#include <regex>
 
 using namespace std;
 
@@ -239,9 +240,6 @@ void MainWindow::clearInputs(){
     ui->count_radio->setChecked(true);
 
     ui->alarm_type->setCurrentIndex(0);
-
-    //ui->verticalLayoutWidget_6->repaint();
-    //ui->verticalLayoutWidget_7->repaint();
     ui->tabWidget->setCurrentIndex(0);
 }
 
@@ -410,3 +408,137 @@ void MainWindow::on_button_create_ics_clicked()
    }
    fclose(o_file);
 }
+
+string importCalenderinfo(string t, string exp){
+    string test = exp;
+    test += "(.*)\n";
+    regex expression(test);
+
+    smatch m;
+    string cal_name;
+    while(regex_search(t, m, expression)){
+        cal_name = m[1];
+    t = m.suffix();
+        }
+    return cal_name;
+}
+
+string getAlarm(string et){
+    string va;
+    regex expression("BEGIN:VALARM\n((\n|.)*)END:VALARM");
+    smatch m;
+    string alarmText;
+
+    while(regex_search(et, m, expression)){
+        alarmText = m[1];
+    et = m.suffix();
+        }
+    return alarmText;
+}
+
+VEvent fillEvent(string et){
+    VEvent newEvent;
+    newEvent.description = importCalenderinfo(et, "DESCRIPTION:");
+    newEvent.summary = importCalenderinfo(et, "SUMMARY:");
+    newEvent.dtstart = importCalenderinfo(et, "DTSTART:");
+    newEvent.dtend = importCalenderinfo(et, "DTEND:");
+    newEvent.dtstamp = importCalenderinfo(et, "DTSTAMP:");
+    newEvent.priority = importCalenderinfo(et, "PRIORITY:");
+    newEvent.geo = importCalenderinfo(et, "GEO:");
+    newEvent.location = importCalenderinfo(et, "LOCATION:");
+    newEvent.uid = importCalenderinfo(et, "UID:");
+    newEvent.rrule = importCalenderinfo(et, "RRULE:");
+
+    // VAlarm noch, etwas komplizierter
+    newEvent.va = getAlarm(et);
+
+    return newEvent;
+}
+
+list<VEvent> getEvents(string t){
+    list<VEvent> eventlist;
+    regex expression("BEGIN:VEVENT(\n|.)*?END:VEVENT");
+    smatch m;
+    string eventText;
+
+    while(regex_search(t, m, expression)){
+        eventText = m[0];
+    t = m.suffix();
+    eventlist.push_back(fillEvent(eventText));
+        }
+    return eventlist;
+}
+
+void MainWindow::fillTable(list<VEvent> eL){
+    for (VEvent x : eL){
+        QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(x.summary));
+        QTableWidgetItem* dtstart = new QTableWidgetItem(QString::fromStdString(x.dtstart));
+        QTableWidgetItem* dtend = new QTableWidgetItem(QString::fromStdString(x.dtend));
+        QTableWidgetItem* priority = new QTableWidgetItem(QString::fromStdString(x.priority));
+        QTableWidgetItem* location = new QTableWidgetItem(QString::fromStdString(x.location));
+        QTableWidgetItem* geo = new QTableWidgetItem(QString::fromStdString(x.geo));
+        QTableWidgetItem* beschreibung = new QTableWidgetItem(QString::fromStdString(x.description));
+        QTableWidgetItem* rrule = new QTableWidgetItem(QString::fromStdString(x.rrule));
+        QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(x.va));
+        QTableWidgetItem* dtstamp = new QTableWidgetItem(QString::fromStdString(x.dtstamp));
+        QTableWidgetItem* uid = new QTableWidgetItem(QString::fromStdString(x.uid));
+        QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+
+        int row = ui->table_events->rowCount();
+        ui->table_events->insertRow(row);
+        ui->table_events->setItem(row,0,name);
+        ui->table_events->setItem(row,1,loeschen);
+        ui->table_events->setItem(row,2,dtstart);
+        ui->table_events->setItem(row,3,dtend);
+        ui->table_events->setItem(row,4,beschreibung);
+        ui->table_events->setItem(row,5,rrule);
+        ui->table_events->setItem(row,6,valarm);
+        ui->table_events->setItem(row,7,geo);
+        ui->table_events->setItem(row,8,location);
+        ui->table_events->setItem(row,9,priority);
+        ui->table_events->setItem(row,10,dtstamp);
+        ui->table_events->setItem(row,11,uid);
+    }
+}
+
+
+void MainWindow::on_button_ics_import_clicked()
+{
+    string line;
+    string text;
+    QString filename = QFileDialog::getOpenFileName(this, "Open file","");
+    ifstream myfile(filename.toStdString());
+    if(myfile.is_open()){
+        ICalendar newics = ICalendar();
+    while(getline(myfile, line)){
+        text += line + "\n";
+        }
+    myfile.close();
+
+    string cal_name = importCalenderinfo(text, "PRODID:");
+    string cal_version = importCalenderinfo(text, "VERSION:");
+    list<VEvent> eventList = getEvents(text);
+    int event_count = eventList.size();
+
+    QMessageBox importMsgBox;
+    importMsgBox.setModal(true);
+    importMsgBox.setText("Soll der Kalender " + QString::fromStdString(cal_name)
+                         + " importiert werden?\n Der Kalender enthält "
+                         + QString::number(event_count) + " Termine.");
+    importMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    importMsgBox.setButtonText(QMessageBox::Yes, "Ja");
+    importMsgBox.setButtonText(QMessageBox::No, "Nein");
+    importMsgBox.setDefaultButton(QMessageBox::Yes);
+
+
+    int ret = importMsgBox.exec();
+    if (ret == QMessageBox::Yes){
+        cout << "Yes" << endl;
+        ui->label_calendar_name->setText(QString::fromStdString(cal_name));
+        ui->label_version->setText(QString::fromStdString(cal_version));
+        ui->table_events->setRowCount(0);
+        fillTable(eventList);
+        }
+    }
+}
+

@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QDate>
 #include <QRegularExpression>
+#include <icalendar.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +37,10 @@ private slots:
     void on_table_events_cellClicked(int row, int column);
 
     void on_button_create_ics_clicked();
+
+    void on_button_ics_import_clicked();
+
+    void fillTable(list<VEvent> eL);
 
 private:
     Ui::MainWindow *ui;

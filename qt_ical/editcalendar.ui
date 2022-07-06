@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
-    <height>412</height>
+    <width>488</width>
+    <height>209</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>370</y>
+     <y>160</y>
      <width>461</width>
      <height>32</height>
     </rect>
@@ -32,64 +32,79 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>80</y>
-     <width>261</width>
-     <height>181</height>
+     <x>20</x>
+     <y>10</y>
+     <width>431</width>
+     <height>141</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <property name="spacing">
-       <number>6</number>
+     <widget class="QLabel" name="label_header">
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="leftMargin">
-       <number>10</number>
+      <property name="text">
+       <string>Kalender-Informationen</string>
       </property>
-      <item>
-       <widget class="QLabel" name="label_name">
-        <property name="text">
-         <string>Name</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="name"/>
-      </item>
-     </layout>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="label_prodid">
-        <property name="text">
-         <string>Version</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="prodid">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="labelAlignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      </property>
+      <item row="1" column="0">
        <widget class="QLabel" name="label_version">
         <property name="text">
          <string>Product Identifier</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="prodid">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_prodid">
+        <property name="text">
+         <string>Version</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
        <widget class="QLabel" name="version">
         <property name="text">
          <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_name">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="name">
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
         </property>
        </widget>
       </item>
