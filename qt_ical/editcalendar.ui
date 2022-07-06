@@ -40,7 +40,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_header">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -56,7 +56,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QFormLayout" name="formLayout_2">
+     <layout class="QFormLayout" name="formLayout">
       <property name="labelAlignment">
        <set>Qt::AlignCenter</set>
       </property>

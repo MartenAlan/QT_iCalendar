@@ -730,7 +730,6 @@
         <widget class="QLabel" name="label_20">
          <property name="font">
           <font>
-           <family>Segoe UI Historic</family>
            <pointsize>20</pointsize>
            <bold>true</bold>
           </font>
@@ -1294,7 +1293,6 @@
        </property>
        <property name="font">
         <font>
-         <family>Segoe UI</family>
          <pointsize>20</pointsize>
          <bold>true</bold>
         </font>
@@ -1834,7 +1832,6 @@
       <widget class="QLabel" name="label_34">
        <property name="font">
         <font>
-         <family>Segoe UI</family>
          <pointsize>15</pointsize>
          <bold>true</bold>
         </font>
@@ -1859,6 +1856,21 @@
   <action name="actionOptionen">
    <property name="text">
     <string>Optionen</string>
+   </property>
+  </action>
+  <action name="actionKalender_Informationen_bearbeiten">
+   <property name="text">
+    <string>Kalender-Informationen bearbeiten</string>
+   </property>
+  </action>
+  <action name="actionICS_importieren_2">
+   <property name="text">
+    <string>ICS importieren</string>
+   </property>
+  </action>
+  <action name="actionICS_erstellen">
+   <property name="text">
+    <string>ICS erstellen</string>
    </property>
   </action>
  </widget>
