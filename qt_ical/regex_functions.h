@@ -10,8 +10,8 @@ class regex_functions
 {
 public:
     regex_functions();
-    static void test();
     static string getSingleRegexValue(regex exp, string s, smatch m);
+    static bool checkDayCheckBox(regex exp, string s, smatch m);
 };
 
 #endif // REGEX_FUNCTIONS_H

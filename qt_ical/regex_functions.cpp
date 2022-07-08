@@ -7,10 +7,6 @@ regex_functions::regex_functions()
 
 }
 
-void regex_functions::test(){
-    cout << "t";
-}
-
 string regex_functions::getSingleRegexValue(regex exp, string s, smatch m){
     string conv;
     while(regex_search(s, m, exp)){
@@ -18,4 +14,14 @@ string regex_functions::getSingleRegexValue(regex exp, string s, smatch m){
     s = m.suffix();
         }
     return conv;
+}
+
+bool regex_functions::checkDayCheckBox(regex exp, string s, smatch m){
+
+    if(regex_search(s, m, exp)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }

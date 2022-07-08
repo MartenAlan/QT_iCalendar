@@ -12,16 +12,6 @@
 
 using namespace std;
 
-
-// Fenster bei fragwürdigen Eingaben: PLZ, Stadt, Straße
-
-// alle Regex Funktionen auslagern
-
-// alle Text oder Int Funktionen auslagern
-
-// damit wirklich nur MainWindowFunktionen in MainWindow sind
-
-
 // Zufälliger Hexastring für den Unique Identifier
 string hex_string(int length)
 {
@@ -555,7 +545,8 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                 regex expression_rrule("FREQ=([A-Z]+);");
                 smatch m;
                 string conv = temp.toStdString();
-                string freq, interval, bymonthday, byday, bysetpos;
+                string freq, interval, bymonthday, byday, bysetpos, bymonth;
+                int real_bysetpos;
 
                 freq = regex_functions::getSingleRegexValue(regex("FREQ=([A-Z]+);"), conv, m);
 
@@ -567,9 +558,15 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                 }
                 else if(freq.compare("WEEKLY") == false){
                    ui->tabWidget->setCurrentIndex(2);
-
-                   // noch nicht fertig
+                    ui->monday->setChecked(regex_functions::checkDayCheckBox(regex("MO,"), conv, m));
+                     ui->tuesday->setChecked(regex_functions::checkDayCheckBox(regex("TU,"), conv, m));
+                      ui->wednesday->setChecked(regex_functions::checkDayCheckBox(regex("WE,"), conv, m));
+                       ui->thursday->setChecked(regex_functions::checkDayCheckBox(regex("TH,"), conv, m));
+                        ui->friday->setChecked(regex_functions::checkDayCheckBox(regex("FR,"), conv, m));
+                         ui->saturday->setChecked(regex_functions::checkDayCheckBox(regex("SA,"), conv, m));
+                          ui->sunday->setChecked(regex_functions::checkDayCheckBox(regex("SO,"), conv, m));
                 }
+
                 else if(freq.compare("MONTHLY") == false){
                    ui->tabWidget->setCurrentIndex(3);
 
@@ -584,9 +581,8 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                    else if(regex_search(conv, m, regex("BYSETPOS"))){
                         ui->on_monthly->setChecked(true);
                         byday = regex_functions::getSingleRegexValue(regex("BYDAY=([A-Z]+)"), conv, m);
-                        bysetpos = regex_functions::getSingleRegexValue(regex("BYSETPOS=([0-9]+)"), conv, m);
-                        int real_bysetpos;
-                        if (bysetpos.compare("-1")){
+                        bysetpos = regex_functions::getSingleRegexValue(regex("BYSETPOS=([-0-9]+)"), conv, m);
+                        if (!bysetpos.compare("-1")){
                             real_bysetpos = 4;
                         }
                         else{
@@ -595,9 +591,6 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
 
                         ui->monthly_combo->setCurrentIndex(real_bysetpos);
                         ui->monthly_combo2->setCurrentIndex(Weekday_Abb_to_Int(byday));
-                        cout << byday << endl;
-                        cout << Weekday_Abb_to_Int(byday) << endl;
-                        cout << bysetpos << endl;
                    }
 
 
@@ -605,13 +598,40 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                 else if(freq.compare("YEARLY") == false){
                    ui->tabWidget->setCurrentIndex(4);
 
-                   // noch nicht fertig
-                }
+                   if(regex_search(conv, m, regex("BYMONTHDAY"))){
+                    bymonthday = regex_functions::getSingleRegexValue(regex("BYMONTHDAY=([0-9]+)"), conv, m);
+                    ui->monthday->setValue(std::stoi(bymonthday));
 
+                    bymonth = regex_functions::getSingleRegexValue(regex("BYMONTH=([0-9]+)"), conv, m);
+                    ui->month_combo2->setCurrentIndex(std::stoi(bymonth) - 1);
+
+                            ui->yearly_radio2->setChecked(true);
+                   }
+
+                   else if(regex_search(conv, m, regex("BYSETPOS"))){
+
+
+                       bymonth = regex_functions::getSingleRegexValue(regex("BYMONTH=([0-9]+)"), conv, m);
+                       ui->month_combo->setCurrentIndex(std::stoi(bymonth) - 1);
+
+                       bysetpos = regex_functions::getSingleRegexValue(regex("BYSETPOS=([-0-9]+)"), conv, m);
+                       if (!bysetpos.compare("-1")){
+                           real_bysetpos = 4;
+                       }
+                       else{
+                           real_bysetpos = std::stoi(bysetpos) - 1;
+                       }
+                        ui->yearly_setpos->setCurrentIndex(real_bysetpos);
+
+
+                        byday = regex_functions::getSingleRegexValue(regex("BYDAY=([A-Z]+)"), conv, m);
+                        ui->yearly_day->setCurrentIndex(Weekday_Abb_to_Int(byday));
+                            ui->yearly_radio1->setChecked(true);
+                   }
+
+                }
+            // endet am noch nicht hinzugefügt
             }
-            /*
-            ui->table_events->setItem(row,6,rrule);
-            ;*/
 
 
             ui->table_events->removeRow(row);
@@ -786,11 +806,10 @@ void MainWindow::on_button_ics_import_clicked()
     importMsgBox.setButtonText(QMessageBox::No, "Nein");
     importMsgBox.setDefaultButton(QMessageBox::Yes);
 
-    regex_functions::test();
+
 
     int ret = importMsgBox.exec();
     if (ret == QMessageBox::Yes){
-        cout << "Yes" << endl;
         ui->label_calendar_name->setText(QString::fromStdString(cal_name));
         ui->label_version->setText(QString::fromStdString(cal_version));
         ui->table_events->setRowCount(0);
@@ -798,4 +817,3 @@ void MainWindow::on_button_ics_import_clicked()
         }
     }
 }
-

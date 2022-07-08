@@ -69,6 +69,7 @@ void RRule::getYearly_1(string i, string y_day, int y_setpos){
     bymonth = "BYMONTH=" + i + ";";
     byday = "BYDAY=";
     byday += y_day;
+    bysetpos = "BYSETPOS=";
     if (y_setpos == 4){
         bysetpos += "-1;";
     }
@@ -78,6 +79,8 @@ void RRule::getYearly_1(string i, string y_day, int y_setpos){
 }
 
 void RRule::getYearly_2(string i, string by_md){
+    state = "YEARLY";
+
     bymonth = "BYMONTH=" + i + ";";
     byday = "BYMONTHDAY=" + by_md + ";";
 }
