@@ -7,6 +7,7 @@
 #include <QDate>
 #include <QRegularExpression>
 #include <icalendar.h>
+#include <editcalendar.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,6 +21,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void clearInputs();
+    void test();
 
 private slots:
 
@@ -41,6 +43,8 @@ private slots:
     void on_button_ics_import_clicked();
 
     void fillTable(list<VEvent> eL);
+
+
 
 private:
     Ui::MainWindow *ui;

@@ -8,8 +8,19 @@
 #include <string.h>
 #include <map>
 #include <regex>
+#include "regex_functions.h"
 
 using namespace std;
+
+
+// Fenster bei fragwürdigen Eingaben: PLZ, Stadt, Straße
+
+// alle Regex Funktionen auslagern
+
+// alle Text oder Int Funktionen auslagern
+
+// damit wirklich nur MainWindowFunktionen in MainWindow sind
+
 
 // Zufälliger Hexastring für den Unique Identifier
 string hex_string(int length)
@@ -79,6 +90,7 @@ string createHolidayText(int year){
            holidayText+= "BEGIN:VEVENT\n";
            holidayText += "SUMMARY:" + elem.first + "\n";
            string start = elem.second.toString("yyyyMMdd").toUtf8().constData();
+           start += "T000000";
            holidayText += "DTSTART:" + start + "\n";
            holidayText += "DURATION:P1D\n";
            holidayText += "DTSTAMP:" + dtstamp + "\n";
@@ -89,7 +101,7 @@ string createHolidayText(int year){
 }
 
 // für alle Wochentage: nimmt den Index aus einer ComboBox und gibt die passende Abkürzung zurück
-string getWeekDay(int num){
+string WeekDay_Int_to_Abb(int num){
     string day;
     switch (num){
     case 0:
@@ -116,6 +128,36 @@ string getWeekDay(int num){
     default:
         break;}
     return day;
+}
+
+// für alle Wochentage: nimmt  die passende Abkürzung und gibt den Index aus einer ComboBox zurück
+int Weekday_Abb_to_Int(string day){
+    int num;
+    if(!day.compare("MO")){
+        num = 0;
+    }
+    else if(!day.compare("TU")){
+            num = 1;
+    }
+    else if(!day.compare("WE")){
+            num = 2;
+    }
+    else if(!day.compare("TH")){
+            num = 3;
+    }
+    else if(!day.compare("FR")){
+            num = 4;
+    }
+    else if(!day.compare("SA")){
+            num = 5;
+    }
+    else if(!day.compare("SO")){
+            num = 6;
+    }
+    else{
+        num = 9999; // Fehler
+    }
+    return num;
 }
 
 QString re(QString name)
@@ -301,12 +343,12 @@ void MainWindow::on_button_add_event_clicked()
              r.getMonthly_1(to_string(ui->interval_monthly->value()), to_string(ui->monthly_spin->value()));
          }
          else if(ui->on_monthly->isChecked()==1){
-             r.getMonthly_2(to_string(ui->interval_monthly->value()),ui->monthly_combo->currentIndex(),getWeekDay(ui->monthly_combo2->currentIndex()));
+             r.getMonthly_2(to_string(ui->interval_monthly->value()),ui->monthly_combo->currentIndex(),WeekDay_Int_to_Abb(ui->monthly_combo2->currentIndex()));
              }
        break;
          case 4:
          if(ui->yearly_radio1->isChecked()==1){
-             r.getYearly_1(to_string(ui->month_combo->currentIndex()+1), getWeekDay(ui->yearly_day->currentIndex()),
+             r.getYearly_1(to_string(ui->month_combo->currentIndex()+1), WeekDay_Int_to_Abb(ui->yearly_day->currentIndex()),
                            ui->yearly_setpos->currentIndex());
 
          }
@@ -337,34 +379,248 @@ void MainWindow::on_button_add_event_clicked()
 
     QTableWidgetItem* valarm = new QTableWidgetItem(QString::fromStdString(v.buildAlarm()));
     QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+    QTableWidgetItem* bearbeiten = new QTableWidgetItem("Bearbeiten");
+
 
     QTableWidgetItem* uid = new QTableWidgetItem(ui->label_id->text());
 
     int row = ui->table_events->rowCount();
     ui->table_events->insertRow(row);
     ui->table_events->setItem(row,0,name);
-    ui->table_events->setItem(row,1,loeschen);
-    ui->table_events->setItem(row,2,dtstart);
-    ui->table_events->setItem(row,3,dtend);
-    ui->table_events->setItem(row,4,beschreibung);
-    ui->table_events->setItem(row,5,rrule);
-    ui->table_events->setItem(row,6,valarm);
-    ui->table_events->setItem(row,7,geo);
-    ui->table_events->setItem(row,8,location);
-    ui->table_events->setItem(row,9,priority);
-    ui->table_events->setItem(row,10,dtstamp);
-    ui->table_events->setItem(row,11,uid);
+    ui->table_events->setItem(row,1,bearbeiten);
+    ui->table_events->setItem(row,2,loeschen);
+    ui->table_events->setItem(row,3,dtstart);
+    ui->table_events->setItem(row,4,dtend);
+    ui->table_events->setItem(row,5,beschreibung);
+    ui->table_events->setItem(row,6,rrule);
+    ui->table_events->setItem(row,7,valarm);
+    ui->table_events->setItem(row,8,geo);
+    ui->table_events->setItem(row,9,location);
+    ui->table_events->setItem(row,10,priority);
+    ui->table_events->setItem(row,11,dtstamp);
+    ui->table_events->setItem(row,12,uid);
 
     clearInputs();
     ui->label_id->setText(QString::fromStdString(hex_string(10))); // Ändern des Unique Identifiers
 }
 
 
+string getSingleRegexValue(regex exp, string s, smatch m){
+    string conv;
+    while(regex_search(s, m, exp)){
+        conv = m[1];
+    s = m.suffix();
+        }
+    return conv;
+}
+
+
 void MainWindow::on_table_events_cellClicked(int row, int column)
 // wenn die Spalte Löschen angeklickt wurde, wird der Termin gelöscht
-{   if(column==1){
+{   if(column==2){
     ui->table_events->removeRow(row);
     QMessageBox::information(this, "iCal", "Event entfernt");}
+    else if(column==1){
+
+        QMessageBox editMsgBox;
+        editMsgBox.setModal(true);
+        editMsgBox.setText("Wollen sie den Termin wirklich bearbeiten? Die jetztigen Eingaben werden gelöscht.");
+        editMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        editMsgBox.setButtonText(QMessageBox::Yes, "Ja");
+        editMsgBox.setButtonText(QMessageBox::No, "Nein");
+        editMsgBox.setDefaultButton(QMessageBox::Yes);
+        int ret = editMsgBox.exec();
+        if (ret == QMessageBox::Yes){
+
+            clearInputs();
+
+            //fillParametersForEventEdit();
+
+            // Füllen der Parameter
+            QString temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 0)).toString();
+            ui->titel->setPlainText(temp);
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 5)).toString();
+            ui->beschreibung->setPlainText(temp);
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 12)).toString();
+            ui->label_id->setText(temp);
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 3)).toString();
+            ui->input_dtstart->setDateTime(QDateTime::fromString(temp,"yyyyMMddTHHmmss"));
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 4)).toString();
+            ui->input_dtend->setDateTime(QDateTime::fromString(temp,"yyyyMMddTHHmmss"));
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 10)).toString();
+
+            // Priority
+            if(temp.length() > 0){
+                ui->priority->setValue(temp.toInt());
+                ui->priority_check->setChecked(true);
+            }
+
+            // Geo und Location
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 8)).toString();
+            if(temp.length() > 0){
+                ui->radio_geo->setChecked(true);
+            cout << temp.toStdString() << endl;
+            string va;
+            regex expression_geo("(.+);(.+)");
+            smatch m;
+            string conv = temp.toStdString();
+            string lat, lon;
+            while(regex_search(conv, m, expression_geo)){
+                lat = m[1];
+                lon = m[2];
+            conv = m.suffix();
+                }
+            ui->latitude->setValue(std::stod(lat));
+            ui->longitude->setValue(std::stod(lon));
+            }
+
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 9)).toString();
+            if(temp.length() > 0){
+
+
+                string va;
+                regex expression_location("([0-9]{5}) (.+), (.+)");
+                smatch m;
+                string conv = temp.toStdString();
+
+                string plz, street, city;
+
+                ui->radio_adress->setChecked(true);
+                conv = temp.toStdString();
+
+                while(regex_search(conv, m, expression_location)){
+                    plz = m[1];
+                    city = m[2];
+                    street = m[3];
+                conv = m.suffix();
+                    }
+
+                ui->city_text->setPlainText(QString::fromStdString(city));
+                ui->plz_text->setPlainText(QString::fromStdString(plz));
+                ui->street_text->setPlainText(QString::fromStdString(street));
+            }
+
+            // Alarm
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 7)).toString();
+
+            if(temp.length() > 0){
+
+                ui->alarm_checkBox->setChecked(true);
+
+                string va;
+                regex expression_action("ACTION:(.+)");
+                smatch m;
+                string conv = temp.toStdString();
+
+                string action, time, time_type;
+
+                while(regex_search(conv, m, expression_action)){
+                    action = m[1];
+                conv = m.suffix();
+                    }
+
+                if(action.compare("AUDIO") == false){
+                    ui->alarm_type->setCurrentIndex(0);
+                }
+                else if(action.compare("DISPLAY") == false){
+                    ui->alarm_type->setCurrentIndex(1);
+                }
+                expression_action.assign("TRIGGER:-PT([0-9]+)([MHD])");
+
+                while(regex_search(conv, m, expression_action)){
+                    time = m[1];
+                    time_type = m[2];
+                conv = m.suffix();
+                    }
+
+                if(time_type.compare("M") == false){
+                    ui->alarm_comboBox->setCurrentIndex(0);
+                }
+                else if(time_type.compare("H") == false){
+                    ui->alarm_comboBox->setCurrentIndex(1);
+                }
+                else if(time_type.compare("D") == false){
+                    ui->alarm_comboBox->setCurrentIndex(2);
+                }
+
+                ui->alarm_line->setText(QString::fromStdString(time));
+
+            }
+
+            // RRule
+            temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 6)).toString();
+            cout << temp.toStdString() << endl;
+            if(temp.length() > 0){
+                string va;
+                regex expression_rrule("FREQ=([A-Z]+);");
+                smatch m;
+                string conv = temp.toStdString();
+                string freq, interval, bymonthday, byday, bysetpos;
+
+                freq = regex_functions::getSingleRegexValue(regex("FREQ=([A-Z]+);"), conv, m);
+
+                if(freq.compare("DAILY") == false){
+                   ui->tabWidget->setCurrentIndex(1);
+                    expression_rrule.assign("INTERVAL=([0-9]+)");
+                    interval = regex_functions::getSingleRegexValue(expression_rrule, conv, m);
+                    ui->interval_daily->setValue(std::stoi(interval));
+                }
+                else if(freq.compare("WEEKLY") == false){
+                   ui->tabWidget->setCurrentIndex(2);
+
+                   // noch nicht fertig
+                }
+                else if(freq.compare("MONTHLY") == false){
+                   ui->tabWidget->setCurrentIndex(3);
+
+                   expression_rrule.assign("BYMONTHDAY");
+                   interval = regex_functions::getSingleRegexValue(regex("INTERVAL=([0-9]+)"), conv, m);
+                   ui->interval_monthly->setValue(std::stoi(interval));
+                   if(regex_search(conv, m, regex("BYMONTHDAY"))){
+                    bymonthday = regex_functions::getSingleRegexValue(regex("BYMONTHDAY=([0-9]+)"), conv, m);
+                    ui->monthly_spin->setValue(std::stoi(bymonthday));
+                            ui->onday_monthly->setChecked(true);
+                   }
+                   else if(regex_search(conv, m, regex("BYSETPOS"))){
+                        ui->on_monthly->setChecked(true);
+                        byday = regex_functions::getSingleRegexValue(regex("BYDAY=([A-Z]+)"), conv, m);
+                        bysetpos = regex_functions::getSingleRegexValue(regex("BYSETPOS=([0-9]+)"), conv, m);
+                        int real_bysetpos;
+                        if (bysetpos.compare("-1")){
+                            real_bysetpos = 4;
+                        }
+                        else{
+                            real_bysetpos = std::stoi(bysetpos) - 1;
+                        }
+
+                        ui->monthly_combo->setCurrentIndex(real_bysetpos);
+                        ui->monthly_combo2->setCurrentIndex(Weekday_Abb_to_Int(byday));
+                        cout << byday << endl;
+                        cout << Weekday_Abb_to_Int(byday) << endl;
+                        cout << bysetpos << endl;
+                   }
+
+
+                }
+                else if(freq.compare("YEARLY") == false){
+                   ui->tabWidget->setCurrentIndex(4);
+
+                   // noch nicht fertig
+                }
+
+            }
+            /*
+            ui->table_events->setItem(row,6,rrule);
+            ;*/
+
+
+            ui->table_events->removeRow(row);
+
+        }
+
+
+
+    }
 }
 
 
@@ -379,16 +635,16 @@ void MainWindow::on_button_create_ics_clicked()
     for(int i = 0; i<rows;i++){
         VEvent newEvent;
         newEvent.summary = ui->table_events->model()->index(i, 0).data().toString().toStdString();
-        newEvent.description = ui->table_events->model()->index(i, 4).data().toString().toStdString();
-        newEvent.dtstart = ui->table_events->model()->index(i, 2).data().toString().toStdString();
-        newEvent.dtend = ui->table_events->model()->index(i, 3).data().toString().toStdString();
-        newEvent.dtstamp = ui->table_events->model()->index(i, 10).data().toString().toStdString();
-        newEvent.rrule = ui->table_events->model()->index(i, 5).data().toString().toStdString();
-        newEvent.va = ui->table_events->model()->index(i, 6).data().toString().toStdString();
-        newEvent.location = ui->table_events->model()->index(i, 8).data().toString().toStdString();
-        newEvent.geo = ui->table_events->model()->index(i, 7).data().toString().toStdString();
-        newEvent.priority = ui->table_events->model()->index(i, 9).data().toString().toStdString();
-        newEvent.uid = ui->table_events->model()->index(i, 11).data().toString().toStdString();
+        newEvent.description = ui->table_events->model()->index(i, 5).data().toString().toStdString();
+        newEvent.dtstart = ui->table_events->model()->index(i, 3).data().toString().toStdString();
+        newEvent.dtend = ui->table_events->model()->index(i, 4).data().toString().toStdString();
+        newEvent.dtstamp = ui->table_events->model()->index(i, 11).data().toString().toStdString();
+        newEvent.rrule = ui->table_events->model()->index(i, 6).data().toString().toStdString();
+        newEvent.va = ui->table_events->model()->index(i, 7).data().toString().toStdString();
+        newEvent.location = ui->table_events->model()->index(i, 9).data().toString().toStdString();
+        newEvent.geo = ui->table_events->model()->index(i, 8).data().toString().toStdString();
+        newEvent.priority = ui->table_events->model()->index(i, 10).data().toString().toStdString();
+        newEvent.uid = ui->table_events->model()->index(i, 12).data().toString().toStdString();
         ical.eventText += newEvent.createVEventText();
     }
 
@@ -448,8 +704,6 @@ VEvent fillEvent(string et){
     newEvent.location = importCalenderinfo(et, "LOCATION:");
     newEvent.uid = importCalenderinfo(et, "UID:");
     newEvent.rrule = importCalenderinfo(et, "RRULE:");
-
-    // VAlarm noch, etwas komplizierter
     newEvent.va = getAlarm(et);
 
     return newEvent;
@@ -483,21 +737,23 @@ void MainWindow::fillTable(list<VEvent> eL){
         QTableWidgetItem* dtstamp = new QTableWidgetItem(QString::fromStdString(x.dtstamp));
         QTableWidgetItem* uid = new QTableWidgetItem(QString::fromStdString(x.uid));
         QTableWidgetItem* loeschen = new QTableWidgetItem("Löschen");
+        QTableWidgetItem* bearbeiten = new QTableWidgetItem("Bearbeiten");
 
         int row = ui->table_events->rowCount();
         ui->table_events->insertRow(row);
         ui->table_events->setItem(row,0,name);
-        ui->table_events->setItem(row,1,loeschen);
-        ui->table_events->setItem(row,2,dtstart);
-        ui->table_events->setItem(row,3,dtend);
-        ui->table_events->setItem(row,4,beschreibung);
-        ui->table_events->setItem(row,5,rrule);
-        ui->table_events->setItem(row,6,valarm);
-        ui->table_events->setItem(row,7,geo);
-        ui->table_events->setItem(row,8,location);
-        ui->table_events->setItem(row,9,priority);
-        ui->table_events->setItem(row,10,dtstamp);
-        ui->table_events->setItem(row,11,uid);
+        ui->table_events->setItem(row,1,bearbeiten);
+        ui->table_events->setItem(row,2,loeschen);
+        ui->table_events->setItem(row,3,dtstart);
+        ui->table_events->setItem(row,4,dtend);
+        ui->table_events->setItem(row,5,beschreibung);
+        ui->table_events->setItem(row,6,rrule);
+        ui->table_events->setItem(row,7,valarm);
+        ui->table_events->setItem(row,8,geo);
+        ui->table_events->setItem(row,9,location);
+        ui->table_events->setItem(row,10,priority);
+        ui->table_events->setItem(row,11,dtstamp);
+        ui->table_events->setItem(row,12,uid);
     }
 }
 
@@ -530,6 +786,7 @@ void MainWindow::on_button_ics_import_clicked()
     importMsgBox.setButtonText(QMessageBox::No, "Nein");
     importMsgBox.setDefaultButton(QMessageBox::Yes);
 
+    regex_functions::test();
 
     int ret = importMsgBox.exec();
     if (ret == QMessageBox::Yes){

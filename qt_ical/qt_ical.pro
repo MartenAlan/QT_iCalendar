@@ -13,12 +13,14 @@ SOURCES += \
     icalendar.cpp \
     editcalendar.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    regex_functions.cpp
 
 HEADERS += \
     icalendar.h \
     editcalendar.h \
-    mainwindow.h
+    mainwindow.h \
+    regex_functions.h
 
 FORMS += \
     editcalendar.ui \
