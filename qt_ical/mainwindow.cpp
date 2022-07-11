@@ -414,7 +414,7 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
 
         QMessageBox editMsgBox;
         editMsgBox.setModal(true);
-        editMsgBox.setText("Wollen sie den Termin wirklich bearbeiten? Die jetztigen Eingaben werden gelöscht.");
+        editMsgBox.setText("Wollen sie den Termin wirklich bearbeiten? Die jetzigen Eingaben werden gelöscht.");
         editMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         editMsgBox.setButtonText(QMessageBox::Yes, "Ja");
         editMsgBox.setButtonText(QMessageBox::No, "Nein");
@@ -423,8 +423,6 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
         if (ret == QMessageBox::Yes){
 
             clearInputs();
-
-            //fillParametersForEventEdit();
 
             // Füllen der Parameter
             QString temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 0)).toString();
@@ -449,7 +447,6 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
             temp = ui->table_events->model()->data(ui->table_events->model()->index(row, 8)).toString();
             if(temp.length() > 0){
                 ui->radio_geo->setChecked(true);
-            cout << temp.toStdString() << endl;
             string va;
             regex expression_geo("(.+);(.+)");
             smatch m;
@@ -546,6 +543,7 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                 smatch m;
                 string conv = temp.toStdString();
                 string freq, interval, bymonthday, byday, bysetpos, bymonth;
+                string until, count;
                 int real_bysetpos;
 
                 freq = regex_functions::getSingleRegexValue(regex("FREQ=([A-Z]+);"), conv, m);
@@ -630,7 +628,17 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
                    }
 
                 }
-            // endet am noch nicht hinzugefügt
+
+                if(regex_search(conv, m, regex("UNTIL"))){
+                   until = regex_functions::getSingleRegexValue(regex("UNTIL=([0-9]+T)"), conv, m);
+                   ui->until->setDate(QDate::fromString(QString::fromStdString(until), "yyyyMMddT"));
+                   ui->until_radio->setChecked(true);
+                }
+                else if(regex_search(conv, m, regex("COUNT"))){
+                    count = regex_functions::getSingleRegexValue(regex("COUNT=([0-9]+)"), conv, m);
+                    ui->count->setValue(std::stoi(count));
+                    ui->count_radio->setChecked(true);
+
             }
 
 
@@ -641,7 +649,7 @@ void MainWindow::on_table_events_cellClicked(int row, int column)
 
 
     }
-}
+}}
 
 
 void MainWindow::on_button_create_ics_clicked()

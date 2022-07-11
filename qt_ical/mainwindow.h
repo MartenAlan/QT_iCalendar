@@ -44,10 +44,6 @@ private slots:
 
     void fillTable(list<VEvent> eL);
 
-
-
-    void on_pushButton_clicked();
-
 private:
     Ui::MainWindow *ui;
 };
